@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddEmailToMDonaturTable extends Migration
+class CreateMKabupatenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddEmailToMDonaturTable extends Migration
      */
     public function up()
     {
-        Schema::table('m_donatur', function (Blueprint $table) {
-            $table->string('email');    
+        Schema::create('m_kabupaten', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nama_kabupaten');
+            $table->integer('provinsi_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddEmailToMDonaturTable extends Migration
      */
     public function down()
     {
-        Schema::table('m_donatur', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('m_kabupaten');
     }
 }

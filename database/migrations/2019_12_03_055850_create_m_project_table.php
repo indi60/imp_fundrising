@@ -15,6 +15,18 @@ class CreateMProjectTable extends Migration
     {
         Schema::create('m_project', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nama_project');
+            $table->text('konten');
+            $table->double('target');
+            $table->double('terkumpul');
+            $table->date('tanggal_dibuka');
+            $table->date('tanggal_ditutup');
+            $table->integer('status');
+            $table->integer('owner_id');
+            $table->integer('kategori_project');
+
+
+
             $table->timestamps();
         });
     }

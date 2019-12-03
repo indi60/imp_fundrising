@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMDonaturTable extends Migration
+class CreateMKecamatanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateMDonaturTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_donatur', function (Blueprint $table) {
+        Schema::create('m_kecamatan', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nama_kecamatan');
+            $table->integer('kabupaten_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateMDonaturTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_donatur');
+        Schema::dropIfExists('m_kecamatan');
     }
 }
