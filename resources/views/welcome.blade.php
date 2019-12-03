@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Bagas Arbiansyah
+                    Bagas Arbiansyah RPL
                 </div>
 
                 <div class="links">
