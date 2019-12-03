@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMDonaturTable extends Migration
+class CreateRefLaporanProjectTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class CreateMDonaturTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_donatur', function (Blueprint $table) {
+        Schema::create('ref_laporan_project', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('project_id');
+            $table->string('judul_laporan');
+            $table->text('konten_laporan');
+            $table->date('tanggal_laporan');
+            $table->integer('status');
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateMDonaturTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_donatur');
+        Schema::dropIfExists('ref_laporan_project');
     }
 }
