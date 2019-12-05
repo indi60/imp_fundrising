@@ -27,6 +27,6 @@ class CreateMProvinsiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_kabupaten');
+        Schema::dropIfExists('m_provinsi');
     }
 }
