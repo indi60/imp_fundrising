@@ -1,23 +1,38 @@
-@extends('layouts.app')
+@extends('partial.main')
+@section('title', 'Admin | Home')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Admin</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in Admin!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@section('menu')
+<ul>
+    <li class="current"><a href="#">
+            <div>List Project</div>
+        </a></li>
+    <li><a href="#">
+            <div>List Donatur</div>
+        </a></li>
+    <li><a href="#">
+            <div>List Owner Project</div>
+        </a></li>
+    <li><a href="#">
+            <div>Referensi</div>
+        </a>
+        <ul>
+            <li><a href="#">
+                    <div>Kategori Project</div>
+                </a></li>
+            <li><a href="#">
+                    <div>Provinsi</div>
+                </a></li>
+            <li><a href="#">
+                    <div>Kabupaten</div>
+                </a></li>
+            <li><a href="#">
+                    <div>Kelurahan</div>
+                </a></li>
+            <li><a href="#">
+                    <div>Kecamatan</div>
+                </a></li>
+        </ul>
+    </li>
+   
+</ul>
 @endsection

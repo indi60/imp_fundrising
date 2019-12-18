@@ -25,7 +25,7 @@ class isAdmin
             return redirect()->route('powner');
         }
         else {
-            return redirect()->route('login');
+            return redirect()->route('home');
         }
     }
 }
