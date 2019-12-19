@@ -12,14 +12,14 @@ class ProvinsiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function json() {
-        $provinsi = Provinsi::all();
+    public function jsonProvinsi() {
+        $provinsi = Provinsi::All();
+
         return Datatables::of($provinsi)
         ->addColumn('action', function($provinsi){
-            return 
-            '<a href="/admin/provinsi/'.$provinsi->id.'/edit"class="btn btn-info">EDIT</a>'.
-            ' <a href="/admin/provinsi/'.$provinsi->id.'" class="btn btn-danger">DELETE</a>';
-            // '<form action="/admin/provinsi/'.$provinsi->id.' method="post" class="d-inline">'.@method('delete').@csrf.'<button onclick="return confirm("Yakin Hapus?")" type="submit" class="btn btn-danger">Delete</button> </form>';
+            return '<a onclick="editForm('. $provinsi->id .')" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
+            '<a onclick="deleteData('. $provinsi->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            
         })
         ->rawColumns(['action'])
         ->make(true);
@@ -37,7 +37,7 @@ class ProvinsiController extends Controller
      */
     public function create()
     {
-        return view('admin/provinsi/form');
+        
     }
 
     /**
@@ -49,7 +49,8 @@ class ProvinsiController extends Controller
     public function store(Request $request)
     {
         Provinsi::create($request->all());
-        return redirect('admin/provinsi');
+        return response()->json(['success'=> true]);
+
     }
 
     /**
@@ -71,9 +72,8 @@ class ProvinsiController extends Controller
      */
     public function edit($id)
     {
-        $data = Provinsi::find($id);
-
-        return view('admin/provinsi/form', compact('data'));
+        $provinsi = Provinsi::find($id);
+        return $provinsi;
     }
 
     /**
@@ -85,10 +85,11 @@ class ProvinsiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Provinsi::find($id);
+        $provinsi = Provinsi::findOrFail($id)->update($request->all());
 
-        $data->update($request->all());
-        return redirect('admin/provinsi');
+        return response()->json([
+            'success'=> true
+        ]);
     }
 
     /**
@@ -100,6 +101,9 @@ class ProvinsiController extends Controller
     public function destroy($id)
     {
         Provinsi::destroy($id);
-        return redirect('admin/provinsi');
+
+        return response()->json([
+            'success'=>true
+        ]);
     }
 }

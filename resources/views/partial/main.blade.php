@@ -2,7 +2,7 @@
 		<!-- Slider
 		============================================= -->
 		<section id="slider" class="slider-element force-full-screen full-screen dark clearfix">
-
+			
 			<div class="force-full-screen full-screen">
 				<div class="fslider" data-speed="3000" data-pause="7500" data-animation="fade" data-arrows="false" data-pagi="false" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-color: #333; z-index: 1;">
 					<div class="flexslider" style="height: 100% !important;">
@@ -25,17 +25,16 @@
 					<div class="video-overlay real-estate-video-overlay" style="z-index: 1;"></div>
 				</div>
 			</div>
-
+			
 		</section><!-- #slider end -->
-
 		<div class="tabs advanced-real-estate-tabs clearfix">
-
+			
 			<div class="container clearfix">
 				<ul class="tab-nav clearfix">
 					<li><a href="#tab-properties" data-scrollto="#tab-properties" data-offset="133">Search Properties</a></li>
 				</ul>
 			</div>
-
+			
 			<div class="tab-container">
 				<div class="container clearfix">
 					<div class="tab-content clearfix" id="tab-properties">
@@ -167,9 +166,9 @@
 			</div>
 
 		</div>
-<div class="container">
+		<div class="container">
 		<section id="content">
-
+			
 			<div class="content-wrap">
 				@yield('content')
 			</div>

@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Provinsi;
+use App\Kabupaten;
+use DataTables;
+use DB;
 class KecamatanController extends Controller
 {
     /**
@@ -13,9 +14,34 @@ class KecamatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function jsonKecamatan() {
+        $provinsi = DB::table('m_provinsi')
+            ->join('m_kabupaten', 'm_provinsi.id', '=', 'm_kabupaten.provinsi_id')
+            ->select('m_kabupaten.*', 'm_provinsi.nama_provinsi')
+            ->get();
+        return Datatables::of($provinsi)
+        ->addColumn('nama_provinsi', function($provinsi){
+            return $provinsi->nama_provinsi;
+        })
+        ->addColumn('action', function($provinsi){
+            return '<a onclick="editForm('. $provinsi->id .')" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
+            '<a onclick="deleteData('. $provinsi->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+           // '<form action="/admin/provinsi/'.$provinsi->id.' method="post" class="d-inline">'.@method('delete').@csrf.'<button onclick="return confirm("Yakin Hapus?")" type="submit" class="btn btn-danger">Delete</button> </form>';
+        })
+        ->rawColumns(['nama_provinsi', 'action'])
+        ->make(true);
+    }
     public function index()
     {
-        return view('admin/kecamatan/index');
+        
+        $data_provinsi = Provinsi::All();
+        $provinsi = [''=>'Pilih Provinsi'];
+
+        foreach ($data_provinsi as $key => $value) {
+            $provinsi[$value->id] = $value->nama_provinsi;
+        }
+        return view('admin/kecamatan/index', compact('provinsi'));
     }
 
     /**
@@ -25,7 +51,13 @@ class KecamatanController extends Controller
      */
     public function create()
     {
-        //
+        // $data_provinsi = Provinsi::All();
+        // $provinsi = [''=>'Pilih Provinsi'];
+
+        // foreach ($data_provinsi as $key => $value) {
+        //     $provinsi[$value->id] = $value->nama_provinsi;
+        // }
+        // return view('admin/kecamatan/form', compact('provinsi'));
     }
 
     /**
@@ -36,7 +68,8 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Kabupaten::create($request->all());
+        return response()->json(['success'=> true]);
     }
 
     /**
@@ -58,7 +91,10 @@ class KecamatanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Kabupaten::find($id);
+        return $data;
+        // $provinsi = Provinsi::find($id);
+        // return $provinsi;
     }
 
     /**
@@ -70,7 +106,14 @@ class KecamatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Kabupaten::find($id);
+        
+        $data->update($request->all());
+        // $provinsi = Provinsi::findOrFail($id)->update($request->all());
+
+        return response()->json([
+            'success'=> true
+        ]);
     }
 
     /**
@@ -81,6 +124,10 @@ class KecamatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Kabupaten::destroy($id);
+
+        return response()->json([
+            'success'=>true
+        ]);
     }
 }

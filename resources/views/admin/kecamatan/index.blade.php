@@ -1,42 +1,151 @@
-@extends('layouts.partial.mainDashboard')
-@section('title', 'Kecamatan')
+@extends('partial.main')
+@section('title', 'Admin | Kecamatan')
 @section('content')
-<section class="section">
-    <div class="section-header">
-        <h1>Kecamatan</h1>
-    </div>
-    <div class="section-body">
-    <a href="/admin/kecamatan/create" class="btn btn-primary">Tambah Data</a><br><br>
-        <div class="row">
-            <div class="col-10">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Kecamatan</th>
-                        <th scope="col">Nama Kabupaten</th>
-                        <th scope="col">Aksi</th>
-                    </thead>
-                    <tbody>
-                        {{-- @foreach( $kabupaten as $key=>$kab ) --}}
-                        <tr>
-                        {{-- <td>{{$key+1}}</td>
-                        <td>{{$kab->nama_provinsi}}</td>
-                        <td>{{$kab->nama_kabupaten}}</td>
-                            <td>
-                            <a href="/admin/kabupaten/{{ $kab->id }}/edit" class="btn btn-success">Edit</a>
-                            <form action="/admin/kabupaten/{{ $kab->id }}" method="post" class="d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button onclick="return confirm('Yakin Hapus?')" type="submit"
-                                        class="btn btn-danger">Delete</button>
-                                </form>
-                            </td> --}}
-                        </tr>
-                        {{-- @endforeach --}}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</section>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<a onclick="addForm()" class="btn btn-primary">Tambah Data</a><br><br>
+</div>  
+<div class="panel-body">
+<table style="text-transform: uppercase;" class="table"  id="kecamatan_table">
+    <thead>
+        <tr>
+        <th>NO</th>
+        <th>NAMA PROVINSI</th>
+        <th>NAMA KABUPATEN</th>
+        <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+</div>
+</div>
+@include('admin/kecamatan/form')
+@stop
+
+@section('scripts')
+    <script type="text/javascript">
+    var table = $('#kecamatan_table').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax" : {
+            "url" : "{{route('json/kecamatan')}}"
+        },
+        "columns" : [
+            { data: 'id', render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1;}},
+            { data: 'nama_provinsi', name: 'nama_provinsi' , "className": "dt-center",},
+            { data: 'nama_kabupaten', name: 'nama_kabupaten' , "className": "dt-center",},
+            // { data: 'nama_kabupaten', name: 'nama_kabupaten' , "className": "dt-center",},
+            { data: 'action', name: 'action', orderable:false, searchable: false, "width": "25%", "className": "dt-center" } 
+        ]
+    });
+
+    function addForm() {
+        save_method = "add";
+        $('input[name=_method]').val('POST');
+        $('#modal-form').modal('show');
+        $('#modal-form form')[0].reset();
+        $('.modal-title').text('Add');
+    }
+    $(function () {
+        $('#modal-form form').validator().on('submit', function (e) {
+            if (!e.isDefaultPrevented()) {
+                var id = $('#id').val();
+                if (save_method == 'add') url = "{{ url('admin/kecamatan') }}";
+                else url = "{{ url('admin/kecamatan') . '/' }}" + id;
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    // data : $('#modal-form form').serialize(),
+                    data: new FormData($("#modal-form form")[0]),
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $('#modal-form').modal('hide');
+                        table.ajax.reload();
+                        swal({
+                            title: 'Success!',
+                            text: 'Data berhasil ditambahkan',
+                            type: 'success',
+                            timer: '1500'
+                        })
+                    },
+                    error: function (data) {
+                        swal({
+                            title: 'Oops...',
+                            text: 'Ada yang salah',
+                            type: 'error',
+                            timer: '1500'
+                        })
+                    }
+                });
+                return false;
+            }
+        });
+    });
+
+    function editForm(id) {
+        save_method = 'edit';
+        $('input[name=_method]').val('PATCH');
+        $('#modal-form form')[0].reset();
+        $.ajax({
+            url: "{{url ('admin/kecamatan') }}" + '/' + id + "/edit",
+            type: "GET",
+            dataType: "JSON",
+            success: function (data) {
+                $('#modal-form').modal('show');
+                $('.modal-title').text('Edit Provinsi');
+
+                $('#id').val(data.id);
+                $('#provinsi_id').val(data.provinsi_id);
+                $('#nama_kabupaten').val(data.nama_kabupaten);
+            },
+            error: function () {
+                alert("Nothing Data");
+            }
+        })
+
+    }
+
+    function deleteData(id) {
+        var csrf_token = $('meta[name="csrf-token"]').attr('content');
+        swal({
+            title: 'Apakah Kamu Yakin?',
+            text: "Anda tidak akan dapat mengembalikan ini!",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, hapus!'
+        }).then(function () {
+            $.ajax({
+                url: "{{ url('admin/kecamatan') }}" + '/' + id,
+                type: "POST",
+                data: {
+                    '_method': 'DELETE',
+                    '_token': csrf_token
+                },
+                success: function (data) {
+                    table.ajax.reload();
+                    swal({
+                        title: 'Success!',
+                        text: 'berhasil dihapus',
+                        type: 'success',
+                        timer: '1500'
+                    })
+                },
+                error: function () {
+                    swal({
+                        title: 'Oops...',
+                        text: 'ada yang salah',
+                        type: 'error',
+                        timer: '1500'
+                    })
+                }
+            });
+        });
+    }
+    </script>
 @endsection
+

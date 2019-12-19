@@ -5,8 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Provinsi;
 use App\Kabupaten;
-use DB; 
 use DataTables;
+use DB;
 class KabupatenController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class KabupatenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function json() {
+
+    public function jsonKabupaten() {
         $provinsi = DB::table('m_provinsi')
             ->join('m_kabupaten', 'm_provinsi.id', '=', 'm_kabupaten.provinsi_id')
             ->select('m_kabupaten.*', 'm_provinsi.nama_provinsi')
@@ -24,18 +25,23 @@ class KabupatenController extends Controller
             return $provinsi->nama_provinsi;
         })
         ->addColumn('action', function($provinsi){
-            return 
-            '<a href="/admin/kabupaten/'.$provinsi->id.'/edit"class="btn btn-info">EDIT</a>'.
-            ' <a href="/admin/kabupaten/'.$provinsi->id.'" class="btn btn-danger">DELETE</a>';
-            // '<form action="/admin/provinsi/'.$provinsi->id.' method="post" class="d-inline">'.@method('delete').@csrf.'<button onclick="return confirm("Yakin Hapus?")" type="submit" class="btn btn-danger">Delete</button> </form>';
+            return '<a onclick="editForm('. $provinsi->id .')" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
+            '<a onclick="deleteData('. $provinsi->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+           // '<form action="/admin/provinsi/'.$provinsi->id.' method="post" class="d-inline">'.@method('delete').@csrf.'<button onclick="return confirm("Yakin Hapus?")" type="submit" class="btn btn-danger">Delete</button> </form>';
         })
         ->rawColumns(['nama_provinsi', 'action'])
         ->make(true);
-        // $kabupaten = Kabupaten::all();
     }
     public function index()
     {
-        return view('admin/kabupaten/index');
+        
+        $data_provinsi = Provinsi::All();
+        $provinsi = [''=>'Pilih Provinsi'];
+
+        foreach ($data_provinsi as $key => $value) {
+            $provinsi[$value->id] = $value->nama_provinsi;
+        }
+        return view('admin/kabupaten/index', compact('provinsi'));
     }
 
     /**
@@ -45,13 +51,13 @@ class KabupatenController extends Controller
      */
     public function create()
     {
-        $data_provinsi = Provinsi::All();
-        $provinsi = [''=>'Pilih Provinsi'];
+        // $data_provinsi = Provinsi::All();
+        // $provinsi = [''=>'Pilih Provinsi'];
 
-        foreach ($data_provinsi as $key => $value) {
-            $provinsi[$value->id] = $value->nama_provinsi;
-        }
-        return view('admin/kabupaten/form', compact('provinsi'));
+        // foreach ($data_provinsi as $key => $value) {
+        //     $provinsi[$value->id] = $value->nama_provinsi;
+        // }
+        // return view('admin/kabupaten/form', compact('provinsi'));
     }
 
     /**
@@ -63,7 +69,7 @@ class KabupatenController extends Controller
     public function store(Request $request)
     {
         Kabupaten::create($request->all());
-        return redirect('admin/kabupaten');
+        return response()->json(['success'=> true]);
     }
 
     /**
@@ -86,16 +92,9 @@ class KabupatenController extends Controller
     public function edit($id)
     {
         $data = Kabupaten::find($id);
-        
-        $provinsi = [''=>'Pilih Provinsi'];
-        $data_provinsi = Provinsi::All();
-
-        foreach ($data_provinsi as $key => $value) {
-            $provinsi[$value->id] = $value->nama_provinsi;
-
-        }
-        
-    return view('admin/kabupaten/form', compact('data', 'provinsi'));
+        return $data;
+        // $provinsi = Provinsi::find($id);
+        // return $provinsi;
     }
 
     /**
@@ -110,7 +109,11 @@ class KabupatenController extends Controller
         $data = Kabupaten::find($id);
         
         $data->update($request->all());
-        return redirect('admin/kabupaten');
+        // $provinsi = Provinsi::findOrFail($id)->update($request->all());
+
+        return response()->json([
+            'success'=> true
+        ]);
     }
 
     /**
@@ -121,9 +124,10 @@ class KabupatenController extends Controller
      */
     public function destroy($id)
     {
-        $data = Kabupaten::find($id);
-        
-        $data->delete();
-        return redirect('admin/kabupaten');
+        Kabupaten::destroy($id);
+
+        return response()->json([
+            'success'=>true
+        ]);
     }
 }
