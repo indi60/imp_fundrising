@@ -1,35 +1,39 @@
 @extends('partial.main')
 @section('title', 'Admin | Kecamatan')
 @section('content')
-
-<div class="panel panel-default">
-<div class="panel-heading">
-<a onclick="addForm()" class="btn btn-primary">Tambah Data</a><br><br>
-</div>  
-<div class="panel-body">
-<table style="text-transform: uppercase;" class="table"  id="kecamatan_table">
-    <thead>
-        <tr>
-        <th>NO</th>
-        <th>NAMA PROVINSI</th>
-        <th>NAMA KABUPATEN</th>
-        <th>ACTION</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+<hr>
+<div class="container">
+    <div class="text-center mt-5">
+       <h3> Data Kecamatan </h3>
+    </div>
+    <div class="panel panel-default mt-5">
+        <div class="panel-heading">
+        <a onclick="addForm()" class="btn btn-primary"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
+        </div>  
+        <div class="panel-body">
+            <table style="text-transform: uppercase;" class="table"  id="kabupaten_table">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>NAMA PROVINSI</th>
+                            <th>NAMA KABUPATEN</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+            </table>
+        </div>
+    </div>
 </div>
-</div>
-@include('admin/kecamatan/form')
+@include('admin/kabupaten/form')
 @stop
 
 @section('scripts')
     <script type="text/javascript">
-    var table = $('#kecamatan_table').DataTable({
+    var table = $('#kabupaten_table').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax" : {
-            "url" : "{{route('json/kecamatan')}}"
+            "url" : "{{route('json/kabupaten')}}"
         },
         "columns" : [
             { data: 'id', render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1;}},
@@ -51,8 +55,8 @@
         $('#modal-form form').validator().on('submit', function (e) {
             if (!e.isDefaultPrevented()) {
                 var id = $('#id').val();
-                if (save_method == 'add') url = "{{ url('admin/kecamatan') }}";
-                else url = "{{ url('admin/kecamatan') . '/' }}" + id;
+                if (save_method == 'add') url = "{{ url('admin/kabupaten') }}";
+                else url = "{{ url('admin/kabupaten') . '/' }}" + id;
 
                 $.ajax({
                     url: url,
@@ -90,7 +94,7 @@
         $('input[name=_method]').val('PATCH');
         $('#modal-form form')[0].reset();
         $.ajax({
-            url: "{{url ('admin/kecamatan') }}" + '/' + id + "/edit",
+            url: "{{url ('admin/kabupaten') }}" + '/' + id + "/edit",
             type: "GET",
             dataType: "JSON",
             success: function (data) {
@@ -120,7 +124,7 @@
             confirmButtonText: 'Ya, hapus!'
         }).then(function () {
             $.ajax({
-                url: "{{ url('admin/kecamatan') }}" + '/' + id,
+                url: "{{ url('admin/kabupaten') }}" + '/' + id,
                 type: "POST",
                 data: {
                     '_method': 'DELETE',

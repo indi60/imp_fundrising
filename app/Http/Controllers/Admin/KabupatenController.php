@@ -25,8 +25,8 @@ class KabupatenController extends Controller
             return $provinsi->nama_provinsi;
         })
         ->addColumn('action', function($provinsi){
-            return '<a onclick="editForm('. $provinsi->id .')" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-            '<a onclick="deleteData('. $provinsi->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            return '<a onclick="editForm('. $provinsi->id .')" class="btn btn-warning btn-sm"><i class="far fa-edit"> Edit</i></a> ' .
+            '<a onclick="deleteData('. $provinsi->id .')" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"> Delete</i></a>';
            // '<form action="/admin/provinsi/'.$provinsi->id.' method="post" class="d-inline">'.@method('delete').@csrf.'<button onclick="return confirm("Yakin Hapus?")" type="submit" class="btn btn-danger">Delete</button> </form>';
         })
         ->rawColumns(['nama_provinsi', 'action'])
