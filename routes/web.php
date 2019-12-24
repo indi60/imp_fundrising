@@ -31,5 +31,12 @@ $main_admin_routes = function(){
     //Kecamatan
     Route::resource('/kecamatan', 'Admin\KecamatanController');
     Route::get('/json/kecamatan', 'Admin\KecamatanController@jsonKecamatan')->name('json/kecamatan');
+    Route::get('/get_kabupaten/kecamatan', 'Admin\KecamatanController@getKabupaten')->name('get_kabupaten/kecamatan');
+
+    //Kelurahan
+    Route::resource('/kelurahan', 'Admin\KelurahanController');
+    Route::get('/json/kelurahan', 'Admin\KelurahanController@jsonKelurahan')->name('json/kelurahan');
+    Route::get('/get_kabupaten/kelurahan', 'Admin\KelurahanController@getKabupaten')->name('get_kabupaten/kelurahan');
+    Route::get('/get_kecamatan/kelurahan', 'Admin\KelurahanController@getKecamatan')->name('get_kecamatan/kelurahan');
 };
 Route::group(['middleware' => 'isAdmin', 'prefix'=>'admin'], $main_admin_routes);

@@ -3,7 +3,7 @@
          background-color: rgba(0,0,0,.0001) !important;
     }
     </style>
-    <div class="modal"  id="modal-form" tabindex="1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal"  id="modal-form" role="dialog" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form id="form-kecamatan" method="post" class="form-horizontal" data-toggle="validator" enctype="multipart/form-data">
@@ -21,6 +21,7 @@
                         <label for="nama_provinsi" class="col-md-4 control-label">Nama Provinsi</label>
                         <div class="col-md-6">
                         <select name="provinsi_id" id="provinsi_id" required>
+                            <option value="" selected disabled >PILIH PROVINSI</option>
                             @foreach ($provinsi as $key=>$prov)
                             <option value="{{$key}}" @if (!empty($data) && $data->provinsi_id==$key) selected @endif>{{$prov}}
                             </option>

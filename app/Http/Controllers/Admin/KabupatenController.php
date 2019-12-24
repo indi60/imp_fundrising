@@ -21,26 +21,24 @@ class KabupatenController extends Controller
             ->select('m_kabupaten.*', 'm_provinsi.nama_provinsi')
             ->get();
         return Datatables::of($provinsi)
-        ->addColumn('nama_provinsi', function($provinsi){
-            return $provinsi->nama_provinsi;
-        })
         ->addColumn('action', function($provinsi){
             return '<a onclick="editForm('. $provinsi->id .')" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
             '<a onclick="deleteData('. $provinsi->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
            // '<form action="/admin/provinsi/'.$provinsi->id.' method="post" class="d-inline">'.@method('delete').@csrf.'<button onclick="return confirm("Yakin Hapus?")" type="submit" class="btn btn-danger">Delete</button> </form>';
         })
-        ->rawColumns(['nama_provinsi', 'action'])
+        ->rawColumns(['action'])
         ->make(true);
     }
     public function index()
     {
         
-        $data_provinsi = Provinsi::All();
-        $provinsi = [''=>'Pilih Provinsi'];
+        $provinsi = DB::table('m_provinsi')
+        ->pluck('nama_provinsi', 'id');
+        // $provinsi = [''=>'PILIH PROVINSI'];
 
-        foreach ($data_provinsi as $key => $value) {
-            $provinsi[$value->id] = $value->nama_provinsi;
-        }
+        // foreach ($data_provinsi as $key => $value) {
+        //     $provinsi[$value->id] = $value->nama_provinsi;
+        // }
         return view('admin/kabupaten/index', compact('provinsi'));
     }
 

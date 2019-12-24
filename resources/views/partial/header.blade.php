@@ -35,8 +35,9 @@
     <link rel="stylesheet" href="{{asset('asset/csss/components/ion.rangeslider.css')}}" type="text/css" />
 
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+    
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
     {{-- AJAX --}}
     <script src="{{asset('assets/sweetalert2/sweetalert2.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/sweetalert2/sweetalert2.min.css')}}">

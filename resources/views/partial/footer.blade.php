@@ -126,6 +126,8 @@
 <!-- External JavaScripts
 	============================================= -->
 <script src="{{asset('asset/js/jquery.js')}}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
 <script src="{{asset('asset/jss/plugins.js')}}"></script>
 
 <!-- Google Map JavaScripts
@@ -258,9 +260,12 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 @yield('scripts')
 
-
+{{-- <script src="tail.select-full.min.js"></script> --}}
 {{-- AJAX --}}
 <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
+{{-- TUTUP AJAX --}}
+
+
 
 </body>
 

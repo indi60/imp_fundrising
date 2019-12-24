@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Provinsi;
 use App\Kabupaten;
+use App\Kecamatan;
 use DataTables;
 use DB;
 class KecamatanController extends Controller
@@ -14,36 +15,39 @@ class KecamatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function jsonKecamatan() {
         $provinsi = DB::table('m_provinsi')
-            ->join('m_kabupaten', 'm_provinsi.id', '=', 'm_kabupaten.provinsi_id')
-            ->select('m_kabupaten.*', 'm_provinsi.nama_provinsi')
+        ->join('m_kabupaten', 'm_provinsi.id', '=', 'm_kabupaten.provinsi_id')
+        ->join('m_kecamatan', 'm_kabupaten.id', '=', 'm_kecamatan.kabupaten_id')
+            ->select('m_kecamatan.*', 'm_provinsi.nama_provinsi',  'm_kabupaten.nama_kabupaten')
             ->get();
-        return Datatables::of($provinsi)
-        ->addColumn('nama_provinsi', function($provinsi){
-            return $provinsi->nama_provinsi;
-        })
+            return Datatables::of($provinsi)
         ->addColumn('action', function($provinsi){
             return '<a onclick="editForm('. $provinsi->id .')" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
             '<a onclick="deleteData('. $provinsi->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
-           // '<form action="/admin/provinsi/'.$provinsi->id.' method="post" class="d-inline">'.@method('delete').@csrf.'<button onclick="return confirm("Yakin Hapus?")" type="submit" class="btn btn-danger">Delete</button> </form>';
-        })
-        ->rawColumns(['nama_provinsi', 'action'])
+           })
+        ->rawColumns(['action'])
         ->make(true);
     }
     public function index()
     {
-        
-        $data_provinsi = Provinsi::All();
-        $provinsi = [''=>'Pilih Provinsi'];
-
-        foreach ($data_provinsi as $key => $value) {
-            $provinsi[$value->id] = $value->nama_provinsi;
-        }
+        $provinsi = DB::table('m_provinsi')
+        ->pluck('nama_provinsi', 'id');
         return view('admin/kecamatan/index', compact('provinsi'));
     }
-
+    
+    public function getKabupaten(Request $request) {
+        $kabupaten = DB::table('m_kabupaten')
+        ->where('provinsi_id', $request->provinsi_id)  
+        ->pluck('nama_kabupaten', 'id');
+        return response()->json($kabupaten);
+    }
+    // public function getKecamatan(Request $request){
+    //     $kecamatan = DB::table('m_kecamatan')
+    //     ->where('kabupaten_id', $request->kabupaten_id)
+    //     ->pluck('nama_kecamatan', 'id');
+    //     return response()->json($kecamatan);
+    // }
     /**
      * Show the form for creating a new resource.
      *
@@ -68,7 +72,7 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
-        Kabupaten::create($request->all());
+        Kecamatan::create($request->all());
         return response()->json(['success'=> true]);
     }
 
@@ -91,7 +95,7 @@ class KecamatanController extends Controller
      */
     public function edit($id)
     {
-        $data = Kabupaten::find($id);
+        $data = Kecamatan::find($id);
         return $data;
         // $provinsi = Provinsi::find($id);
         // return $provinsi;
@@ -106,7 +110,7 @@ class KecamatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Kabupaten::find($id);
+        $data = Kecamatan::find($id);
         
         $data->update($request->all());
         // $provinsi = Provinsi::findOrFail($id)->update($request->all());
@@ -124,7 +128,7 @@ class KecamatanController extends Controller
      */
     public function destroy($id)
     {
-        Kabupaten::destroy($id);
+        Kecamatan::destroy($id);
 
         return response()->json([
             'success'=>true

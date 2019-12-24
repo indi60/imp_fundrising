@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Admin | Kecamatan')
+@section('title', 'Admin | Kelurahan')
 @section('content')
 
 <div class="panel panel-default">
@@ -7,13 +7,14 @@
         <a onclick="addForm()" class="btn btn-primary">Tambah Data</a><br><br>
     </div>
     <div class="panel-body">
-        <table style="text-transform: uppercase;" class="table table-striped" id="kecamatan_table">
+        <table style="text-transform: uppercase;" class="table table-striped" id="kelurahan_table">
             <thead>
                 <tr>
                     <th>NO</th>
                     <th>NAMA PROVINSI</th>
                     <th>NAMA KABUPATEN</th>
                     <th>NAMA KECAMATAN</th>
+                    <th>NAMA KELURAHAN</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
@@ -21,16 +22,16 @@
         </table>
     </div>
 </div>
-@include('admin/kecamatan/form')
+@include('admin/kelurahan/form')
 @stop
 
 @section('scripts')
 <script type="text/javascript">
-    var table = $('#kecamatan_table').DataTable({
+    var table = $('#kelurahan_table').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "{{route('json/kecamatan')}}"
+            "url": "{{route('json/kelurahan')}}"
         },
         "columns": [{
                 data: 'id',
@@ -53,7 +54,11 @@
                 name: 'nama_kecamatan',
                 "className": "dt-center",
             },
-            // { data: 'nama_kabupaten', name: 'nama_kabupaten' , "className": "dt-center",},
+            {
+                data: 'nama_kelurahan',
+                name: 'nama_kelurahan',
+                "className": "dt-center",
+            },
             {
                 data: 'action',
                 name: 'action',
@@ -65,20 +70,6 @@
         ]
     });
 
-    // $('#provinsi_id').on('change', function () {
-
-    // })
-    // var getKabu = function ($id) {
-    //     if ($("#provinsi_id").is($id)) {
-    //         $('#nama_kabupaten').prop('disabled', 'disabled');
-    //     } else {
-    //         $('#nama_kabupaten').prop('disabled', false);
-    //     }
-    // };
-    // $(getKabu);
-    // $("#provinsi_id").change(getKabu);
-
-
     function addForm() {
         save_method = "add";
         $('input[name=_method]').val('POST');
@@ -86,18 +77,19 @@
         $('#modal-form form')[0].reset();
         $('.modal-title').text('Add');
     }
-    $( "#kabupaten_id" ).prop( "disabled", true );
-    $( "#nama_kecamatan" ).prop( "disabled", true );
+    $('#kabupaten_id').prop('disabled', true);
+    $('#kecamatan_id').prop('disabled', true);
+    $('#nama_kelurahan').prop('disabled', true);
     $('#provinsi_id').change(function() {
     var provinsiID =$(this).val();
     if (provinsiID) {
         $.ajax({
             type:"GET",
-            url:"{{url('admin/get_kabupaten/kecamatan')}}?provinsi_id="+provinsiID,
+            url:"{{url('admin/get_kabupaten/kelurahan')}}?provinsi_id="+provinsiID,
             success:function(res){
                 if (res) {
                     $('#kabupaten_id').empty();
-                    $( "#kabupaten_id" ).prop( "disabled", false );
+                    $('#kabupaten_id').prop('disabled', false);
                     $('#kabupaten_id').append('<option selected disabled>PILIH KABUPATEN</option>');
                     $.each(res,function(key, value){
                         $('#kabupaten_id').append('<option value="'+key+'">'+value+'</option>');
@@ -109,17 +101,41 @@
         });
     }else{
         $('#kabupaten_id').empty();
+        $('#kecamatan_id').empty();
     }
-    $("#kabupaten_id").change(function () {
-        $( "#nama_kecamatan" ).prop( "disabled", false );
-    })
     });
+    $('#kabupaten_id').change(function() {
+        var kabupatenID =$(this).val();
+        if (kabupatenID) {
+            $.ajax({
+                type:"GET",
+                url: "{{url('admin/get_kecamatan/kelurahan')}}?kabupaten_id="+kabupatenID,
+                success:function(res){
+                    if (res) {    
+                        $('#kecamatan_id').empty();
+                        $('#kecamatan_id').prop('disabled', false);
+                        $('#kecamatan_id').append('<option selected disabled>PILIH KECAMATAN</option');
+                        $.each(res,function(key, value){
+                            $('#kecamatan_id').append('<option value="'+key+'">'+value+'</option>');
+                        });
+                    }else{
+                        $('#kecamatan_id').empty();
+                    }
+                }
+            });
+        }else{
+            $('#kecamatan_id').empty();
+        }
+    });
+    $('#kecamatan_id').change(function() {
+        $('#nama_kelurahan').prop('disabled', false);
+    })
     $(function () {
         $('#modal-form form').validator().on('submit', function (e) {
             if (!e.isDefaultPrevented()) {
                 var id = $('#id').val();
-                if (save_method == 'add') url = "{{ url('admin/kecamatan') }}";
-                else url = "{{ url('admin/kecamatan') . '/' }}" + id;
+                if (save_method == 'add') url = "{{ url('admin/kelurahan') }}";
+                else url = "{{ url('admin/kelurahan') . '/' }}" + id;
 
                 $.ajax({
                     url: url,
@@ -157,7 +173,7 @@
         $('input[name=_method]').val('PATCH');
         $('#modal-form form')[0].reset();
         $.ajax({
-            url: "{{url ('admin/kecamatan') }}" + '/' + id + "/edit",
+            url: "{{url ('admin/kelurahan') }}" + '/' + id + "/edit",
             type: "GET",
             dataType: "JSON",
             success: function (data) {
@@ -167,7 +183,8 @@
                 $('#id').val(data.id);
                 $('#provinsi_id').val(data.provinsi_id);
                 $('#kabupaten_id').val(data.nama_kabupaten);
-                $('#nama_kecamatan').val(data.nama_kecamatan);
+                $('#kecamatan_id').val(data.nama_kecamatan);
+                $('#nama_kelurahan').val(data.nama_kelurahan);
             },
             error: function () {
                 alert("Nothing Data");
@@ -188,7 +205,7 @@
             confirmButtonText: 'Ya, hapus!'
         }).then(function () {
             $.ajax({
-                url: "{{ url('admin/kecamatan') }}" + '/' + id,
+                url: "{{ url('admin/kelurahan') }}" + '/' + id,
                 type: "POST",
                 data: {
                     '_method': 'DELETE',

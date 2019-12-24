@@ -18,10 +18,10 @@
                 <div class="modal-body">
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
-                    <label for="provinsi_id" class="col-md-4 control-label">Nama Provinsi</label>
+                    <label for="provinsi_id" class="col-md-4 control-label">Nama Provinsi </label>
                     <div class="col-md-6">
                     <select id="provinsi_id" name="provinsi_id" required>
-                        <option value="" selected disabled >PILIH PROVINSI</option>
+                        <option value="" selected disabled>PILIH PROVINSI</option>
                         @foreach ($provinsi as $key=>$prov)
                         <option value="{{$key}}" @if (!empty($data) && $data->provinsi_id==$key) selected @endif>{{$prov}}
                         </option>
@@ -37,9 +37,16 @@
                     </div>
                     </div>
                     <div class="form-group">
-                      <label for="title" class="col-md-4 control-label">Nama Kecamatan</label>
+                    <label for="title" class="col-md-4 control-label">Nama Kecamatan</label>
+                    <div class="col-md-6">
+                    <select id="kecamatan_id" name="kecamatan_id" required>
+                    </select>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="title" class="col-md-4 control-label">Nama Kelurahan</label>
                       <div class="col-md-6">
-                          <input type="nama_kecamatan" id="nama_kecamatan" name="nama_kecamatan" class="form-control" required>
+                          <input type="nama_kelurahan" id="nama_kelurahan" name="nama_kelurahan" class="form-control" required>
                       </div>
                     </div>
                 </div>
@@ -52,4 +59,5 @@
             </form>
         </div>
     </div>
-</div>
+</div> 
+

@@ -33,9 +33,8 @@
         },
         "columns" : [
             { data: 'id', render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1;}},
-            { data: 'nama_provinsi', name: 'nama_provinsi' , "className": "dt-center",},
-            { data: 'nama_kabupaten', name: 'nama_kabupaten' , "className": "dt-center",},
-            // { data: 'nama_kabupaten', name: 'nama_kabupaten' , "className": "dt-center",},
+            { data: 'nama_provinsi', name: 'nama_provinsi' , "className": "dt-center"},
+            { data: 'nama_kabupaten', name: 'nama_kabupaten' , "className": "dt-center"},
             { data: 'action', name: 'action', orderable:false, searchable: false, "width": "25%", "className": "dt-center" } 
         ]
     });
@@ -94,12 +93,12 @@
             type: "GET",
             dataType: "JSON",
             success: function (data) {
-                $('#modal-form').modal('show');
-                $('.modal-title').text('Edit Provinsi');
-
-                $('#id').val(data.id);
-                $('#provinsi_id').val(data.provinsi_id);
-                $('#nama_kabupaten').val(data.nama_kabupaten);
+                    $('#modal-form').modal('show');
+                    $('.modal-title').text('Edit');  
+                    $('#id').val(data.id);
+                    $('#provinsi_id').val(data.provinsi_id);
+                    $('#nama_kabupaten').val(data.nama_kabupaten);
+                
             },
             error: function () {
                 alert("Nothing Data");
@@ -146,6 +145,9 @@
             });
         });
     }
+    $(document).ready(function(){
+        $('form select').select2( {width: '100%'} );
+    });
     </script>
 @endsection
 
