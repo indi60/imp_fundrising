@@ -1,26 +1,27 @@
 @extends('partial.main')
-@section('css')
-<meta name="csrf-token" content="{{csrf_token()}}">
-@endsection
 @section('title', 'Admin | Provinsi')
 @section('content')
-
-<div class="panel panel-default">
-<div class="panel-heading">
-<a onclick="addForm()" class="btn btn-primary">Tambah Data</a><br><br>
-</div>  
-<div class="panel-body">
-<table style="text-transform: uppercase;" class="table table-striped"  id="provinsi_table">
-    <thead>
-        <tr>
-        <th>NO</th>
-        <th>NAMA PROVINSI</th>
-        <th>ACTION</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
-</div>
+<hr>
+<div class="container">
+    <div class="text-center mt-5">
+         <h3> Data Provinsi </h3>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        <a onclick="addForm()" class="btn btn-primary"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
+        </div>  
+        <div class="panel-body">
+            <table style="text-transform: uppercase;" class="table table-striped" id="provinsi_table">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>NAMA PROVINSI</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+            </table>    
+        </div>
+    </div>
 </div>
 @include('admin/provinsi/form')
 @stop

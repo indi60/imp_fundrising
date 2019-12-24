@@ -11,9 +11,10 @@
 |
 */
 Route::get('/', function () {
-    return view('partial/main');
+    return view('home');
 })->name('home');
 Auth::routes();
+Route::get('/logout', 'Admin\AdminController@logout');
 Route::get('/donatur', 'Donatur\DonaturController@index')->name('donatur')->middleware('isDonatur');
 Route::get('/powner', 'Powner\PownerController@index')->name('powner')->middleware('isPowner');
 

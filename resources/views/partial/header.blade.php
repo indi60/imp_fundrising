@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Roboto:300,400,500,700|Rubik:400,600"
         rel="stylesheet">
     <link rel="stylesheet" href="{{asset('asset/css/bootstrap.css')}}" type="text/css" />
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="stylesheet" href="{{asset('asset/style.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{asset('asset/css/dark.css')}}" type="text/css" />
 
@@ -46,6 +47,7 @@
     {{-- DataTable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
+    
     <!-- Document Title
 	============================================= -->
     <title>@yield('title', 'Home')</title>
@@ -62,9 +64,7 @@
         <div class="side-panel-wrap" style="margin-bottom:200px;">
 
             <div class="widget clearfix">
-
-
-                <h4 class="t400 text-center">Login</h4><br>
+                <h4 class="t400 text-center">Login</h4><hr><br>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
@@ -141,51 +141,6 @@
     <!-- Document Wrapper
 	============================================= -->
     <div id="wrapper" class="clearfix">
-
-        <!-- Top Bar
-		============================================= -->
-        <div id="top-bar" class="transparent-topbar">
-
-            <div class="container clearfix">
-                <div class="col_half fright col_last clearfix nobottommargin">
-                    <!-- Top Links
-					============================================= -->
-
-                    <div class="top-links">
-                        @guest
-                        <ul>
-                            <li><a href="#" class="side-panel-trigger">Login | Register</a></li>
-                        </ul>
-                        @else
-                        <ul>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu" aria-labelledby="drowdownMenuButton">
-                                    <a class="dropdown-item text-info" style="margin-left:20px;" href="#">Profile</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" style="margin-left:20px;"
-                                        href="{{ route('logout') }}" onclick="event.preventDefault();
-												 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                            @endguest
-                        </ul>
-                    </div><!-- .top-links end -->
-
-                </div>
-
-            </div>
-
-        </div><!-- #top-bar end -->
-
         <!-- Header
 		============================================= -->
         <header id="header" class="static-sticky transparent-header dark">
@@ -199,30 +154,29 @@
                     <!-- Logo
 					============================================= -->
                     <div id="logo">
-                        <a href="index.html" data-dark-logo="{{asset('asset/demos/real-estate/images/logo.png')}}"
-                            class="standard-logo"><img src="{{asset('asset/demos/real-estate/images/logo.png')}}"
-                                alt="Canvas Logo"></a>
-                        <a href="index.html" data-dark-logo="{{asset('asset/demos/real-estate/images/logo@2x.png')}}"
-                            class="retina-logo"><img src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}"
-                                alt="Canvas Logo"></a>
-                    </div><!-- #logo end -->
+						<a href="#" class="standard-logo" data-dark-logo="{{asset('asset/demos/real-estate/images/logo@2x.png')}}"><img src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
+					</div>
 
                     <!-- Primary Navigation
 					============================================= -->
                     <nav id="primary-menu" class="with-arrows">
+                        
                         @if (Auth::check() && Auth::User()->level == 2)
                         <ul>
-                            <li class="current"><a href="#">
-                                    <div>List Project</div>
+                            <li class="current"><a href="/admin">
+                                    <div style="color:cornflowerblue;" >Home</div>
+                                </a></li>
+                            <li class=""><a href="#list">
+                                    <div style="color:cornflowerblue;">List Project</div>
                                 </a></li>
                             <li><a href="#">
-                                    <div>List Donatur</div>
+                                    <div style="color:cornflowerblue;">List Donatur</div>
                                 </a></li>
                             <li><a href="#">
-                                    <div>List Owner Project</div>
+                                    <div style="color:cornflowerblue;">List Owner Project</div>
                                 </a></li>
                             <li><a href="#">
-                                    <div>Referensi</div>
+                                    <div style="color:cornflowerblue;">Referensi</div>
                                 </a>
                                 <ul>
                                     <li><a href="#">
@@ -245,6 +199,28 @@
 
                         </ul>
                         @endif
+                        @guest
+                        <ul>
+                            <li><a href="#" class="side-panel-trigger" style="color:cornflowerblue;">Login | Register</a></li>
+                        </ul>
+                        @else
+                        <ul>
+                            <li><a href="#">
+                                <div style="color:cornflowerblue;">{{ Auth::user()->name }}</div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="#">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/logout') }}"> logout </a>
+                                </li>
+                               
+                            </ul>
+                        </li>
+                            
+                            @endguest
+                        </ul>
                     </nav><!-- #primary-menu end -->
 
                 </div>

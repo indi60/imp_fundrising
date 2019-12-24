@@ -23,8 +23,8 @@ class KecamatanController extends Controller
             ->get();
             return Datatables::of($provinsi)
         ->addColumn('action', function($provinsi){
-            return '<a onclick="editForm('. $provinsi->id .')" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-            '<a onclick="deleteData('. $provinsi->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            return '<a onclick="editForm('. $provinsi->id .')" class="btn btn-warning btn-xs"><i class="far fa-edit"> Edit</i></a> ' .
+            '<a onclick="deleteData('. $provinsi->id .')" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"> Delete</i></a>';
            })
         ->rawColumns(['action'])
         ->make(true);

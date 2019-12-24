@@ -1,10 +1,14 @@
 @extends('partial.main')
 @section('title', 'Admin | Kelurahan')
 @section('content')
-
+<hr>
+<div class="container">
+    <div class="text-center mt-5">
+        <h3> Data Kelurahan </h3>
+     </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <a onclick="addForm()" class="btn btn-primary">Tambah Data</a><br><br>
+        <a onclick="addForm()" class="btn btn-primary"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
     </div>
     <div class="panel-body">
         <table style="text-transform: uppercase;" class="table table-striped" id="kelurahan_table">
@@ -21,6 +25,7 @@
             <tbody></tbody>
         </table>
     </div>
+</div>
 </div>
 @include('admin/kelurahan/form')
 @stop
