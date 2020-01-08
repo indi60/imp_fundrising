@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Provinsi extends Model
+class MProvinsi extends Model
 {
     protected $table = 'm_provinsi';
     protected $fillable = [

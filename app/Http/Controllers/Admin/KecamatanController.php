@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Provinsi;
-use App\Kabupaten;
-use App\Kecamatan;
+use App\MKecamatan;
 use DataTables;
 use DB;
 class KecamatanController extends Controller
@@ -42,12 +40,6 @@ class KecamatanController extends Controller
         ->pluck('nama_kabupaten', 'id');
         return response()->json($kabupaten);
     }
-    // public function getKecamatan(Request $request){
-    //     $kecamatan = DB::table('m_kecamatan')
-    //     ->where('kabupaten_id', $request->kabupaten_id)
-    //     ->pluck('nama_kecamatan', 'id');
-    //     return response()->json($kecamatan);
-    // }
     /**
      * Show the form for creating a new resource.
      *
@@ -55,13 +47,7 @@ class KecamatanController extends Controller
      */
     public function create()
     {
-        // $data_provinsi = Provinsi::All();
-        // $provinsi = [''=>'Pilih Provinsi'];
-
-        // foreach ($data_provinsi as $key => $value) {
-        //     $provinsi[$value->id] = $value->nama_provinsi;
-        // }
-        // return view('admin/kecamatan/form', compact('provinsi'));
+        //
     }
 
     /**
@@ -72,7 +58,7 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
-        Kecamatan::create($request->all());
+        MKecamatan::create($request->all());
         return response()->json(['success'=> true]);
     }
 
@@ -95,10 +81,8 @@ class KecamatanController extends Controller
      */
     public function edit($id)
     {
-        $data = Kecamatan::find($id);
+        $data = MKecamatan::find($id);
         return $data;
-        // $provinsi = Provinsi::find($id);
-        // return $provinsi;
     }
 
     /**
@@ -110,11 +94,9 @@ class KecamatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Kecamatan::find($id);
+        $data = MKecamatan::find($id);
         
         $data->update($request->all());
-        // $provinsi = Provinsi::findOrFail($id)->update($request->all());
-
         return response()->json([
             'success'=> true
         ]);
@@ -128,7 +110,7 @@ class KecamatanController extends Controller
      */
     public function destroy($id)
     {
-        Kecamatan::destroy($id);
+        MKecamatan::destroy($id);
 
         return response()->json([
             'success'=>true

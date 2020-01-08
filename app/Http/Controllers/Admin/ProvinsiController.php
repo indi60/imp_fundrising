@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Provinsi;
+use App\MProvinsi;
 use DataTables;
 class ProvinsiController extends Controller
 {
@@ -13,7 +13,7 @@ class ProvinsiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function jsonProvinsi() {
-        $provinsi = Provinsi::All();
+        $provinsi = MProvinsi::All();
 
         return Datatables::of($provinsi)
         ->addColumn('action', function($provinsi){
@@ -48,7 +48,7 @@ class ProvinsiController extends Controller
      */
     public function store(Request $request)
     {
-        Provinsi::create($request->all());
+        MProvinsi::create($request->all());
         return response()->json(['success'=> true]);
 
     }
@@ -72,7 +72,7 @@ class ProvinsiController extends Controller
      */
     public function edit($id)
     {
-        $provinsi = Provinsi::find($id);
+        $provinsi = MProvinsi::find($id);
         return $provinsi;
     }
 
@@ -85,7 +85,7 @@ class ProvinsiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $provinsi = Provinsi::findOrFail($id)->update($request->all());
+        $provinsi = MProvinsi::findOrFail($id)->update($request->all());
 
         return response()->json([
             'success'=> true
@@ -100,7 +100,7 @@ class ProvinsiController extends Controller
      */
     public function destroy($id)
     {
-        Provinsi::destroy($id);
+        MProvinsi::destroy($id);
 
         return response()->json([
             'success'=>true

@@ -36,18 +36,20 @@
     <link rel="stylesheet" href="{{asset('asset/csss/components/ion.rangeslider.css')}}" type="text/css" />
 
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />    
-    
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     {{-- AJAX --}}
     <script src="{{asset('assets/sweetalert2/sweetalert2.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/sweetalert2/sweetalert2.min.css')}}">
     {{-- TUTUP AJAX --}}
-    
+
+    {{-- DatePicker --}}
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
     {{-- DataTable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    
+
     <!-- Document Title
 	============================================= -->
     <title>@yield('title', 'Home')</title>
@@ -64,7 +66,8 @@
         <div class="side-panel-wrap" style="margin-bottom:200px;">
 
             <div class="widget clearfix">
-                <h4 class="t400 text-center">Login</h4><hr><br>
+                <h4 class="t400 text-center">Login</h4>
+                <hr><br>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
@@ -154,17 +157,19 @@
                     <!-- Logo
 					============================================= -->
                     <div id="logo">
-						<a href="#" class="standard-logo" data-dark-logo="{{asset('asset/demos/real-estate/images/logo@2x.png')}}"><img src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
-					</div>
+                        <a href="#" class="standard-logo"
+                            data-dark-logo="{{asset('asset/demos/real-estate/images/logo@2x.png')}}"><img
+                                src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
+                    </div>
 
                     <!-- Primary Navigation
 					============================================= -->
                     <nav id="primary-menu" class="with-arrows">
-                        
+
                         @if (Auth::check() && Auth::User()->level == 2)
                         <ul>
                             <li class="current"><a href="/admin">
-                                    <div style="color:cornflowerblue;" >Home</div>
+                                    <div style="color:cornflowerblue;">Home</div>
                                 </a></li>
                             <li class=""><a href="#list">
                                     <div style="color:cornflowerblue;">List Project</div>
@@ -179,7 +184,7 @@
                                     <div style="color:cornflowerblue;">Referensi</div>
                                 </a>
                                 <ul>
-                                    <li><a href="#">
+                                    <li><a href="/admin/kategoriproject">
                                             <div>Kategori Project</div>
                                         </a></li>
                                     <li><a href="/admin/provinsi">
@@ -199,26 +204,57 @@
 
                         </ul>
                         @endif
+
+                        @if (Auth::check() && Auth::User()->level == 3)
+                        <ul>
+                            <li class="current"><a href="/powner">
+                                    <div style="color:cornflowerblue;">Home</div>
+                                </a></li>
+                            <li class=""><a href="/powner/create_project">
+                                    <div style="color:cornflowerblue;">Create Project</div>
+                                </a></li>
+                            <li><a href="#">
+                                    <div style="color:cornflowerblue;">Laporan Project</div>
+                                </a></li>
+
+                        </ul>
+                        @endif
+
+                        @if (Auth::check() && Auth::User()->level == 1)
+                        <ul>
+                            <li class="current"><a href="/powner">
+                                    <div style="color:cornflowerblue;">Home</div>
+                                </a></li>
+                            <li class=""><a href="#list">
+                                    <div style="color:cornflowerblue;">Lihat Project</div>
+                                </a></li>
+                            <li><a href="#">
+                                    <div style="color:cornflowerblue;">Donasi Project</div>
+                                </a></li>
+
+                        </ul>
+                        @endif
                         @guest
                         <ul>
-                            <li><a href="#" class="side-panel-trigger" style="color:cornflowerblue;">Login | Register</a></li>
+                            <li><a href="#" class="side-panel-trigger" style="color:cornflowerblue;">Login |
+                                    Register</a></li>
                         </ul>
                         @else
                         <ul>
                             <li><a href="#">
-                                <div style="color:cornflowerblue;">{{ Auth::user()->name }}</div>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="#">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/logout') }}"> logout </a>
-                                </li>
-                               
-                            </ul>
-                        </li>
-                            
+                                    <div style="color:cornflowerblue;">{{ Auth::user()->name }}</div>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/logout') }}"> logout </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
                             @endguest
                         </ul>
                     </nav><!-- #primary-menu end -->

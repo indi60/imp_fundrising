@@ -216,13 +216,15 @@
 </script>
 {{-- DataTabel --}}
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
+<script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script> 
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 @yield('scripts')
 
 {{-- <script src="tail.select-full.min.js"></script> --}}
 {{-- AJAX --}}
 <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
 {{-- TUTUP AJAX --}}
-
 
 
 </body>
