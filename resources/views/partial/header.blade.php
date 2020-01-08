@@ -47,10 +47,11 @@
     {{-- DataTable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    
     <!-- Document Title
 	============================================= -->
-    <title>@yield('title', 'Home')</title>
+    <title>@yield('title', '
+    ')</title>
+    <link rel="shortcut icon" href="{{asset('asset/demos/real-estate/images/idelight.png')}}">
 
 </head>
 
@@ -154,9 +155,9 @@
                     <!-- Logo
 					============================================= -->
                     <div id="logo">
-						<a href="#" class="standard-logo" data-dark-logo="{{asset('asset/demos/real-estate/images/logo@2x.png')}}"><img src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
+						<a href="#" class="standard-logo" data-dark-logo="{{asset('asset/demos/real-estate/images/idedark.png')}}"> <img src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
 					</div>
-
+           
                     <!-- Primary Navigation
 					============================================= -->
                     <nav id="primary-menu" class="with-arrows">

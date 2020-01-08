@@ -888,6 +888,9 @@ body.stretched #header.full-header .container {
 	Logo
 -----------------------------------------------------------------*/
 
+#float{
+	float:right;
+}
 
 #logo {
 	position: relative;

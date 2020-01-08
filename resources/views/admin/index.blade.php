@@ -11,8 +11,8 @@
 				<div class="vertical-middle" style="z-index: 3;">
 					<div class="container center clearfix">
 						<div class="emphasis-title nomargin">
-							<h1>CrowdFunding</h1>
-							<span class="t300 uppercase" style="font-size: 18px; letter-spacing: 10px; color: rgba(255,255,255,0.9);">IMP</span>
+							<h1>IDE BABE</h1>
+							<span class="t300 uppercase" style="font-size: 18px; letter-spacing: 10px; color: rgba(255,255,255,0.9);">INFAK DUIT EMAS & BARANG BEKAS</span>
 						</div>
 					</div>
 				</div>
@@ -43,7 +43,6 @@
 											<a href="#"><i class="icon-line-heart"></i></a>
 										</div>
 									</div>
-
 									<div class="real-estate-item-desc">
 										<h3><a href="#">3 Bedroom Villa</a></h3>
 										<span>Seminyak Area</span>

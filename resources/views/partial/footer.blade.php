@@ -7,12 +7,11 @@
         <!-- Footer Widgets
 				============================================= -->
         <div class="footer-widgets-wrap clearfix">
-
             <div class="col_two_fifth">
 
                 <div class="widget clearfix">
 
-                    <img src="{{asset('asset/demos/real-estate/images/logo.png')}}"
+                    <img src="{{asset('asset/demos/real-estate/images/idelight.png')}}"
                         style="position: relative; opacity: 0.85; left: -10px; max-height: 80px; margin-bottom: 20px;"
                         alt="Footer Logo">
 
@@ -22,8 +21,7 @@
 
                     <div class="line" style="margin: 30px 0;"></div>
 
-                    <p class="ls1 t300" style="opacity: 0.6; font-size: 13px;">Copyrights &copy; 2017 Canvas: Real
-                        Estate</p>
+                    <p class="ls1 t300" style="opacity: 0.6; font-size: 13px;">Copyrights &copy; 2020 IDE BABE</p>
 
                 </div>
 
@@ -48,21 +46,6 @@
                         <a href="#" class="social-icon si-colored si-small si-rounded si-instagram" title="Instagram">
                             <i class="icon-instagram"></i>
                             <i class="icon-instagram"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-colored si-small si-rounded si-apple" title="App Store">
-                            <i class="icon-apple"></i>
-                            <i class="icon-apple"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-colored si-small si-rounded si-android" title="Play Store">
-                            <i class="icon-android"></i>
-                            <i class="icon-android"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-colored si-small si-rounded si-skype" title="Skype">
-                            <i class="icon-skype"></i>
-                            <i class="icon-skype"></i>
                         </a>
                     </div>
                 </div>

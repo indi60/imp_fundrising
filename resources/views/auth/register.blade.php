@@ -4,7 +4,6 @@
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="SemiColonWeb" />
-
 	<!-- Stylesheets
 	============================================= -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
@@ -14,16 +13,12 @@
 	<link rel="stylesheet" href="{{asset('asset/css/font-icons.css')}}" type="text/css" />
 	<link rel="stylesheet" href="{{asset('asset/css/animate.css')}}" type="text/css" />
 	<link rel="stylesheet" href="{{asset('asset/css/magnific-popup.css')}}" type="text/css" />
-
 	<link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
 	<!-- Document Title
 	============================================= -->
 	<title>Register | Canvas</title>
-
 </head>
-
 <body class="stretched">
 
 	<!-- Document Wrapper
@@ -33,33 +28,16 @@
 		<!-- Header
 		============================================= -->
 		<header id="header" class="full-header">
-
 			<div id="header-wrap">
-
 				<div class="container clearfix">
-
 					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
 					<!-- Logo
 					============================================= -->
 					<div id="logo">
-						<a href="#" class="standard-logo" data-dark-logo="{{asset('asset/demos/real-estate/images/logo@2x.png')}}"><img src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
+						<a href="#" class="standard-logo" data-dark-logo="{{asset('asset/demos/real-estate/images/idedark.png')}}"><img src="{{asset('asset/demos/real-estate/images/idedark.png')}}" alt="Canvas Logo"></a>
 					</div><!-- #logo end -->
-
-					<!-- Primary Navigation
-					============================================= -->
-					<nav id="primary-menu">
-
-						
-
-				
-
-					</nav><!-- #primary-menu end -->
-
 				</div>
-
 			</div>
-
 		</header><!-- #header end -->
 		<!-- Content
 		============================================= -->
@@ -132,7 +110,8 @@
                                                 <div class="col-md-6 offset-md-4">
                                                     <button type="submit" class="btn btn-primary">
                                                         {{ __('Register') }}
-                                                    </button>
+													</button>
+													<a href="/" class="btn btn-danger"> Back</a>
                                                 </div>
                                             </div>
                                         </form>
@@ -160,7 +139,7 @@
 				<div class="container clearfix">
 
 					<div class="col_half">
-						Copyrights &copy; 2019 <br>
+						Copyrights &copy; 2020 <br>
 						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
 					</div>
 
@@ -176,34 +155,9 @@
 								<i class="icon-twitter"></i>
 							</a>
 
-							<a href="#" class="social-icon si-small si-borderless si-gplus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-pinterest">
-								<i class="icon-pinterest"></i>
-								<i class="icon-pinterest"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-vimeo">
-								<i class="icon-vimeo"></i>
-								<i class="icon-vimeo"></i>
-							</a>
-
 							<a href="#" class="social-icon si-small si-borderless si-github">
 								<i class="icon-github"></i>
 								<i class="icon-github"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-yahoo">
-								<i class="icon-yahoo"></i>
-								<i class="icon-yahoo"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-linkedin">
-								<i class="icon-linkedin"></i>
-								<i class="icon-linkedin"></i>
 							</a>
 						</div>
 
@@ -221,15 +175,12 @@
 	<!-- Go To Top
 	============================================= -->
 	<div id="gotoTop" class="icon-angle-up"></div>
-
 	<!-- External JavaScripts
 	============================================= -->
 	<script src="{{asset('asset/js/jquery.js')}}"></script>
 	<script src="{{asset('asset/jss/plugins.js')}}"></script>
-
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="{{asset('asset/jss/functions.js')}}"></script>
-
 </body>
 </html>

@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Home')
+@section('title', 'IDE BABE')
 @section('content')
         <!-- Slider
 		============================================= -->
@@ -11,8 +11,8 @@
 				<div class="vertical-middle" style="z-index: 3;">
 					<div class="container center clearfix">
 						<div class="emphasis-title nomargin">
-							<h1>CrowdFunding</h1>
-							<span class="t300 uppercase" style="font-size: 18px; letter-spacing: 10px; color: rgba(255,255,255,0.9);">IMP</span>
+							<h1>IDE BABE</h1>
+							<span class="t300 uppercase" style="font-size: 18px; letter-spacing: 10px; color: rgba(255,255,255,0.9);">INFAK DUIT EMAS & BARANG BEKAS</span>
 						</div>
 					</div>
 				</div>
