@@ -9,17 +9,17 @@
             <form id="form-kecamatan" method="post" class="form-horizontal" data-toggle="validator" enctype="multipart/form-data">
                 {{ csrf_field() }} {{ method_field('POST') }}
                 <div class="modal-header">
+                    <h3 class="modal-title"></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"> &times; </span>
                     </button>
-                    <h3 class="modal-title"></h3>
                 </div>
 
                 <div class="modal-body">
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
-                    <label for="provinsi_id" class="col-md-4 control-label">Nama Provinsi</label>
-                    <div class="col-md-6">
+                    <label for="provinsi_id" class="col-md-12 control-label">Nama Provinsi</label>
+                    <div class="col-md-12">
                     <select id="provinsi_id" name="provinsi_id" required>
                         <option value="" selected disabled >PILIH PROVINSI</option>
                         @foreach ($provinsi as $key=>$prov)
@@ -30,15 +30,15 @@
                     </div>
                     </div>
                     <div class="form-group">
-                    <label for="title" class="col-md-4 control-label">Nama Kabupaten</label>
-                    <div class="col-md-6">
+                    <label for="title" class="col-md-12 control-label">Nama Kabupaten</label>
+                    <div class="col-md-12">
                     <select id="kabupaten_id" name="kabupaten_id" required>
                     </select>
                     </div>
                     </div>
                     <div class="form-group">
-                      <label for="title" class="col-md-4 control-label">Nama Kecamatan</label>
-                      <div class="col-md-6">
+                      <label for="title" class="col-md-12 control-label">Nama Kecamatan</label>
+                      <div class="col-md-12">
                           <input type="nama_kecamatan" id="nama_kecamatan" name="nama_kecamatan" class="form-control" required>
                       </div>
                     </div>

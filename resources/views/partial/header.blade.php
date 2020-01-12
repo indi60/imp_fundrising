@@ -171,13 +171,13 @@
                             <li class="current"><a href="/admin">
                                     <div style="color:cornflowerblue;">Home</div>
                                 </a></li>
-                            <li class=""><a href="#list">
+                            <li class=""><a href="#">
                                     <div style="color:cornflowerblue;">List Project</div>
                                 </a></li>
                             <li><a href="#">
                                     <div style="color:cornflowerblue;">List Donatur</div>
                                 </a></li>
-                            <li><a href="#">
+                            <li><a href="/admin/list_owner_project">
                                     <div style="color:cornflowerblue;">List Owner Project</div>
                                 </a></li>
                             <li><a href="#">

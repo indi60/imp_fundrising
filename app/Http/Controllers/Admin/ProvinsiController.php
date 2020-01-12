@@ -85,7 +85,8 @@ class ProvinsiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $provinsi = MProvinsi::findOrFail($id)->update($request->all());
+        $provinsi = MProvinsi::findOrFail($id)
+        ->update($request->all());
 
         return response()->json([
             'success'=> true

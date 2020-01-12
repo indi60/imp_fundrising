@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             ProvinsiTableSeeder::class,
             KabupatenTableSeeder::class,
             KecamatanTableSeeder::class,
+            KategoriProjectTableSeeder::class,
             ]);
         
     }

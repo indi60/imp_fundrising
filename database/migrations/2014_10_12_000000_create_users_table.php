@@ -20,6 +20,14 @@ class CreateUsersTable extends Migration
             $table->integer('level');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('nik')->nullable();
+            $table->enum('jenis_kelamin',['L','P'])->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->text('alamat')->nullable();
+            $table->integer('kelurahan_id')->nullable();
+            $table->integer('kecamatan_id')->nullable();
+            $table->integer('kabupaten_id')->nullable();
+            $table->integer('provinsi_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -20,9 +20,10 @@ class CreateMProjectTable extends Migration
             $table->double('target');
             $table->double('terkumpul');
             $table->date('tanggal_dibuka');
-            $table->date('tangal_ditutup');
+            $table->date('tanggal_ditutup');
             $table->integer('status');
             $table->integer('kategori_project');
+            $table->integer('owner_id')->nullable();
             $table->timestamps();
         });
     }
