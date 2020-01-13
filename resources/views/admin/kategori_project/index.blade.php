@@ -1,49 +1,42 @@
 @extends('partial.main')
-@section('title', 'Admin | Kabupaten')
+@section('title', 'Admin | Kategori Project')
 @section('content')
 <hr>
 <div class="container">
-    <div class="panel panel-default mt-5">  
+    <div class="text-center mt-5">
+         <h3> Data Kategori </h3>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        <a onclick="addForm()" class="btn btn-primary"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
+        </div>  
         <div class="panel-body">
-            <div class="row">
-                <div class="col s4">
-                    <h4 style="margin-left:10px;"> Data Kabupaten </h4>
-                </div>
-            </div>
-                
-            <a onclick="addForm()"
-            style="background: #3a7bd5;  /* fallback for old browsers */
-                    background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
-                    background: linear-gradient(to right, #3a6073, #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */"
-                    id="float" class="btn btn-primary text-light"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
-            <table style="text-transform: uppercase;" class="table table-striped"  id="kabupaten_table">
-                    <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>NAMA PROVINSI</th>
-                            <th>NAMA KABUPATEN</th>
-                            <th>ACTION</th>
-                        </tr>
-                    </thead>
-            </table>
+            <table style="text-transform: uppercase;" class="table table-striped" id="kategori_table">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>NAMA KATEGORI PROJECT</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+            </table>    
         </div>
     </div>
 </div>
-@include('admin/kabupaten/form')
+@include('admin/kategori_project/form')
 @stop
 
 @section('scripts')
     <script type="text/javascript">
-    var table = $('#kabupaten_table').DataTable({
+    var table = $('#kategori_table').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax" : {
-            "url" : "{{route('json/kabupaten')}}"
+            "url" : "{{route('json/kategoriproject')}}"
         },
         "columns" : [
             { data: 'id', render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1;}},
-            { data: 'nama_provinsi', name: 'nama_provinsi' , "className": "dt-center"},
-            { data: 'nama_kabupaten', name: 'nama_kabupaten' , "className": "dt-center"},
+            { data: 'kategori_project', name: 'kategori_project' , "className": "dt-center",},
             { data: 'action', name: 'action', orderable:false, searchable: false, "width": "25%", "className": "dt-center" } 
         ]
     });
@@ -53,14 +46,15 @@
         $('input[name=_method]').val('POST');
         $('#modal-form').modal('show');
         $('#modal-form form')[0].reset();
-        $('.modal-title').text('Add');
+        $('.modal-title').text('Add Kategori');
+        
     }
     $(function () {
         $('#modal-form form').validator().on('submit', function (e) {
             if (!e.isDefaultPrevented()) {
                 var id = $('#id').val();
-                if (save_method == 'add') url = "{{ url('admin/kabupaten') }}";
-                else url = "{{ url('admin/kabupaten') . '/' }}" + id;
+                if (save_method == 'add') url = "{{ url('admin/kategoriproject') }}";
+                else url = "{{ url('admin/kategoriproject') . '/' }}" + id;
 
                 $.ajax({
                     url: url,
@@ -98,16 +92,15 @@
         $('input[name=_method]').val('PATCH');
         $('#modal-form form')[0].reset();
         $.ajax({
-            url: "{{url ('admin/kabupaten') }}" + '/' + id + "/edit",
+            url: "{{url ('admin/kategoriproject') }}" + '/' + id + "/edit",
             type: "GET",
             dataType: "JSON",
             success: function (data) {
-                    $('#modal-form').modal('show');
-                    $('.modal-title').text('Edit');  
-                    $('#id').val(data.id);
-                    $('#provinsi_id').val(data.provinsi_id);
-                    $('#nama_kabupaten').val(data.nama_kabupaten);
-                
+                $('#modal-form').modal('show');
+                $('.modal-title').text('Edit Kategori Project');
+
+                $('#id').val(data.id);
+                $('#kategori_project').val(data.kategori_project);
             },
             error: function () {
                 alert("Nothing Data");
@@ -128,7 +121,7 @@
             confirmButtonText: 'Ya, hapus!'
         }).then(function () {
             $.ajax({
-                url: "{{ url('admin/kabupaten') }}" + '/' + id,
+                url: "{{ url('admin/kategoriproject') }}" + '/' + id,
                 type: "POST",
                 data: {
                     '_method': 'DELETE',
@@ -154,9 +147,8 @@
             });
         });
     }
-    $(document).ready(function(){
-        $('form select').select2( {width: '100%'} );
-    });
+    
+
     </script>
 @endsection
 

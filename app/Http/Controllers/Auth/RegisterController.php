@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -23,7 +25,12 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
+    public function index()
+    {
+        $provinsi = DB::table('m_provinsi')
+        ->pluck('nama_provinsi', 'id');
+        return view('auth/register', compact('provinsi'));
+    }
     /**
      * Where to redirect users after registration.
      *
@@ -83,12 +90,38 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    public function getKabupaten(Request $request) {
+        $kabupaten = DB::table('m_kabupaten')
+        ->where('provinsi_id', $request->provinsi_id)  
+        ->pluck('nama_kabupaten', 'id');
+        return response()->json($kabupaten);
+    }
+    public function getKecamatan(Request $request){
+        $kecamatan = DB::table('m_kecamatan')
+        ->where('kabupaten_id', $request->kabupaten_id)
+        ->pluck('nama_kecamatan', 'id');
+        return response()->json($kecamatan);
+    }
+    public function getKelurahan(Request $request) {
+        $kelurahan = DB::table('m_kelurahan')
+        ->where('kecamatan_id', $request->kecamatan_id)
+        ->pluck('nama_kelurahan', 'id');
+        return response()->json($kelurahan);
+    }
     protected function create(array $data)
     {
         return User::create([
+            'nik' => $data['nik'],
             'name' => $data['name'],
             'email' => $data['email'],
-            'level' => 1,
+            'jenis_kelamin' => $data['jenis_kelamin'],
+            'tanggal_lahir' => $data['tanggal_lahir'],
+            'alamat' => $data['alamat'],
+            'provinsi_id' => $data['provinsi_id'],
+            'kabupaten_id' => $data['kabupaten_id'],
+            'kecamatan_id' => $data['kecamatan_id'],
+            'kelurahan_id' => $data['kelurahan_id'],
+            'level' => $data['level'],
             'password' => Hash::make($data['password']),
         ]);
     }

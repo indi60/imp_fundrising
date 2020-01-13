@@ -22,7 +22,6 @@ class CreateMProjectTable extends Migration
             $table->date('tanggal_dibuka');
             $table->date('tangal_ditutup');
             $table->integer('status');
-            $table->integer('owner_id');
             $table->integer('kategori_project');
             $table->timestamps();
         });

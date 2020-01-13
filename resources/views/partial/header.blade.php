@@ -36,14 +36,16 @@
     <link rel="stylesheet" href="{{asset('asset/csss/components/ion.rangeslider.css')}}" type="text/css" />
 
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />    
-    
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     {{-- AJAX --}}
     <script src="{{asset('assets/sweetalert2/sweetalert2.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/sweetalert2/sweetalert2.min.css')}}">
     {{-- TUTUP AJAX --}}
-    
+
+    {{-- DatePicker --}}
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
     {{-- DataTable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
@@ -65,13 +67,14 @@
         <div class="side-panel-wrap" style="margin-bottom:200px;">
 
             <div class="widget clearfix">
-                <h4 class="t400 text-center">Login</h4><hr><br>
+                <h4 class="t400 text-center">Login</h4>
+                <hr><br>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
                     <div class="form-group row">
-                        <label for="email"
-                            class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        <label for="email" 
+                            class="col-md-4 col-form-label text-md-right"><small> E-Mail Address</small></label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -86,7 +89,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-right"><small>Password</small></label>
 
                         <div class="col-md-6">
                             <input id="password" type="password"
@@ -116,11 +119,11 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary btn-sm">
                                 {{ __('Login') }}
-                            </button>
+                            </button><br><br>
                             @if (Route::has('register'))
-                            <a class="nav-link btn btn-danger" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link btn btn-danger btn-sm" href="{{ route('register') }}">{{ __('Register') }}</a>
                             @endif
 
                             @if (Route::has('password.request'))
@@ -161,11 +164,11 @@
                     <!-- Primary Navigation
 					============================================= -->
                     <nav id="primary-menu" class="with-arrows">
-                        
+
                         @if (Auth::check() && Auth::User()->level == 2)
                         <ul>
                             <li class="current"><a href="/admin">
-                                    <div style="color:cornflowerblue;" >Home</div>
+                                    <div style="color:cornflowerblue;">Home</div>
                                 </a></li>
                             <li class=""><a href="#list">
                                     <div style="color:cornflowerblue;">List Project</div>
@@ -180,7 +183,7 @@
                                     <div style="color:cornflowerblue;">Referensi</div>
                                 </a>
                                 <ul>
-                                    <li><a href="#">
+                                    <li><a href="/admin/kategoriproject">
                                             <div>Kategori Project</div>
                                         </a></li>
                                     <li><a href="/admin/provinsi">
@@ -200,26 +203,57 @@
 
                         </ul>
                         @endif
+
+                        @if (Auth::check() && Auth::User()->level == 3)
+                        <ul>
+                            <li class="current"><a href="/powner">
+                                    <div style="color:cornflowerblue;">Home</div>
+                                </a></li>
+                            <li class=""><a href="/powner/create_project">
+                                    <div style="color:cornflowerblue;">Create Project</div>
+                                </a></li>
+                            <li><a href="#">
+                                    <div style="color:cornflowerblue;">Laporan Project</div>
+                                </a></li>
+
+                        </ul>
+                        @endif
+
+                        @if (Auth::check() && Auth::User()->level == 1)
+                        <ul>
+                            <li class="current"><a href="/powner">
+                                    <div style="color:cornflowerblue;">Home</div>
+                                </a></li>
+                            <li class=""><a href="#list">
+                                    <div style="color:cornflowerblue;">Lihat Project</div>
+                                </a></li>
+                            <li><a href="#">
+                                    <div style="color:cornflowerblue;">Donasi Project</div>
+                                </a></li>
+
+                        </ul>
+                        @endif
                         @guest
                         <ul>
-                            <li><a href="#" class="side-panel-trigger" style="color:cornflowerblue;">Login | Register</a></li>
+                            <li><a href="#" class="side-panel-trigger" style="color:cornflowerblue;">Login |
+                                    Register</a></li>
                         </ul>
                         @else
                         <ul>
                             <li><a href="#">
-                                <div style="color:cornflowerblue;">{{ Auth::user()->name }}</div>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="#">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/logout') }}"> logout </a>
-                                </li>
-                               
-                            </ul>
-                        </li>
-                            
+                                    <div style="color:cornflowerblue;">{{ Auth::user()->name }}</div>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/logout') }}"> logout </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
                             @endguest
                         </ul>
                     </nav><!-- #primary-menu end -->

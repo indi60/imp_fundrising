@@ -16,7 +16,12 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/logout', 'Admin\AdminController@logout');
 Route::get('/donatur', 'Donatur\DonaturController@index')->name('donatur')->middleware('isDonatur');
-Route::get('/powner', 'Powner\PownerController@index')->name('powner')->middleware('isPowner');
+
+
+Route::get('/register', 'Auth\RegisterController@index')->name('register');
+Route::get('/get_kabupaten', 'Auth\RegisterController@getKabupaten')->name('get_kabupaten');
+Route::get('/get_kecamatan', 'Auth\RegisterController@getKecamatan')->name('get_kecamatan');
+Route::get('/get_kelurahan', 'Auth\RegisterController@getKelurahan')->name('get_kelurahan');
 
 $main_admin_routes = function(){
     Route::get('/', 'Admin\AdminController@index')->name('admin');
@@ -39,5 +44,20 @@ $main_admin_routes = function(){
     Route::get('/json/kelurahan', 'Admin\KelurahanController@jsonKelurahan')->name('json/kelurahan');
     Route::get('/get_kabupaten/kelurahan', 'Admin\KelurahanController@getKabupaten')->name('get_kabupaten/kelurahan');
     Route::get('/get_kecamatan/kelurahan', 'Admin\KelurahanController@getKecamatan')->name('get_kecamatan/kelurahan');
+
+    //KategoriProject
+    Route::resource('/kategoriproject', 'Admin\KategoriProjectController');
+    Route::get('/json/kategoriproject', 'Admin\KategoriProjectController@jsonKategoriProject')->name('json/kategoriproject');
 };
 Route::group(['middleware' => 'isAdmin', 'prefix'=>'admin'], $main_admin_routes);
+
+$main_powner_routes = function(){
+    Route::get('/', 'Powner\PownerController@index')->name('powner');
+
+    //CreateProject
+    Route::resource('/create_project', 'Powner\CreateProjectController');
+
+    Route::get('/json/cproject', 'Powner\CreateProjectController@jsonCProject')->name('json/cproject');
+    Route::post('/upload', 'Powner\CreateProjectController@upload')->name('ckeditor/upload');
+};
+Route::group(['middleware' => 'isPowner', 'prefix'=>'powner'], $main_powner_routes);

@@ -14,7 +14,7 @@
         style="background: #3a7bd5;  /* fallback for old browsers */
                 background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
                 background: linear-gradient(to right, #3a6073, #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */"
-                id="float" class="btn btn-primary"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
+                id="float" class="btn btn-primary text-light"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
    
         <table style="text-transform: uppercase;" class="table table-striped" id="kelurahan_table">
             <thead>

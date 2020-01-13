@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Provinsi;
-use App\Kabupaten;
-use App\Kecamatan;
-use App\Kelurahan;
+use App\MKelurahan;
 use DataTables;
 use DB;
 class KelurahanController extends Controller
@@ -57,13 +54,7 @@ class KelurahanController extends Controller
      */
     public function create()
     {
-        // $data_provinsi = Provinsi::All();
-        // $provinsi = [''=>'Pilih Provinsi'];
-
-        // foreach ($data_provinsi as $key => $value) {
-        //     $provinsi[$value->id] = $value->nama_provinsi;
-        // }
-        // return view('admin/kecamatan/form', compact('provinsi'));
+        //
     }
 
     /**
@@ -74,7 +65,7 @@ class KelurahanController extends Controller
      */
     public function store(Request $request)
     {
-        Kelurahan::create($request->all());
+        MKelurahan::create($request->all());
         return response()->json(['success'=> true]);
     }
 
@@ -97,10 +88,8 @@ class KelurahanController extends Controller
      */
     public function edit($id)
     {
-        $data = Kelurahan::find($id);
+        $data = MKelurahan::find($id);
         return $data;
-        // $provinsi = Provinsi::find($id);
-        // return $provinsi;
     }
 
     /**
@@ -112,11 +101,10 @@ class KelurahanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Kelurahan::find($id);
+        $data = MKelurahan::find($id);
         
         $data->update($request->all());
-        // $provinsi = Provinsi::findOrFail($id)->update($request->all());
-
+    
         return response()->json([
             'success'=> true
         ]);
@@ -130,7 +118,7 @@ class KelurahanController extends Controller
      */
     public function destroy($id)
     {
-        Kelurahan::destroy($id);
+        MKelurahan::destroy($id);
 
         return response()->json([
             'success'=>true
