@@ -222,10 +222,10 @@
 
                         @if (Auth::check() && Auth::User()->level == 1)
                         <ul>
-                            <li class="current"><a href="/powner">
+                            <li class="current"><a href="/donatur">
                                     <div style="color:cornflowerblue;">Home</div>
                                 </a></li>
-                            <li class=""><a href="#list">
+                            <li class=""><a href="/donatur/lihat_project">
                                     <div style="color:cornflowerblue;">Lihat Project</div>
                                 </a></li>
                             <li><a href="#">

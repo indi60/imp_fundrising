@@ -15,7 +15,6 @@ Route::get('/', function () {
 })->name('home');
 Auth::routes();
 Route::get('/logout', 'Admin\AdminController@logout');
-Route::get('/donatur', 'Donatur\DonaturController@index')->name('donatur')->middleware('isDonatur');
 
 // Register
 Route::get('/register', 'Auth\RegisterController@index')->name('register');
@@ -63,10 +62,17 @@ $main_powner_routes = function(){
 
     //CreateProject
     Route::resource('/create_project', 'Powner\CreateProjectController');
-
     Route::get('/json/cproject', 'Powner\CreateProjectController@jsonCProject')->name('json/cproject');
 
     //Upload Image CKEditor
     Route::post('/upload', 'Powner\CreateProjectController@upload')->name('ckeditor/upload');
 };
 Route::group(['middleware' => 'isPowner', 'prefix'=>'powner'], $main_powner_routes);
+
+$main_donatur_routes = function(){
+    Route::get('/', 'Donatur\DonaturController@index')->name('donatur');
+    
+    //Lihat Project
+    Route::resource('/lihat_project', 'Donatur\LihatProjectController');
+};
+Route::group(['middleware' => 'isDonatur', 'prefix'=>'donatur'], $main_donatur_routes);
