@@ -3,14 +3,19 @@
 @section('content')
 <hr>
 <div class="container">
-    <div class="text-center mt-5">
-         <h3> Data Provinsi </h3>
-    </div>
     <div class="panel panel-default">
-        <div class="panel-heading">
-        <a onclick="addForm()" class="btn btn-primary"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
-        </div>  
         <div class="panel-body">
+            <div class="row">
+                <div class="col s4">
+                    <h4 style="margin-left:10px;">Data Provinsi</h4>
+                </div>
+            </div>
+                <a onclick="addForm()"
+                   style="background: #3a7bd5;  /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to right, #3a6073, #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ margin-right:5px;"
+                    id="float" class="btn btn-primary text-light"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
+                   
             <table style="text-transform: uppercase;" class="table table-striped" id="provinsi_table">
                 <thead>
                     <tr>
@@ -20,7 +25,6 @@
                     </tr>
                 </thead>
             </table>    
-        </div>
     </div>
 </div>
 @include('admin/provinsi/form')

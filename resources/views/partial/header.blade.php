@@ -49,10 +49,11 @@
     {{-- DataTable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
-
     <!-- Document Title
 	============================================= -->
-    <title>@yield('title', 'Home')</title>
+    <title>@yield('title', '
+    ')</title>
+    <link rel="shortcut icon" href="{{asset('asset/demos/real-estate/images/idelight.png')}}">
 
 </head>
 
@@ -72,8 +73,8 @@
                     @csrf
 
                     <div class="form-group row">
-                        <label for="email"
-                            class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        <label for="email" 
+                            class="col-md-4 col-form-label text-md-right"><small> E-Mail Address</small></label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -88,7 +89,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-right"><small>Password</small></label>
 
                         <div class="col-md-6">
                             <input id="password" type="password"
@@ -118,11 +119,11 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary btn-sm">
                                 {{ __('Login') }}
-                            </button>
+                            </button><br><br>
                             @if (Route::has('register'))
-                            <a class="nav-link btn btn-danger" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link btn btn-danger btn-sm" href="{{ route('register') }}">{{ __('Register') }}</a>
                             @endif
 
                             @if (Route::has('password.request'))
@@ -157,11 +158,9 @@
                     <!-- Logo
 					============================================= -->
                     <div id="logo">
-                        <a href="#" class="standard-logo"
-                            data-dark-logo="{{asset('asset/demos/real-estate/images/logo@2x.png')}}"><img
-                                src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
-                    </div>
-
+						<a href="#" class="standard-logo" data-dark-logo="{{asset('asset/demos/real-estate/images/idedark.png')}}"> <img src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
+					</div>
+           
                     <!-- Primary Navigation
 					============================================= -->
                     <nav id="primary-menu" class="with-arrows">
