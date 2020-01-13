@@ -17,7 +17,7 @@ Auth::routes();
 Route::get('/logout', 'Admin\AdminController@logout');
 Route::get('/donatur', 'Donatur\DonaturController@index')->name('donatur')->middleware('isDonatur');
 
-
+// Register
 Route::get('/register', 'Auth\RegisterController@index')->name('register');
 Route::get('/get_kabupaten', 'Auth\RegisterController@getKabupaten')->name('get_kabupaten');
 Route::get('/get_kecamatan', 'Auth\RegisterController@getKecamatan')->name('get_kecamatan');
@@ -48,6 +48,13 @@ $main_admin_routes = function(){
     //KategoriProject
     Route::resource('/kategoriproject', 'Admin\KategoriProjectController');
     Route::get('/json/kategoriproject', 'Admin\KategoriProjectController@jsonKategoriProject')->name('json/kategoriproject');
+    
+    //LIST OWNER PROJECT
+    Route::resource('/list_owner_project', 'Admin\ListOwnerProjectController');
+    Route::get('/json/list_owner_project', 'Admin\ListOwnerProjectController@jsonListProject')->name('json/list_owner_project');
+
+    //Upload Image CKEditor
+    Route::post('/upload', 'Powner\CreateProjectController@upload')->name('ckeditor/uploadd');
 };
 Route::group(['middleware' => 'isAdmin', 'prefix'=>'admin'], $main_admin_routes);
 
@@ -58,6 +65,8 @@ $main_powner_routes = function(){
     Route::resource('/create_project', 'Powner\CreateProjectController');
 
     Route::get('/json/cproject', 'Powner\CreateProjectController@jsonCProject')->name('json/cproject');
+
+    //Upload Image CKEditor
     Route::post('/upload', 'Powner\CreateProjectController@upload')->name('ckeditor/upload');
 };
 Route::group(['middleware' => 'isPowner', 'prefix'=>'powner'], $main_powner_routes);

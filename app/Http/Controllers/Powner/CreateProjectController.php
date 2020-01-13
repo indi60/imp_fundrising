@@ -34,8 +34,9 @@ class CreateProjectController extends Controller
     }
     public function index()
     {
-        $project = MCProject::all();
-        return view('powner/create_project/index', compact('project'));
+        // $project = MCProject::all();
+        // return view('powner/create_project/index', compact('project'));
+        return view('powner/create_project/index');
     }
 
     //Upload Image CKEditor
@@ -86,7 +87,7 @@ class CreateProjectController extends Controller
         $mcProject->target = str_replace('.','',$request->target);
         $mcProject->terkumpul = 0;
         $mcProject->tanggal_dibuka = now();
-        $mcProject->tangal_ditutup = $request->tangal_ditutup;
+        $mcProject->tanggal_ditutup = $request->tanggal_ditutup;
         $mcProject->status = 0;
         $mcProject->owner_id = $request->owner_id;
         $mcProject->save();
@@ -113,9 +114,11 @@ class CreateProjectController extends Controller
      */
     public function edit($id)
     {        
-        $data = MCProject::find($id);
-        $kategori = MKategoriProject::pluck('kategori_project', 'id');
-        return view('powner/create_project/form', compact('data', 'kategori'));
+        
+        $data = MCProject::where('owner_id', Auth()->User()->id)->findOrFail($id);
+            $kategori = MKategoriProject::pluck('kategori_project', 'id');
+            return view('powner/create_project/form', compact('data', 'kategori'));
+    
     }
 
     /**
@@ -134,7 +137,7 @@ class CreateProjectController extends Controller
         $mcProject->target = str_replace('.','',$request->target);
         $mcProject->terkumpul = 0;
         $mcProject->tanggal_dibuka = now();
-        $mcProject->tangal_ditutup = $request->tangal_ditutup;
+        $mcProject->tanggal_ditutup = $request->tanggal_ditutup;
         $mcProject->status = 0;
         $mcProject->update();
         return redirect('powner/create_project');
