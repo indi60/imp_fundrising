@@ -25,7 +25,8 @@ class isDonatur
             return redirect()->route('powner');
         }
         else {
-            return redirect()->route('home');
+            return redirect()->route('home')->with('alert', 'Login Atau Registrasi Sebagai Donatur Terlebih Dahulu!');;
         }
+        
     }
 }

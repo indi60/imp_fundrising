@@ -173,7 +173,7 @@
                             <li class=""><a href="#">
                                     <div style="color:cornflowerblue;">List Project</div>
                                 </a></li>
-                            <li><a href="#">
+                            <li><a href="/admin/list_donatur/">
                                     <div style="color:cornflowerblue;">List Donatur</div>
                                 </a></li>
                             <li><a href="/admin/list_owner_project">
@@ -185,6 +185,9 @@
                                 <ul>
                                     <li><a href="/admin/kategoriproject">
                                             <div>Kategori Project</div>
+                                        </a></li>
+                                    <li><a href="/admin/refbank">
+                                            <div>Bank</div>
                                         </a></li>
                                     <li><a href="/admin/provinsi">
                                             <div>Provinsi</div>
@@ -227,7 +230,7 @@
                             <li class=""><a href="/donatur/lihat_project">
                                     <div style="color:cornflowerblue;">Lihat Project</div>
                                 </a></li>
-                            <li><a href="#">
+                            <li><a href="/donatur/donasi_project">
                                     <div style="color:cornflowerblue;">Donasi Project</div>
                                 </a></li>
 

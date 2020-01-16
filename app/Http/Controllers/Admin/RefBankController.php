@@ -1,30 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\MCproject;
-use DB;
-class HomeController extends Controller
+use App\RefBank;
+use DataTables;
+class RefBankController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // public function __construct() {
-    //     $this->middleware('auth');
-    // }
+    public function jsonRefBank() {
+        $refbank = RefBank::All();
 
+        return Datatables::of($refbank)
+        ->addColumn('action', function($refbank){
+            return '<a onclick="editForm('. $refbank->id .')" class="btn btn-warning btn-sm"><i class="far fa-edit"> Edit</i></a> ' .
+            '<a onclick="deleteData('. $refbank->id .')" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"> Delete</i></a>';
+            
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+    }
     public function index()
     {
-        $mproject = DB::table('m_project')->where('status', '1')
-        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
-        ->select('m_project.*', 'm_kategori_project.kategori_project')
-        ->get();
-        // dd($mproject);
-        
-        return view('home', compact('mproject'));
+        return view ('admin/ref_bank/index');
     }
 
     /**
@@ -45,7 +47,8 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        RefBank::create($request->all());
+        return response()->json(['success'=> true]);
     }
 
     /**
@@ -56,11 +59,7 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        $mproject = MCProject::where('status', '1')
-        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
-        ->select('m_project.*', 'm_kategori_project.kategori_project')
-        ->findOrFail($id);
-        return view('show', compact('mproject'));
+        //
     }
 
     /**
@@ -70,8 +69,9 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
-        //
+    {
+        $refbank = RefBank::find($id);
+        return $refbank;
     }
 
     /**
@@ -83,7 +83,12 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $refbank = RefBank::findOrFail($id)
+        ->update($request->all());
+
+        return response()->json([
+            'success'=> true
+        ]);
     }
 
     /**
@@ -94,6 +99,10 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        RefBank::destroy($id);
+
+        return response()->json([
+            'success'=>true
+        ]);
     }
 }
