@@ -1,30 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Donatur;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\MCproject;
+use App\RefDonasiProject;
 use DB;
-class HomeController extends Controller
+class LihatProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // public function __construct() {
-    //     $this->middleware('auth');
-    // }
-
     public function index()
     {
-        $mproject = DB::table('m_project')->where('status', '1')
-        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
-        ->select('m_project.*', 'm_kategori_project.kategori_project')
+        $rdonasiproject = DB::table('ref_donasi_project')
+        ->join('m_project', 'ref_donasi_project.project_id', '=', 'm_project.id')
+        ->join('users', 'm_project.owner_id', '=', 'users.id')
+        ->select('ref_donasi_project.donasi','ref_donasi_project.status', 'm_project.*', 'users.name')
         ->get();
-        // dd($mproject);
-        
-        return view('home', compact('mproject'));
+        dd($rdonasiproject);
+        // return view('donatur/lihat_project/index', compact('rdonasiproject'));
     }
 
     /**
@@ -56,11 +53,7 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        $mproject = MCProject::where('status', '1')
-        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
-        ->select('m_project.*', 'm_kategori_project.kategori_project')
-        ->findOrFail($id);
-        return view('show', compact('mproject'));
+        //
     }
 
     /**
@@ -70,7 +63,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
+    {
         //
     }
 

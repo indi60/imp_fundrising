@@ -21,9 +21,21 @@
                <div class="modal-body">
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
-                        <label for="nama_provinsi" class="col-md-12 control-label">Nama Provinsi</label>
+                        <label for="nama_bank" class="col-md-12 control-label">Nama Bank</label>
                         <div class="col-md-12">
-                            <input type="text" id="nama_provinsi" name="nama_provinsi" class="form-control"
+                            <input type="text" id="nama_bank" name="nama_bank" class="form-control"
+                                required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                        <label for="nama_rekening" class="col-md-12 control-label">Nama Rekening</label>
+                        <div class="col-md-12">
+                            <input type="text" id="nama_rekening" name="nama_rekening" class="form-control"
+                                required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                        <label for="no_rekening" class="col-md-12 control-label">No Rekening</label>
+                        <div class="col-md-12">
+                            <input type="text" id="no_rekening" name="no_rekening" class="form-control"
                                 required>
                             <span class="help-block with-errors"></span>
                         </div>

@@ -10,12 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+//Home
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{id}/show', 'HomeController@show');
+
 Auth::routes();
 Route::get('/logout', 'Admin\AdminController@logout');
-Route::get('/donatur', 'Donatur\DonaturController@index')->name('donatur')->middleware('isDonatur');
 
 // Register
 Route::get('/register', 'Auth\RegisterController@index')->name('register');
@@ -49,12 +49,20 @@ $main_admin_routes = function(){
     Route::resource('/kategoriproject', 'Admin\KategoriProjectController');
     Route::get('/json/kategoriproject', 'Admin\KategoriProjectController@jsonKategoriProject')->name('json/kategoriproject');
     
-    //LIST OWNER PROJECT
+    //listdonatur OWNER PROJECT
     Route::resource('/list_owner_project', 'Admin\ListOwnerProjectController');
     Route::get('/json/list_owner_project', 'Admin\ListOwnerProjectController@jsonListProject')->name('json/list_owner_project');
 
     //Upload Image CKEditor
-    Route::post('/upload', 'Powner\CreateProjectController@upload')->name('ckeditor/uploadd');
+    Route::post('/upload', 'Admin\ListOwnerProjectController@upload')->name('ckeditor/uploadd');
+
+    //RefBank
+    Route::resource('/refbank', 'Admin\RefBankController');
+    Route::get('/json/refbank', 'Admin\RefBankController@jsonRefBank')->name('json/refbank');
+
+    //List Donatur
+    Route::resource('/list_donatur', 'Admin\ListDonaturController');
+    Route::get('/json/listdonatur', 'Admin\ListDonaturController@jsonListDonatur')->name('json/listdonatur');
 };
 Route::group(['middleware' => 'isAdmin', 'prefix'=>'admin'], $main_admin_routes);
 
@@ -63,10 +71,22 @@ $main_powner_routes = function(){
 
     //CreateProject
     Route::resource('/create_project', 'Powner\CreateProjectController');
-
     Route::get('/json/cproject', 'Powner\CreateProjectController@jsonCProject')->name('json/cproject');
 
     //Upload Image CKEditor
     Route::post('/upload', 'Powner\CreateProjectController@upload')->name('ckeditor/upload');
 };
 Route::group(['middleware' => 'isPowner', 'prefix'=>'powner'], $main_powner_routes);
+
+$main_donatur_routes = function(){
+    Route::get('/', 'Donatur\DonaturController@index')->name('donatur');
+    
+    //Lihat Project
+    Route::resource('/lihat_project', 'Donatur\LihatProjectController');
+
+    //Donasi Project
+    Route::resource('/donasi_project', 'Donatur\DonasiProjectController');
+    Route::get('/json/dproject', 'Donatur\DonasiProjectController@jsonDProject')->name('json/dproject');
+
+};
+Route::group(['middleware' => 'isDonatur', 'prefix'=>'donatur'], $main_donatur_routes);

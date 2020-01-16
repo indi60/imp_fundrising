@@ -34,8 +34,6 @@ class CreateProjectController extends Controller
     }
     public function index()
     {
-        // $project = MCProject::all();
-        // return view('powner/create_project/index', compact('project'));
         return view('powner/create_project/index');
     }
 
@@ -79,7 +77,6 @@ class CreateProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // MCProject::create($request->all());
         $mcProject = new \App\MCProject;
         $mcProject->kategori_project = $request->kategori_project;
         $mcProject->nama_project = $request->nama_project;

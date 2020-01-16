@@ -176,7 +176,7 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
                             <li class=""><a href="#">
                                     <div style="color:cornflowerblue;">List Project</div>
                                 </a></li>
-                            <li><a href="#">
+                            <li><a href="/admin/list_donatur/">
                                     <div style="color:cornflowerblue;">List Donatur</div>
                                 </a></li>
                             <li><a href="/admin/list_owner_project">
@@ -188,6 +188,9 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
                                 <ul>
                                     <li><a href="/admin/kategoriproject">
                                             <div>Kategori Project</div>
+                                        </a></li>
+                                    <li><a href="/admin/refbank">
+                                            <div>Bank</div>
                                         </a></li>
                                     <li><a href="/admin/provinsi">
                                             <div>Provinsi</div>
@@ -224,13 +227,13 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 
                         @if (Auth::check() && Auth::User()->level == 1)
                         <ul>
-                            <li class="current"><a href="/powner">
+                            <li class="current"><a href="/donatur">
                                     <div style="color:cornflowerblue;">Home</div>
                                 </a></li>
-                            <li class=""><a href="#list">
+                            <li class=""><a href="/donatur/lihat_project">
                                     <div style="color:cornflowerblue;">Lihat Project</div>
                                 </a></li>
-                            <li><a href="#">
+                            <li><a href="/donatur/donasi_project">
                                     <div style="color:cornflowerblue;">Donasi Project</div>
                                 </a></li>
 
