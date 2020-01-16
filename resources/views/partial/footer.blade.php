@@ -1,32 +1,20 @@
 <!-- Footer
 		============================================= -->
 <footer id="footer" class="dark">
-
     <div class="container">
-
         <!-- Footer Widgets
 				============================================= -->
         <div class="footer-widgets-wrap clearfix">
             <div class="col_two_fifth">
-
                 <div class="widget clearfix">
-
                     <img src="{{asset('asset/demos/real-estate/images/idelight.png')}}"
                         style="position: relative; opacity: 0.85; left: -10px; max-height: 80px; margin-bottom: 20px;"
                         alt="Footer Logo">
-
-                    <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong>
-                        Design Standards with a Retina &amp; Responsive Approach. Browse the amazing Features this
-                        template offers.</p>
-
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo fugiat, neque exercitationem, tempora quisquam eaque reprehenderit eveniet ipsam eum deleniti fugit obcaecati qui, saepe harum! Consequuntur quisquam sit cupiditate doloribus.</p>
                     <div class="line" style="margin: 30px 0;"></div>
-
                     <p class="ls1 t300" style="opacity: 0.6; font-size: 13px;">Copyrights &copy; 2020 IDE BABE</p>
-
                 </div>
-
             </div>
-
             <div class="col_three_fifth col_last">
                 <div class="col_half col_last">
 

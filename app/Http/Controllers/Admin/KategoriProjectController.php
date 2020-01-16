@@ -18,8 +18,8 @@ class KategoriProjectController extends Controller
 
         return Datatables::of($kategori)
         ->addColumn('action', function($kategori){
-            return '<a onclick="editForm('. $kategori->id .')" class="btn btn-warning btn-sm"><i class="far fa-edit"> Edit</i></a> ' .
-            '<a onclick="deleteData('. $kategori->id .')" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"> Delete</i></a>';
+            return '<a onclick="editForm('. $kategori->id .')" class="btn btn-warning text-light btn-sm"><i class="far fa-edit"> Edit</i></a> ' .
+            '<a onclick="deleteData('. $kategori->id .')" class="btn btn-danger text-light btn-sm"><i class="far fa-trash-alt"> Delete</i></a>';
             
         })
         ->rawColumns(['action'])

@@ -22,14 +22,14 @@
 										
 									<div class="form-group">
 										<label>Status</label>
-										<select name="status" id="status" class="form-control" required>
+										<select name="status" id="status" class="form-control custom-select" required>
 											<option value="0" @if (!empty($data) && $data->status==0) selected @endif>TOLAK</option>
 											<option value="1" @if (!empty($data) && $data->status==1) selected @endif>SETUJUI</option>
 										</select>
 									</div>
 									<div class="form-group">
 										<label>Kategori Project</label>
-										<select name="kategori_project" id="kategori_project" class="form-control" required>
+										<select name="kategori_project" id="kategori_project" class="form-control custom-select" required>
                                             <option value="" selected disabled >PILIH KATEGORI</option>
                                             @foreach ($kategori as $key=>$kat)
                                             <option value="{{$key}}" @if (!empty($data) && $data->kategori_project==$key) selected @endif>{{$kat}}

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             KabupatenTableSeeder::class,
             KecamatanTableSeeder::class,
             KategoriProjectTableSeeder::class,
+            BankTableSeeder::class,
             ]);
         
     }
