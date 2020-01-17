@@ -24,7 +24,7 @@ class ListOwnerProjectController extends Controller
         return Datatables::of($mcproject)
         ->addColumn('action', function($mcproject){
             return  
-            '<a href="'.('/admin/list_owner_project/'.$mcproject->id.'/edit').'" class="btn btn-info btn-sm"><i class="fas fa-eye"> Check</i></a>';
+            '<a href="'.('/admin/list_owner_project/'.$mcproject->id.'/edit').'" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
             
         })
         ->rawColumns(['action'])

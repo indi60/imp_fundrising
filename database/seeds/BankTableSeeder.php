@@ -1,5 +1,5 @@
 <?php
-use\RefBank;
+use App\RefBank;
 use Illuminate\Database\Seeder;
 
 class BankTableSeeder extends Seeder
