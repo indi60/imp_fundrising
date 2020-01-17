@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Admin | List Owner Project')
+@section('title', 'Admin | List Fundraiser')
 @section('content')
 <hr>
 <div class="container">

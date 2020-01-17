@@ -7,7 +7,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col s4">
-                    <h4 style="margin-left:10px;">Data Donasi Project</h4>
+                    <h4 style="margin-left:10px;">Data Pengajuan</h4>
                 </div>
             </div>
                    

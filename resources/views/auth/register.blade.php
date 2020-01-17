@@ -42,7 +42,9 @@
 		</header><!-- #header end -->
 		<!-- Content
 		============================================= -->
-        <section id="content">
+        <section id="content" style="background: #2193b0;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
             <div class="content-wrap">
 
                 <div class="container clearfix">
@@ -51,6 +53,9 @@
                         style="max-width: 500px;">
 
                         <div class="tab-container">
+                            <h3 class="text-center">
+								<strong> Buat Akun IDE BABE </strong>
+							</h3>
 
                             <div class="tab-content clearfix" id="tab-login">
                                 <div class="card nobottommargin">
@@ -58,23 +63,24 @@
                                         {{-- <h3>Register</h3> --}}
                                         <form method="POST" action="{{ route('register') }}">
                                             @csrf
-
-                                            <div class="form-group row">
+                                            <div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <h3 for="nik"
-                                                    class="col-md-4 col-form-label text-md-right">Register</h3>
+                                                    class="col-form-label text-md-left">Sebagai</h3>
 
-                                                <div class="col-md-6">
-                                                    <select name="level" class="form-control" id="level" required>
+                                                <div class="">
+                                                    <select name="level" class="form-control custom-select" id="level" required>
+														<option value="" disabled selected>Pilih</option>
 														<option value="1">DONATUR</option>
-														<option value="3">PROJECT OWNER</option>
+														<option value="3">PENGGALANG DANA</option>
 													</select>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            <div class="form-group col-md-6">
                                                 <label for="nik"
-                                                    class="col-md-4 col-form-label text-md-right">Nik</label>
+                                                    class="col-form-label text-md-left">Nik</label>
 
-                                                <div class="col-md-6">
+                                                <div class="">
                                                     <input id="nik" type="text"
                                                         class="form-control @error('nik') is-invalid @enderror"
                                                         name="nik" value="{{ old('nik') }}" required autocomplete="nik"
@@ -87,11 +93,13 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <label for="name"
-                                                    class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                                    class="col-form-label text-md-left">{{ __('Name') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="">
                                                     <input id="name" type="text"
                                                         class="form-control @error('name') is-invalid @enderror"
                                                         name="name" value="{{ old('name') }}" required
@@ -105,11 +113,11 @@
                                                 </div>
 											</div>
 											
-											<div class="form-group row">
+											<div class="form-group col-md-6">
                                                 <label for="email"
-                                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                                    class="col-form-label text-md-left">{{ __('E-Mail Address') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="">
                                                     <input id="email" type="email"
                                                         class="form-control @error('email') is-invalid @enderror"
                                                         name="email" value="{{ old('email') }}" required
@@ -121,29 +129,39 @@
                                                     </span>
                                                     @enderror
                                                 </div>
-											</div>
-											
-                                            <div class="form-group row">
+                                            </div>
+                                        </div>
+											<div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <label for="jenis_kelamin"
-                                                    class="col-md-4 col-form-label text-md-right">Jenis Kelamin</label>
+													class="col-form-label text-md-left">Jenis Kelamin</label>
+													
+													
+														<div class="custom-control custom-radio custom-control-inline">
+															<input type="radio" class="custom-control-input" id="customRadio1" name="jenis_kelamin" checked value="L">
+															<label class="custom-control-label" for="customRadio1">Laki-Laki</label>
+														</div>
+															<br>
 
-                                                	<div class="col-md-6">
-													<label><input type="radio" name="jenis_kelamin" value="L" checked>Laki-Laki</label> <br>
-                                                    <label><input type="radio" name="jenis_kelamin" value="P">Perempuan</label> <br> 
+															<div class="custom-control custom-radio custom-control-inline">
+															<input type="radio" class="custom-control-input" id="customRadio2" name="jenis_kelamin" value="P">
+															<label class="custom-control-label" for="customRadio2">Perempuan</label>
+															</div>
+														 <br> 
 												
                                                     @error('jenis_kelamin')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                    @enderror
-                                                </div>
+													@enderror
+												
 											</div>
 											
-                                            <div class="form-group row">
+                                            <div class="form-group col-md-6">
                                                 <label for="tanggal_lahir"
-                                                    class="col-md-4 col-form-label text-md-right">Tanggal Lahir</label>
+                                                    class="col-form-label text-md-left">Tanggal Lahir</label>
 
-                                                <div class="col-md-6">
+                                                <div class="">
                                                     <input id="tanggal_lahir" type="date"
                                                         class="form-control @error('tanggal_lahir') is-invalid @enderror"
                                                         name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required
@@ -156,13 +174,13 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                        </div>
 
 											<div class="form-group row">
                                                 <label for="alamat"
-                                                    class="col-md-4 col-form-label text-md-right">Alamat</label>
-
+                                                    class="col-form-label text-md-right" style="margin-left:170px;">Alamat</label>
                                                 <div class="col-md-6">
-                                                    <textarea id="alamat" type="text"
+                                                    <textarea id="alamat" type="text" style="margin-left:95px;"
                                                         class="form-control @error('alamat') is-invalid @enderror"
                                                         name="alamat" value="{{ old('alamat') }}" required
                                                         autocomplete="alamat" autofocus></textarea>
@@ -174,12 +192,13 @@
                                                     @enderror
                                                 </div>
 											</div>
-											
-											<div class="form-group row">
+                                            
+                                            <div class="form-row">
+											<div class="form-group col-md-6">
                                                 <label for="provinsi_id"
-                                                    class="col-md-4 col-form-label text-md-right">Provinsi</label>
-												<div class="col-md-6">
-													<select id="provinsi_id" name="provinsi_id" class="col-md-12 form-control" required>
+                                                    class="col-form-label text-md-right">Provinsi</label>
+												<div class="">
+													<select id="provinsi_id" name="provinsi_id" class="col-md-12 form-control custom-select" required>
 														<option value="" selected disabled>PILIH PROVINSI</option>
 														@foreach ($provinsi as $key=>$prov)
 														<option value="{{$key}}" @if (!empty($data) && $data->provinsi_id==$key) selected @endif>{{$prov}}
@@ -188,34 +207,37 @@
 													</select>
 												</div>
 											</div>
-											<div class="form-group row">
+											<div class="form-group col-md-6">
                                                 <label for="kabupaten_id"
-												class="col-md-4 col-form-label text-md-right">Kabupaten</label>
-												<div class="col-md-6">
-													<select id="kabupaten_id" name="kabupaten_id" class="col-md-12 form-control" required></select>	
+												class="col-form-label text-md-right">Kabupaten</label>
+												<div class="">
+													<select id="kabupaten_id" name="kabupaten_id" class="col-md-12 form-control custom-select" required></select>	
 												</div>
-											</div>
-											<div class="form-group row">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+											<div class="form-group col-md-6">
                                                 <label for="kecamatan_id"
-												class="col-md-4 col-form-label text-md-right">Kecamatan</label>
-												<div class="col-md-6">
-													<select id="kecamatan_id" name="kecamatan_id" class="col-md-12 form-control" required></select>	
+												class="col-form-label text-md-left">Kecamatan</label>
+												<div class="">
+													<select id="kecamatan_id" name="kecamatan_id" class="col-md-12 form-control custom-select" required></select>	
 												</div>
 											</div>
-											<div class="form-group row">
+											<div class="form-group col-md-6">
                                                 <label for="kelurahan_id"
-												class="col-md-4 col-form-label text-md-right">Kelurahan</label>
-												<div class="col-md-6">
-													<select id="kelurahan_id" name="kelurahan_id" class="col-md-12 form-control" required></select>	
+												class="col-form-label text-md-left">Kelurahan</label>
+												<div class="">
+													<select id="kelurahan_id" name="kelurahan_id" class="col-md-12 form-control custom-select" required></select>	
 												</div>
 											</div>
-											
+                                        </div>
 
-                                            <div class="form-group row">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <label for="password"
-                                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                                    class="col-form-label text-md-left">{{ __('Password') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="">
                                                     <input id="password" type="password"
                                                         class="form-control @error('password') is-invalid @enderror"
                                                         name="password" required autocomplete="new-password">
@@ -228,19 +250,20 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row">
+                                            <div class="form-group col-md-6">
                                                 <label for="password-confirm"
-                                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                                    class="col-form-label text-md-left">{{ __('Confirm Password') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="">
                                                     <input id="password-confirm" type="password" class="form-control"
                                                         name="password_confirmation" required
                                                         autocomplete="new-password">
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="form-group row mb-0">
-                                                <div class="col-md-6 offset-md-4">
+                                            <div class="form-group">
+                                                <div class="col-md-6 offset-md-8 mt-2">
                                                     <button type="submit" class="btn btn-primary">
                                                         {{ __('Register') }}
 													</button>
@@ -267,7 +290,6 @@
     <footer id="footer" class="dark">
         <!-- Copyrights
 			============================================= -->
-<<<<<<< HEAD
 			<div id="copyrights">
 
 				<div class="container clearfix">
@@ -316,82 +338,6 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="{{asset('asset/jss/functions.js')}}"></script>
-=======
-        <div id="copyrights">
-
-            <div class="container clearfix">
-
-                <div class="col_half">
-                    Copyrights &copy; 2019 <br>
-                    <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
-                </div>
-
-                <div class="col_half col_last tright">
-                    <div class="fright clearfix">
-                        <a href="#" class="social-icon si-small si-borderless si-facebook">
-                            <i class="icon-facebook"></i>
-                            <i class="icon-facebook"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-twitter">
-                            <i class="icon-twitter"></i>
-                            <i class="icon-twitter"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-gplus">
-                            <i class="icon-gplus"></i>
-                            <i class="icon-gplus"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-pinterest">
-                            <i class="icon-pinterest"></i>
-                            <i class="icon-pinterest"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-vimeo">
-                            <i class="icon-vimeo"></i>
-                            <i class="icon-vimeo"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-github">
-                            <i class="icon-github"></i>
-                            <i class="icon-github"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-yahoo">
-                            <i class="icon-yahoo"></i>
-                            <i class="icon-yahoo"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-linkedin">
-                            <i class="icon-linkedin"></i>
-                            <i class="icon-linkedin"></i>
-                        </a>
-                    </div>
-
-                    <div class="clear"></div>
-                </div>
-
-            </div>
-
-        </div><!-- #copyrights end -->
-
-    </footer><!-- #footer end -->
-
-    </div><!-- #wrapper end -->
-	
-    <!-- Go To Top
-	============================================= -->
-    <div id="gotoTop" class="icon-angle-up"></div>
-
-    <!-- External JavaScripts
-	============================================= -->
-	<script src="{{asset('asset/js/jquery.js')}}"></script>
-			
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
-    <script src="{{asset('asset/jss/plugins.js')}}"></script>
-
     <!-- Footer Scripts
 	============================================= -->
     <script src="{{asset('asset/jss/functions.js')}}"></script>
@@ -476,7 +422,6 @@
         $('#kelurahan_id').select2({ width: '100%' });
     });
 		</script>
->>>>>>> c0cb204e0046c1166108cfa94edae2be6d3e4d2e
 </body>
 
 </html>

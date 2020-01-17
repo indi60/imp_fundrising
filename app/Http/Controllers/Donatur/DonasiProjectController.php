@@ -31,7 +31,7 @@ class DonasiProjectController extends Controller
                 return  
                 '<form method="POST" action="'.('/donatur/donasi_project/'.$dproject->id).'"> <input type="hidden" name="_token" id="csrf-token" value="'. Session::token().'" /> 
                 <input type="hidden" name="_method" value="DELETE">
-                <a href="'.('/donatur/donasi_project/'.$dproject->id.'/edit').'" class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a> 
+                <a href="'.('/donatur/donasi_project/'.$dproject->id.'/edit').'" class="btn btn-warning btn-sm text-light"><i class="far fa-images"></i></a> 
                 <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button></form>';
             }
             

@@ -58,7 +58,10 @@
 
 <body class="stretched side-push-panel">
 
-    <div id="side-panel">
+    <div id="side-panel" style="background: #2193b0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
 
         <div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="icon-line-cross"></i></a>
         </div>
@@ -66,14 +69,14 @@
         <div class="side-panel-wrap" style="margin-bottom:200px;">
 
             <div class="widget clearfix">
-                <h4 class="t400 text-center">Login</h4>
+                <h4 class="t400"> <h3 class="text-center text-light" style="font-family:sans-serif;"> Login </h3>
                 <hr><br>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
                     <div class="form-group row">
                         <label for="email" 
-                            class="col-md-4 col-form-label text-md-right"><small> E-Mail Address</small></label>
+                            class="col-md-4 col-form-label text-md-right"> <h5 class="text-light"> E-Mail Address </h5></label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -88,7 +91,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right"><small>Password</small></label>
+                        <label for="password" class="col-md-4 col-form-label text-md-right text-light"> <h5 class="text-light">Password </h5></label>
 
                         <div class="col-md-6">
                             <input id="password" type="password"
@@ -120,13 +123,13 @@
                         <div class="col-md-8 offset-md-4">
                             <button type="submit" class="btn btn-primary btn-sm">
                                 {{ __('Login') }}
-                            </button><br><br>
+                            </button>
                             @if (Route::has('register'))
-                            <a class="nav-link btn btn-danger btn-sm" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            @endif
+                            <a href="{{ route('register') }}" class="btn btn-danger btn-sm">{{ __('Register') }}</a>
+                            @endif <br>
 
                             @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                            <a class="btn btn-link text-light" href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                             </a>
                             @endif
@@ -176,7 +179,7 @@
                                     <div style="color:cornflowerblue;">List Donatur</div>
                                 </a></li>
                             <li><a href="/admin/list_owner_project">
-                                    <div style="color:cornflowerblue;">List Owner Project</div>
+                                    <div style="color:cornflowerblue;">List Fundraiser</div>
                                 </a></li>
                             <li><a href="#">
                                     <div style="color:cornflowerblue;">Referensi</div>

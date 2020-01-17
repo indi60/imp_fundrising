@@ -3,11 +3,8 @@
 @section('content')
 <div class="container">
     <div class="content-wrap">
-
 				<div class="container clearfix">
-
 						<div class="form-result"></div>
-
 						<div class="row">
 							<div class="col-lg-12">
                                 <form action="{{ empty($data) ? ('/powner/create_project') : ('/powner/create_project/'.$data->id) }}" method="POST" enctype="multipart/form-data">
@@ -17,7 +14,8 @@
 										@endif
 									<div class="form-group">
 										<label>Kategori Project</label>
-										<select name="kategori_project" id="kategori_project" class="form-control" required>
+										<select name="kategori_project" id="kategori_project" class="form-control custom-select
+										" required>
                                             <option value="" selected disabled >PILIH KATEGORI</option>
                                             @foreach ($kategori as $key=>$kat)
                                             <option value="{{$key}}" @if (!empty($data) && $data->kategori_project==$key) selected @endif>{{$kat}}

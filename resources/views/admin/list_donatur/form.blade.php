@@ -20,7 +20,7 @@
 									@endforeach
 									<div class="form-group">
 										<label>Status</label>
-										<select name="status" id="status" class="form-control" required>
+										<select name="status" id="status" class="form-control custom-select" required>
 											<option value="0" @if (!empty($refdproject) && $refdproject->status==0) selected @endif>TOLAK</option>
 											<option value="1" @if (!empty($refdproject) && $refdproject->status==1) selected @endif>KONFIRMASI</option>
 										</select>
@@ -33,7 +33,7 @@
                                     <input type="hidden" name="owner_id" id="owner_id" class="form-control required" value="{{$refdproject->owner_id}}">
                                     <div class="form-group">
                                         <label>Nama Bank</label>
-                                        <select name="bank_id" id="bank_id" class="form-control" required>
+                                        <select name="bank_id" id="bank_id" class="form-control custom-select" required>
                                             <option value="" selected disabled>PILIH BANK</option>
                                             @foreach ($refbank as $key =>$rbank)
                                                 <option value="{{$key}}" @if ($refdproject->bank_id == $key) selected @endif>{{$rbank}}</option>
