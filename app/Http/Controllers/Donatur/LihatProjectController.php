@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\RefDonasiProject;
 use DB;
+use App\MCProject;
+use App\MKategoriProject;
 class LihatProjectController extends Controller
 {
     /**
@@ -13,15 +15,24 @@ class LihatProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function projectCat(Request $request) {
+        $mkategori = MKategoriProject::all();
+        $kategori_project = $request->kategori_project;
+
+        $mproject = DB::table('m_project')
+        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
+        ->where('m_project.kategori_project',$kategori_project)
+        ->get();
+        return view('donatur/lihat_project/view', compact('mproject', 'mkategori'));
+    }
     public function index()
     {
-        $rdonasiproject = DB::table('ref_donasi_project')
-        ->join('m_project', 'ref_donasi_project.project_id', '=', 'm_project.id')
-        ->join('users', 'm_project.owner_id', '=', 'users.id')
-        ->select('ref_donasi_project.donasi','ref_donasi_project.status', 'm_project.*', 'users.name')
+        $mproject = DB::table('m_project')->where('status', '1')
+        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
+        ->select('m_project.*', 'm_kategori_project.kategori_project')
         ->get();
-        dd($rdonasiproject);
-        // return view('donatur/lihat_project/index', compact('rdonasiproject'));
+        $mkategori = MKategoriProject::all();
+        return view('donatur/lihat_project/index', compact('mproject', 'mkategori'));
     }
 
     /**
@@ -53,7 +64,11 @@ class LihatProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $mproject = MCProject::where('status', '1')
+        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
+        ->select('m_project.*', 'm_kategori_project.kategori_project')
+        ->findOrFail($id);
+        return view('donatur/lihat_project/show', compact('mproject'));
     }
 
     /**
