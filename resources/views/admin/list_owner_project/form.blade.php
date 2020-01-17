@@ -2,28 +2,20 @@
 @section('title', 'Admin | Cek Project')
 @section('content')
 <hr>
-<div class="container">
-
-
-	
+<div class="container">	
     <div class="content-wrap">
-
 				<div class="container clearfix">
-
 						<div class="form-result"></div>
-
 						<div class="row">
-							<div class="col-lg-12">
-								
-								<form action="{{ empty($data) ? ('/admin/list_owner_project') : ('/admin/list_owner_project/'.$data->id) }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-									@if( !empty($data) )
-									<input type="hidden" name="_method" value="PUT">
-									@endif
-									@foreach ($user as $ke => $us)
-									@if ($data->owner_id==$ke)<h3>Post By {{$us}}</h3>@endif
-									@endforeach
-										
+							<div class="col-lg-12">	
+					<form action="{{ empty($data) ? ('/admin/list_owner_project') : ('/admin/list_owner_project/'.$data->id) }}" method="POST" enctype="multipart/form-data">
+                         @csrf
+							@if( !empty($data) )
+								<input type="hidden" name="_method" value="PUT">
+							@endif
+						@foreach ($user as $ke => $us)
+							@if ($data->owner_id==$ke)<h3>Post By {{$us}}</h3>@endif
+						@endforeach									
 									<div class="form-group">
 										<label>Status</label>
 										<select name="status" id="status" class="form-control custom-select" required>
@@ -70,9 +62,7 @@
 								</div>
 							</div>
 						</div>
-
 				</div>
-
 			</div>
 </div>
 @endsection

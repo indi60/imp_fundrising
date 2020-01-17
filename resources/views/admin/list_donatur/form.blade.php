@@ -3,11 +3,8 @@
 @section('content')
 <div class="container">
     <div class="content-wrap">
-
 				<div class="container clearfix">
-
 						<div class="form-result"></div>
-
 						<div class="row">
 							<div class="col-lg-12">
                                 <form action="/admin/list_donatur/{{$refdproject->id}}" method="POST" enctype="multipart/form-data">

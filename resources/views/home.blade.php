@@ -1,8 +1,6 @@
 @extends('partial.main')
 @section('title', 'Home')
 @section('content')
-		<!-- Slider
-		 ============================================= -->
 		<section id="slider" class="slider-element force-full-screen full-screen dark clearfix">
 			<div class="force-full-screen full-screen">
 					  <div class="logo">
