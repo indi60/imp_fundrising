@@ -45,7 +45,6 @@
 
     {{-- DatePicker --}}
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-
     {{-- DataTable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
@@ -170,7 +169,7 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 
                         @if (Auth::check() && Auth::User()->level == 2)
                         <ul>
-                            <li class="current"><a href="/admin">
+                            <li class="current"><a href="/">
                                     <div style="color:cornflowerblue;">Home</div>
                                 </a></li>
                             <li class=""><a href="#">
@@ -212,7 +211,7 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 
                         @if (Auth::check() && Auth::User()->level == 3)
                         <ul>
-                            <li class="current"><a href="/powner">
+                            <li class="current"><a href="/">
                                     <div style="color:cornflowerblue;">Home</div>
                                 </a></li>
                             <li class=""><a href="/powner/create_project">
@@ -227,7 +226,7 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 
                         @if (Auth::check() && Auth::User()->level == 1)
                         <ul>
-                            <li class="current"><a href="/donatur">
+                            <li class="current"><a href="/">
                                     <div style="color:cornflowerblue;">Home</div>
                                 </a></li>
                             <li class=""><a href="/donatur/lihat_project">

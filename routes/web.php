@@ -24,7 +24,7 @@ Route::get('/get_kecamatan', 'Auth\RegisterController@getKecamatan')->name('get_
 Route::get('/get_kelurahan', 'Auth\RegisterController@getKelurahan')->name('get_kelurahan');
 
 $main_admin_routes = function(){
-    Route::get('/', 'Admin\AdminController@index')->name('admin');
+    Route::resource('/', 'Admin\AdminController');
 
     //Provinsi
     Route::resource('/provinsi', 'Admin\ProvinsiController');
@@ -67,7 +67,7 @@ $main_admin_routes = function(){
 Route::group(['middleware' => 'isAdmin', 'prefix'=>'admin'], $main_admin_routes);
 
 $main_powner_routes = function(){
-    Route::get('/', 'Powner\PownerController@index')->name('powner');
+    Route::resource('/', 'Powner\PownerController');
 
     //CreateProject
     Route::resource('/create_project', 'Powner\CreateProjectController');
@@ -79,14 +79,18 @@ $main_powner_routes = function(){
 Route::group(['middleware' => 'isPowner', 'prefix'=>'powner'], $main_powner_routes);
 
 $main_donatur_routes = function(){
-    Route::get('/', 'Donatur\DonaturController@index')->name('donatur');
+    Route::resource('/', 'Donatur\DonaturController');
     
     //Lihat Project
     Route::resource('/lihat_project', 'Donatur\LihatProjectController');
+    //get
+    Route::get('/projectCat', 'Donatur\LihatProjectController@projectCat')->name('projectCat');
 
     //Donasi Project
     Route::resource('/donasi_project', 'Donatur\DonasiProjectController');
     Route::get('/json/dproject', 'Donatur\DonasiProjectController@jsonDProject')->name('json/dproject');
+    
+
 
 };
 Route::group(['middleware' => 'isDonatur', 'prefix'=>'donatur'], $main_donatur_routes);
