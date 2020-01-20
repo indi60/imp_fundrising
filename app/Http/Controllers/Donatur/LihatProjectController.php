@@ -16,13 +16,18 @@ class LihatProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function projectCat(Request $request) {
-        $mkategori = MKategoriProject::all();
         $kategori_project = $request->kategori_project;
 
-        $mproject = DB::table('m_project')
-        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
+        $mproject = DB::table('m_kategori_project')
+        ->join('m_project', 'm_kategori_project.id', '=', 'm_project.kategori_project')
+        ->where('m_project.status', '1')
         ->where('m_project.kategori_project',$kategori_project)
         ->get();
+        // $mjekss = DB::table('m_project')
+        // ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project')
+        // ->select('m_project.kategori_project', 'm_kategori_project.id')
+        // ->get();
+        $mkategori = MKategoriProject::all();
         return view('donatur/lihat_project/view', compact('mproject', 'mkategori'));
     }
     public function index()

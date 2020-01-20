@@ -10,8 +10,8 @@
             <h1 class="text-center"></h1>
             <div class="row">
                 <div class="col-xs-6 col-sm-3">
-                    <select id="tes">
-                        <option value="" selected disabled">Select a Category</option>
+                    <select class="form-control" id="tes">
+                        <option selected disabled >Select a Category</option>
                         @foreach($mkategori as $cList)
 						<option id="cat{{$cList->id}}" value="{{$cList->id}}">{{$cList->kategori_project}}</option>
                         @endforeach
@@ -90,7 +90,11 @@
                     }
                 })
 			});
-
 		});
+		
+		// $(document).ready(function() {
+		// 	$('select').niceSelect();      
+		// 	FastClick.attach(document.body);
+		// 	}); 
 </script>
 @endsection

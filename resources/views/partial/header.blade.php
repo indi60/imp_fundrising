@@ -37,7 +37,8 @@
 
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    {{-- nice select --}}
+    <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}" type="text/css" />
     {{-- AJAX --}}
     <script src="{{asset('assets/sweetalert2/sweetalert2.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/sweetalert2/sweetalert2.min.css')}}">
