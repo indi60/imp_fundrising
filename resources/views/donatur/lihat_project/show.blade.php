@@ -1,24 +1,32 @@
 @extends('partial.main')
 @section('title', 'Lihat Project | Show')
 @section('content')
+<hr>
 <div class="container">
-	<div class="card text-center">
-		<div class="card-header">
+	<div class="card mt-5 mb-5 text-center">
+		<div class="card-header text-left">Kategori :
 			{{$mproject->kategori_project}}
 		</div>
 		<div class="card-body">
-		  <h5 class="card-title">
-			{{$mproject->nama_project}}</h5>
+		  <h4 class="card-title">
+			{{$mproject->nama_project}}</h4>
 		  <p class="card-text">
 			{!!$mproject->konten!!}</p>
-		  <a href="/donatur/donasi_project/{{$mproject->id}}" class="btn btn-primary">DONASI SEKARANG</a>
+		  <a href="/donatur/donasi_project/{{$mproject->id}}" class="btn btn-primary btn-sm">Donasi Sekarang</a>
 		</div>
 		<div class="card-footer text-muted">
-			Target : Rp. <?php echo number_format($mproject->target,0,'.','.') ?> <br>
-			Terkumpul : Rp. <?php echo number_format($mproject->terkumpul,0,'.','.') ?> <br>
-			Tanggal Di Tutup <?php echo date("d/m/Y", strtotime($mproject->tanggal_ditutup));
-			?><br>
+			<div class="row">
+				<div class="col-md-4">
+					Target : Rp. <?php echo number_format($mproject->target,0,'.','.') ?> 
+				</div>
+					<div class="col-md-4">
+						Terkumpul : Rp. <?php echo number_format($mproject->terkumpul,0,'.','.') ?>
+					</div>
+						<div class="col-md-4">
+							Tanggal Di Tutup <?php echo date("d/m/Y", strtotime($mproject->tanggal_ditutup));?>
+						</div>
+			</div>
 		</div>
-	  </div>
+	</div>
 </div>
 @endsection

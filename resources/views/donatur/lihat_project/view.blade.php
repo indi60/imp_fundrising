@@ -16,7 +16,9 @@
                 </div>
                 <div class="real-estate-item-desc">
                     <h3><a href="/donatur/lihat_project/{{$mpjek->id}}">{{$mpjek->nama_project}}</a></h3>
-                    <span>{{$mpjek->kategori_project}}</span>
+                    @foreach($mkategori as $cList)
+					    <span>@if ($mpjek->kategori_project==$cList->id){{$cList->kategori_project}} @endif</span>
+                    @endforeach
 
                     <a href="/donatur/lihat_project/{{$mpjek->id}}" class="real-estate-item-link"><i class="icon-info"></i></a>
 

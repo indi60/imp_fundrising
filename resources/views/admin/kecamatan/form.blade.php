@@ -20,7 +20,7 @@
                     <div class="form-group">
                     <label for="provinsi_id" class="col-md-12 control-label">Nama Provinsi</label>
                     <div class="col-md-12">
-                    <select id="provinsi_id" name="provinsi_id" required>
+                    <select id="provinsi_id"  name="provinsi_id" required>
                         <option value="" selected disabled >PILIH PROVINSI</option>
                         @foreach ($provinsi as $key=>$prov)
                         <option value="{{$key}}" @if (!empty($data) && $data->provinsi_id==$key) selected @endif>{{$prov}}

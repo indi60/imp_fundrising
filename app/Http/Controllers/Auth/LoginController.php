@@ -30,15 +30,15 @@ class LoginController extends Controller
     {
         switch(Auth::user()->level){
             case 2:
-            $this->redirectTo = '/admin';
+            $this->redirectTo = '/';
             return $this->redirectTo;
                 break;
             case 3:
-                $this->redirectTo = '/powner';
+                $this->redirectTo = '/';
                 return $this->redirectTo;
                 break;
             case 1:
-                $this->redirectTo = '/donatur';
+                $this->redirectTo = '/';
                 return $this->redirectTo;
                 break;
             default:
