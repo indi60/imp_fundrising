@@ -1,7 +1,6 @@
 @extends('partial.main')
 @section('title', 'Admin | Cek Project')
 @section('content')
-<hr>
 <div class="container">	
     <div class="content-wrap">
 				<div class="container clearfix">

@@ -7,7 +7,8 @@
     <meta name="author" content="SemiColonWeb" />
 
     <!-- Stylesheets
-	============================================= -->
+    ============================================= -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Roboto:300,400,500,700|Rubik:400,600"
         rel="stylesheet">
     <link rel="stylesheet" href="{{asset('asset/css/bootstrap.css')}}" type="text/css" />
@@ -57,7 +58,7 @@
 
 </head>
 
-<body class="stretched side-push-panel">
+<body class="stretched side-push-panel" style="font-family: 'Poppins', sans-serif;">
 
     <div id="side-panel" style="background: #2193b0;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
@@ -152,7 +153,7 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 		============================================= -->
         <header id="header" class="static-sticky transparent-header dark">
 
-            <div id="header-wrap">
+            <div id="header-wrap" style="background-color: rgb(25, 41, 58);">
 
                 <div class="container clearfix">
 
@@ -161,7 +162,7 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
                     <!-- Logo
 					============================================= -->
                     <div id="logo">
-						<a href="#" class="standard-logo" data-dark-logo="{{asset('asset/demos/real-estate/images/idedark.png')}}"> <img src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
+						<a href="#" class="standard-logo" data-dark-logo="{{asset('asset/demos/real-estate/images/idelight.png')}}"> <img src="{{asset('asset/demos/real-estate/images/logo@2x.png')}}" alt="Canvas Logo"></a>
 					</div>
            
                     <!-- Primary Navigation
@@ -170,20 +171,20 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 
                         @if (Auth::check() && Auth::User()->level == 2)
                         <ul>
-                            <li class="current"><a href="/">
-                                    <div style="color:cornflowerblue;">Home</div>
+                            <li class=""><a href="/">
+                                    <div style="font-size:15px;">Home</div>
                                 </a></li>
                             <li class=""><a href="#">
-                                    <div style="color:cornflowerblue;">List Project</div>
+                                    <div style="font-size:15px">List Project</div>
                                 </a></li>
                             <li><a href="/admin/list_donatur/">
-                                    <div style="color:cornflowerblue;">List Donatur</div>
+                                    <div style="font-size:15px">List Donatur</div>
                                 </a></li>
                             <li><a href="/admin/list_owner_project">
-                                    <div style="color:cornflowerblue;">List Fundraiser</div>
+                                    <div style="font-size:15px">List Fundraiser</div>
                                 </a></li>
                             <li><a href="#">
-                                    <div style="color:cornflowerblue;">Referensi</div>
+                                    <div style="font-size:15px">Referensi</div>
                                 </a>
                                 <ul>
                                     <li><a href="/admin/kategoriproject">
@@ -212,14 +213,14 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 
                         @if (Auth::check() && Auth::User()->level == 3)
                         <ul>
-                            <li class="current"><a href="/">
-                                    <div style="color:cornflowerblue;">Home</div>
+                            <li class=""><a href="/">
+                                    <div style="font-size:15px">Home</div>
                                 </a></li>
                             <li class=""><a href="/powner/create_project">
-                                    <div style="color:cornflowerblue;">Create Project</div>
+                                    <div style="font-size:15px">Create Project</div>
                                 </a></li>
                             <li><a href="#">
-                                    <div style="color:cornflowerblue;">Laporan Project</div>
+                                    <div style="font-size:15px">Laporan Project</div>
                                 </a></li>
 
                         </ul>
@@ -227,27 +228,27 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
 
                         @if (Auth::check() && Auth::User()->level == 1)
                         <ul>
-                            <li class="current"><a href="/">
-                                    <div style="color:cornflowerblue;">Home</div>
+                            <li class=""><a href="/">
+                                    <div style="font-size:15px">Home</div>
                                 </a></li>
                             <li class=""><a href="/donatur/lihat_project">
-                                    <div style="color:cornflowerblue;">Lihat Project</div>
+                                    <div style="font-size:15px">Lihat Project</div>
                                 </a></li>
                             <li><a href="/donatur/donasi_project">
-                                    <div style="color:cornflowerblue;">Donasi Project</div>
+                                    <div style="font-size:15px">Donasi Project</div>
                                 </a></li>
 
                         </ul>
                         @endif
                         @guest
                         <ul>
-                            <li><a href="#" class="side-panel-trigger" style="color:cornflowerblue;">Login |
+                            <li><a href="#" class="side-panel-trigger" style="font-size:15px">Login |
                                     Register</a></li>
                         </ul>
                         @else
                         <ul>
                             <li><a href="#">
-                                    <div style="color:cornflowerblue;">{{ Auth::user()->name }}</div>
+                                    <div style="font-size:15px">{{ Auth::user()->name }}</div>
                                 </a>
                                 <ul>
                                     <li>

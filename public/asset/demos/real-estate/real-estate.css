@@ -106,7 +106,7 @@
 	.dark #primary-menu:not(.not-dark) ul ul li:hover > a,
 	#primary-menu.dark ul ul li:hover > a {
 		background-color: rgba(255,255,255,0.025);
-		color: #F0AD4E !important;
+		color: rgb(97, 183, 240) !important;
 		border-radius: 3px;
 	}
 
@@ -134,7 +134,7 @@
 .dark #header:not(.transparent-header),
 #header.dark:not(.transparent-header),
 #header.dark.sticky-header.transparent-header #header-wrap:not(.not-dark),
-#footer.dark { background-color: #2C3E50; }
+#footer.dark { background-color: rgb(25, 41, 58); }
 
 .dark #header:not(.transparent-header),
 #header.dark:not(.transparent-header) { border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -155,7 +155,7 @@
 .dark #header-wrap:not(.not-dark) #primary-menu > ul > li:hover > a,
 .dark #header-wrap:not(.not-dark) #primary-menu > ul > li.current > a,
 .dark #header-wrap:not(.not-dark) #primary-menu > .container > ul > li:hover > a,
-.dark #header-wrap:not(.not-dark) #primary-menu > .container > ul > li.current > a { color: #DDD; }
+.dark #header-wrap:not(.not-dark) #primary-menu > .container > ul > li.current > a { color: rgb(98, 192, 255); }
 
 
 /* ----------------------------------------------------------------
@@ -529,7 +529,7 @@ body.side-panel-open #side-panel {
 	border-radius: 50%;
 }
 
-#gotoTop:hover { background-color: #F0AD4E !important; }
+#gotoTop:hover { background-color: rgb(78, 181, 240) !important; }
 
 
 .color-2 { color: #F0AD4E !important; }

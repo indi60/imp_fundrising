@@ -1,8 +1,7 @@
 @extends('partial.main')
 @section('title', 'Admin | Kabupaten')
 @section('content')
-<hr>
-<div class="container">
+<div class="container mb-5">
     <div class="panel panel-default mt-5">  
         <div class="panel-body">
             <div class="row">

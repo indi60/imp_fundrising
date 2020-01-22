@@ -10,7 +10,7 @@
                     <img src="{{asset('asset/demos/real-estate/images/idelight.png')}}"
                         style="position: relative; opacity: 0.85; left: -10px; max-height: 80px; margin-bottom: 20px;"
                         alt="Footer Logo">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo fugiat, neque exercitationem, tempora quisquam eaque reprehenderit eveniet ipsam eum deleniti fugit obcaecati qui, saepe harum! Consequuntur quisquam sit cupiditate doloribus.</p>
+                        <p style="font-family: 'Poppins', sans-serif;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo fugiat, neque exercitationem, tempora quisquam eaque reprehenderit eveniet ipsam eum deleniti fugit obcaecati qui, saepe harum! Consequuntur quisquam sit cupiditate doloribus.</p>
                     <div class="line" style="margin: 30px 0;"></div>
                     <p class="ls1 t300" style="opacity: 0.6; font-size: 13px;">Copyrights &copy; 2020 IDE BABE</p>
                 </div>

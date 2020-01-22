@@ -1,9 +1,6 @@
 @extends('partial.main')
 @section('title', 'Donatur | Lihat Project')
 @section('content')
-<!-- Slider
-		============================================= -->
-
 <div class="greyBg">
     <div class="container">
         <div class="wrapper">
@@ -47,15 +44,17 @@
 										<h3><a href="/donatur/lihat_project/{{$mpjek->id}}">{{$mpjek->nama_project}}</a></h3>
 										<span>{{$mpjek->kategori_project}}</span>
 
-										<a href="/donatur/lihat_project/{{$mpjek->id}}" class="real-estate-item-link"><i class="icon-info"></i></a>
+										<a href="/donatur/lihat_project/{{$mpjek->id}}" class="btn btn-info btn-sm">Lihat</a>
+										
 
 										<div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
 										
 										<div class="real-estate-item-features t500 font-primary clearfix">
 											<div class="row no-gutters">
 												<div class="col-lg-4 nopadding">Terkumpul <span class="color">{{$mpjek->terkumpul}}</span></div>
-											
+												
 											</div>
+											<br>
 										</div>
 									</div>
 								</div>

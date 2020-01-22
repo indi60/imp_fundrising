@@ -1,8 +1,7 @@
 @extends('partial.main')
 @section('title', 'Admin | Kategori Project')
 @section('content')
-<hr>
-<div class="container">
+<div class="container mt-5 mb-5">
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
@@ -28,6 +27,7 @@
             </table>    
         </div>
     </div>
+</div>
 </div>
 @include('admin/kategori_project/form')
 @stop

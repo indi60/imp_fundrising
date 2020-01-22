@@ -17,8 +17,8 @@ class RefBankController extends Controller
 
         return Datatables::of($refbank)
         ->addColumn('action', function($refbank){
-            return '<a onclick="editForm('. $refbank->id .')" class="btn btn-warning btn-sm"><i class="far fa-edit"> Edit</i></a> ' .
-            '<a onclick="deleteData('. $refbank->id .')" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"> Delete</i></a>';
+            return '<a onclick="editForm('. $refbank->id .')" class="btn btn-warning btn-sm text-light"><i class="far fa-edit"> Edit</i></a> ' .
+            '<a onclick="deleteData('. $refbank->id .')" class="btn btn-danger btn-sm text-light"><i class="far fa-trash-alt"> Delete</i></a>';
             
         })
         ->rawColumns(['action'])

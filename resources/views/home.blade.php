@@ -4,7 +4,7 @@
 		<section id="slider" class="slider-element force-full-screen full-screen dark clearfix">
 			<div class="force-full-screen full-screen">
 					  <div class="logo">
-						<img src="{{asset('asset/demos/real-estate/images/hero/3.jpg')}}" class="d-block w-100" alt="...">
+						<img src="{{asset('asset/demos/real-estate/images/hero/1.jpg')}}" class="d-block w-100" alt="...">
 					  </div>
 				<div class="vertical-middle" style="z-index: 3;">
 					<div class="container center clearfix">
@@ -44,7 +44,7 @@
 										<h3><a href="{{$mpjek->id}}/show">{{$mpjek->nama_project}}</a></h3>
 										<span>{{$mpjek->kategori_project}}</span>
 
-										<a href="{{$mpjek->id}}/show" class="real-estate-item-link"><i class="icon-info"></i></a>
+										<a href="{{$mpjek->id}}/show"class="btn btn-info btn-sm">Lihat</a>
 
 										<div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
 										

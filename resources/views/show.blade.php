@@ -1,7 +1,6 @@
 @extends('partial.main')
 @section('title', 'Show')
 @section('content')
-<hr>
 <div class="container">
 	<div class="card mt-5 mb-5 text-center">
 		<div class="card-header text-left">Kategori :

@@ -1,8 +1,7 @@
 @extends('partial.main')
 @section('title', 'Lihat Project | Show')
 @section('content')
-<hr>
-<div class="container">
+<div class="container mt-3">
 	<div class="card mt-5 mb-5 text-center">
 		<div class="card-header text-left">Kategori :
 			{{$mproject->kategori_project}}

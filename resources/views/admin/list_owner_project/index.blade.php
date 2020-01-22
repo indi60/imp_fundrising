@@ -1,8 +1,7 @@
 @extends('partial.main')
 @section('title', 'Admin | List Fundraiser')
 @section('content')
-<hr>
-<div class="container">
+<div class="container mb-5">
     <div class="text-center mt-5">
          <h3> Data Project </h3>
     </div>

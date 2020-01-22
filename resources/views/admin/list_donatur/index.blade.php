@@ -1,7 +1,7 @@
 @extends('partial.main')
 @section('title', 'Admin | ListDonatur')
 @section('content')
-<hr>
+<br>
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-body">
