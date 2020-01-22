@@ -16,6 +16,7 @@ class MCProject extends Model
         'tanggal_ditutup', 
         'status', 
         'owner_id', 
-        'kategori_project'
+        'kategori_project',
+        'gallery',
     ];
 }

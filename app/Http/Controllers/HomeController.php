@@ -63,6 +63,10 @@ class HomeController extends Controller
         return view('show', compact('mproject'));
     }
 
+    public function gallery($id) {
+        $mproject = MCProject::where('status', '1')->findOrFail($id);
+        return view('gallery', compact('mproject'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

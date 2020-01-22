@@ -20,17 +20,19 @@
 									@if( !empty($data) )
 									<input type="hidden" name="_method" value="PUT">
 									@endif
+									<div class="row justify-content-end">
+									<a href="/admin/list_owner_project" class="btn btn-danger">KEMBALI</a>
+									</div>
 									@foreach ($user as $ke => $us)
 									@if ($data->owner_id==$ke)<h3>Post By {{$us}}</h3>@endif
 									@endforeach
-										
-									<div class="form-group">
+									{{-- <div class="form-group">
 										<label>Status</label>
 										<select name="status" id="status" class="form-control custom-select" required>
 											<option value="0" @if (!empty($data) && $data->status==0) selected @endif>TOLAK</option>
 											<option value="1" @if (!empty($data) && $data->status==1) selected @endif>SETUJUI</option>
 										</select>
-									</div>
+									</div> --}}
 									<div class="form-group">
 										<label>Kategori Project</label>
 										<select name="kategori_project" id="kategori_project" class="form-control custom-select" required>
@@ -56,10 +58,11 @@
 									<div class="form-group">
 										<label>Tanggal Tutup</label>
 										<input name="tanggal_ditutup" id="tanggal_ditutup" class="form-control required" placeholder="yyyy/mm/dd" readonly @if (!empty($data)) value="{{$data->tanggal_ditutup}}"@endif>
-									</div>
+									</div>	
 								<div class="row justify-content-end">
                                     <div class="col-md-2">
-										<button type="submit" class="btn btn-primary">UPDATE PROJECT</button>
+										<button type="submit" value="1" name="status" class="btn btn-primary">TERIMA</button>
+										<button type="submit" value="2" name="status" class="btn btn-warning">TOLAK</button>
 									</div>
 								</form>
 								<form action="/admin/list_owner_project/{{ $data->id }} " method="post">
@@ -67,7 +70,6 @@
 									@csrf
 									<button onclick="return confirm('Yakin Hapus?')" type="submit" class="btn btn-danger">DELETE PROJECT</button>
 								</form>
-								</div>
 							</div>
 						</div>
 

@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Lihat Project | Show')
+@section('title', 'Show')
 @section('content')
 <hr>
 <div class="container">
@@ -12,6 +12,8 @@
 			{{$mproject->nama_project}}</h4>
 		  <p class="card-text">
 			{!!$mproject->konten!!}</p>
+			
+		  	<a href="/donatur/lihat_project/{{$mproject->id}}/gallery" class="btn btn-danger bgcolor-2 btn-sm">Lihat Gallery</a>
 		  <a href="/donatur/donasi_project/{{$mproject->id}}" class="btn btn-primary btn-sm">Donasi Sekarang</a>
 		</div>
 		<div class="card-footer text-muted">

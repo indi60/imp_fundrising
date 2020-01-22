@@ -9,6 +9,7 @@ use App\RefDonasiProject;
 use App\MCProject;
 use App\RefBank;
 use Session;
+use Illuminate\Support\Facades\Storage;
 class DonasiProjectController extends Controller
 {
     /**
@@ -117,20 +118,27 @@ class DonasiProjectController extends Controller
         $refdonasi = RefDonasiProject::where('status', '0')->findOrFail($id);
         $refdonasi->status = 0;
         
-        $request->validate([
-            'bukti_transfer' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // $request->validate([
+        //     'bukti_transfer' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+        // //upload foto
+        // if ($request->hasFile('bukti_transfer')) {
+        //     $file = $request->file('bukti_transfer');
+        //     $destinationPath = 'uploads/donasi_project/';
+        //     $originalFile = $file->getClientOriginalName();
+        //     $file->move($destinationPath, $originalFile);
+        //     $refdonasi->bukti_transfer = $originalFile;
+        // } else {
+        //     return $request;
+        //     $refdonasi->bukti_transfer = '';
+        // }
+        $this->validate($request, [
+            'bukti_transfer' => 'required|file|max:7000', // max 7MB
         ]);
-        //upload foto
-        if ($request->hasFile('bukti_transfer')) {
-            $file = $request->file('bukti_transfer');
-            $destinationPath = 'uploads/donasi_project/';
-            $originalFile = $file->getClientOriginalName();
-            $file->move($destinationPath, $originalFile);
-            $refdonasi->bukti_transfer = $originalFile;
-        } else {
-            return $request;
-            $refdonasi->bukti_transfer = '';
-        }
+        $refdonasi->bukti_transfer = Storage::putFile(
+            'public/images',
+            $request->file('bukti_transfer')
+        );
         // dd($refdonasi);
         $refdonasi->update();
         return redirect('donatur/donasi_project');
