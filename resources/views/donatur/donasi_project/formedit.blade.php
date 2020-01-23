@@ -16,16 +16,19 @@
                                     
 									<div class="form-group">
 										<label>Bukti Transfer</label><br>
-										<img  width="500px" src='{{ asset('uploads/donasi_project/'.$refdproject->bukti_transfer) }}'>
+										{{-- <img  width="500px" src='{{ asset('uploads/donasi_project/'.$refdproject->bukti_transfer) }}'> --}}
+										<?php $path = Storage::url($refdproject->bukti_transfer); ?>
+										<th><img width="500px" src="{{ url($path) }}" alt="" srcset=""></th>
+										{{-- <th><a href="{{ url($path) }}">Donwload Now</a></th> --}}
 										<input type="file" name="bukti_transfer" id="bukti_transfer" class="form-control required">
                                     </div>
                                     <div class="row justify-content-end">
 										<div class="col-md-2">
-											<button type="submit" class="btn btn-primary">UPDATE PROJECT</button>
+											<button type="submit" class="btn btn-primary">UPLOAD BUKTI</button>
 										</div>
+										<a href="/donatur/donasi_project" class="btn btn-danger">KEMBALI</a>
+									</div>
 									</form>
-									<a href="/donatur/donasi_project" class="btn btn-danger">KEMBALI</a>
-								</div>
 									
 							</div>
 						</div>

@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {{-- nice select --}}
-    <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}" type="text/css" />
+    {{-- <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}" type="text/css" /> --}}
     {{-- AJAX --}}
     <script src="{{asset('assets/sweetalert2/sweetalert2.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/sweetalert2/sweetalert2.min.css')}}">
@@ -49,11 +49,15 @@
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     {{-- DataTable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
+    {{-- DropZone --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.css">
+    
+    
     <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Document Title
 	============================================= -->
-    <title>@yield('title', '
-    ')</title>
+    <title>@yield('title', '')</title>
     <link rel="shortcut icon" href="{{asset('asset/demos/real-estate/images/idelight.png')}}">
 
 </head>

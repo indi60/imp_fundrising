@@ -13,6 +13,7 @@
 //Home
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/{id}/show', 'HomeController@show');
+Route::get('/{id}/show/gallery', 'HomeController@gallery');
 
 Auth::routes();
 Route::get('/logout', 'Admin\AdminController@logout');
@@ -70,11 +71,20 @@ $main_powner_routes = function(){
     Route::resource('/', 'Powner\PownerController');
 
     //CreateProject
-    Route::resource('/create_project', 'Powner\CreateProjectController');
+    Route::resource('/create_project', 'Powner\CreateProjectController', [
+        'names' => [
+            'store' => 'storeeeee'
+        ]
+    ]);
     Route::get('/json/cproject', 'Powner\CreateProjectController@jsonCProject')->name('json/cproject');
 
+    // <?php echo substr($mpjek->konten, 0, 300) 
     //Upload Image CKEditor
     Route::post('/upload', 'Powner\CreateProjectController@upload')->name('ckeditor/upload');
+
+    //DropZone
+    Route::post('/item/image/upload', 'Powner\CreateProjectController@fileUpload');
+    Route::get('/item/image/delete', 'Powner\CreateProjectController@removeUpload');
 };
 Route::group(['middleware' => 'isPowner', 'prefix'=>'powner'], $main_powner_routes);
 
@@ -83,6 +93,8 @@ $main_donatur_routes = function(){
     
     //Lihat Project
     Route::resource('/lihat_project', 'Donatur\LihatProjectController');
+    Route::get('/lihat_project/{id}/gallery', 'Donatur\LihatProjectController@gallery');
+    
     //get
     Route::get('/projectCat', 'Donatur\LihatProjectController@projectCat')->name('projectCat');
 

@@ -30,6 +30,10 @@ class LihatProjectController extends Controller
         $mkategori = MKategoriProject::all();
         return view('donatur/lihat_project/view', compact('mproject', 'mkategori'));
     }
+    public function gallery($id) {
+        $mproject = MCProject::where('status', '1')->findOrFail($id);
+        return view('donatur/lihat_project/gallery', compact('mproject'));
+    }
     public function index()
     {
         $mproject = DB::table('m_project')->where('status', '1')

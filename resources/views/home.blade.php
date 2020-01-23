@@ -24,7 +24,7 @@
                 <h2  style="margin-top:20px">List Project</h2>
             </div>
             <div style="position: relative;">
-						<div class="real-estate owl-carousel image-carousel carousel-widget bottommargin-lg" data-margin="10" data-nav="true" data-loop="true" data-pagi="false" data-items-xs="1" data-items-sm="1" data-items-md="2" data-items-lg="3" data-items-xl="3">
+						<div class="real-estate owl-carousel image-carousel carousel-widget bottommargin-lg" data-margin="10" data-nav="true" data-loop="false" data-pagi="false" data-items-xs="1" data-items-sm="1" data-items-md="2" data-items-lg="3" data-items-xl="3">
 							@foreach ($mproject as $mpjek)
 								
 							<div class="oc-item">

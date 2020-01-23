@@ -125,6 +125,7 @@ class ListDonaturController extends Controller
      */
     public function destroy($id)
     {
-        //
+        RefDonasiProject::destroy($id);
+        return redirect('admin/list_donatur');
     }
 }
