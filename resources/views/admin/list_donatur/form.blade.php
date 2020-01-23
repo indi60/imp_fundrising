@@ -18,13 +18,10 @@
 									<input type="hidden" @if ($refdproject->project_id==$key) name="id_projek" value="{{$key}}"@endif>
 										
 									@endforeach
-									<div class="form-group">
-										<label>Status</label>
-										<select name="status" id="status" class="form-control custom-select" required>
-											<option value="0" @if (!empty($refdproject) && $refdproject->status==0) selected @endif>TOLAK</option>
-											<option value="1" @if (!empty($refdproject) && $refdproject->status==1) selected @endif>KONFIRMASI</option>
-										</select>
-									</div>
+									
+									<div class="row justify-content-end">
+										<a href="/admin/list_donatur" class="btn btn-danger">KEMBALI</a>
+										</div>
 									<div class="form-group">
 										<label>Nama Project</label>
 									<input type="text" class="form-control required" @foreach ($mcproject as $key=>$mcp) @if ($refdproject->project_id) value="{{$mcp}}" @endif @endforeach readonly>
@@ -54,10 +51,15 @@
                                     </div>
                                     <div class="row justify-content-end">
 										<div class="col-md-2">
-											<button type="submit" class="btn btn-primary">UPDATE PROJECT</button>
+											<button type="submit" value="1" name="status" class="btn btn-primary">TERIMA</button>
+											<button type="submit" value="2" name="status" class="btn btn-warning">TOLAK</button>
 										</div>
 									</form>
-									<a href="/admin/list_donatur" class="btn btn-danger">KEMBALI</a>
+									<form action="/admin/list_donatur/{{ $refdproject->id }} " method="post">
+										@method('delete')
+										@csrf
+										<button onclick="return confirm('Yakin Hapus?')" type="submit" class="btn btn-danger">DELETE DONASI</button>
+									</form>
 								</div>
 									
 							</div>

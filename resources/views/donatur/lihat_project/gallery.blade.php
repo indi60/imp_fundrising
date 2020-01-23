@@ -9,7 +9,7 @@
 	<h1 class=" font-weight-light text-center text-lg-left mt-4 mb-0">Gallery</h1>
 	</div>
 	<div class="col-md-6 mt-4">
-	<a href="/donatur/lihat_project{{$mproject->id}}"
+	<a href="/donatur/lihat_project/{{$mproject->id}}"
             style="background: #3a7bd5;  /* fallback for old browsers */
                     background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
                     background: linear-gradient(to right, #3a6073, #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */"
