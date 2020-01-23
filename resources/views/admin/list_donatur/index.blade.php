@@ -46,7 +46,7 @@
             { data: 'bukti_transfer', name: 'bukti_transfer' , "className": "dt-center",},
             { data: 'status', name: 'status' , "className": "dt-center", 
                 render:function(data){
-                    return data == '0' ? '<h4><span class="badge badge-danger text-light">Menunggu Konfirmasi</span></h4>' : '<h4> <span class="badge badge-success text-light">DiKonfirmasi</span></h4>';
+                    return (data == '0') ? '<h4><span class="badge badge-danger text-light">Menunggu Persetujuan Admin</span></h4>' : (data == '1') ? '<h4> <span class="badge badge-success text-light">Disetujui</span></h4>' : '<h4> <span class="badge badge-warning text-light">Ditolak</span></h4>';
                 }
             },
             { data: 'action', name: 'action' , "className": "dt-center",},

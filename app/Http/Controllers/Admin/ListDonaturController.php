@@ -28,10 +28,7 @@ class ListDonaturController extends Controller
         return Datatables::of($ldonatur)
         ->addColumn('action', function($ldonatur){
                 return  
-                '<form method="POST" action="'.('/admin/list_donatur/'.$ldonatur->id).'"> <input type="hidden" name="_token" id="csrf-token" value="'. Session::token().'" /> 
-                <input type="hidden" name="_method" value="DELETE">
-                <a href="'.('/admin/list_donatur/'.$ldonatur->id.'/edit').'" class="btn btn-primary btn-sm text-light"><i class="fas fa-eye"></i></a> 
-                <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button></form>';     
+                '<a href="'.('/admin/list_donatur/'.$ldonatur->id.'/edit').'" class="btn btn-primary btn-sm text-light"><i class="fas fa-eye"></i></a>';     
         })
         # code...
         ->rawColumns(['action'])

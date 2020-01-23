@@ -50,7 +50,7 @@
 										
 										<div class="real-estate-item-features t500 font-primary clearfix">
 											<div class="row no-gutters">
-												<div class="col-lg-4 nopadding">Terkumpul <span class="color">{{$mpjek->terkumpul}}</span></div>
+												<div class="col-lg-4 nopadding">Terkumpul <span class="color"><br> Rp. <?php echo number_format($mpjek->terkumpul,0,'.','.') ?></span></div>
 											
 											</div>
 										</div>
