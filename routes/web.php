@@ -25,7 +25,11 @@ Route::get('/get_kecamatan', 'Auth\RegisterController@getKecamatan')->name('get_
 Route::get('/get_kelurahan', 'Auth\RegisterController@getKelurahan')->name('get_kelurahan');
 
 $main_admin_routes = function(){
-    Route::resource('/', 'Admin\AdminController');
+    Route::resource('/', 'Admin\AdminController', [
+        'names' => [
+            'index' => 'admin'
+        ]
+    ]);
 
     //Provinsi
     Route::resource('/provinsi', 'Admin\ProvinsiController');
@@ -68,7 +72,11 @@ $main_admin_routes = function(){
 Route::group(['middleware' => 'isAdmin', 'prefix'=>'admin'], $main_admin_routes);
 
 $main_powner_routes = function(){
-    Route::resource('/', 'Powner\PownerController');
+    Route::resource('/', 'Powner\PownerController', [
+        'names' => [
+            'index' => 'powner'
+        ]
+    ]);
 
     //CreateProject
     Route::resource('/create_project', 'Powner\CreateProjectController', [

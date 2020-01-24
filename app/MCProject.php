@@ -9,7 +9,8 @@ class MCProject extends Model
     protected $table = 'm_project';
     protected $fillable = [
         'nama_project', 
-        'konten', 
+        'konten',
+        'tumbnail', 
         'target', 
         'terkumpul', 
         'tanggal_dibuka', 

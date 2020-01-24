@@ -1,17 +1,14 @@
-<a href="/donatur/lihat_project"
-style="background: #3a7bd5;  /* fallback for old browsers */
- background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
- background: linear-gradient(to right, #3a6073, #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ margin-right:5px;"
- id="float" class="btn btn-primary text-light">Kembali</a>
- @foreach ($mproject as $mpjek)
 <br>
+<div class="container">
+    @foreach ($mproject as $mpjek)
         <div class="oc-item">
             <div class="real-estate-item">
                 <div class="real-estate-item-image">
                     <h4 class="badge badge-danger badge-pill">Tanggal Ditutup : {{$mpjek->tanggal_ditutup}}</h4>
                     
                     <a href="/donatur/lihat_project/{{$mpjek->id}}">
-                        <?php echo substr($mpjek->konten, 0, 300) ?>
+                        <?php $path = Storage::url($mpjek->tumbnail); ?>
+                        <img width="500px" height="300px" src="{{ url($path) }}" alt="" srcset="">
                     </a>
                     <div class="real-estate-item-price">
                         Target :
@@ -30,11 +27,12 @@ style="background: #3a7bd5;  /* fallback for old browsers */
                     
                     <div class="real-estate-item-features t500 font-primary clearfix">
                         <div class="row no-gutters">
-                            <div class="col-lg-4 nopadding">Terkumpul <span class="color">{{$mpjek->terkumpul}}</span></div>
+                            <div class="">Terkumpul <span class="color"> Rp. <?php echo number_format($mpjek->terkumpul,0,'.','.') ?></span></div>
                         </div>
                         <br>
                     </div>
                 </div>
             </div>
         </div>
-@endforeach
+        @endforeach
+</div>

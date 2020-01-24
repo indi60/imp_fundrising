@@ -31,7 +31,8 @@
 @section('scripts')
     <script type="text/javascript">
     var table = $('#donasiproject_table').DataTable({
-        "scrollX": true,
+        "sScrollX": "100%",
+        "sScrollXInner": "110%",
         "processing": true,
         "serverSide": true,
         "ajax" : {
