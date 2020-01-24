@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 class KecamatanTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds
      *
      * @return void
      */
@@ -7012,6 +7012,83 @@ class KecamatanTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            array(
+                "id"=> 1408010,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "MANDAU",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408011,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "PINGGIR",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408012,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "BATHIN SOLAPAN",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408013,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "TALANG MUANDAU",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408020,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "BUKIT BATU",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408021,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "SIAK KECIL",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408022,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "BANDAR LAKSAMANA",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408030,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "RUPAT",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408031,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "RUPAT UTARA",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408040,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "BENGKALIS",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            array(
+                "id"=> 1408050,
+                'kabupaten_id' => 1408,
+                "nama_kecamatan"=> "BANTAN",
+                'created_at' => NULL,
+                'updated_at' => NULL,
+                )
         );
 
         DB::table('m_kecamatan')->insert($m_kecamatan);
