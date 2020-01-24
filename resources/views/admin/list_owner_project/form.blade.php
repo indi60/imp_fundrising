@@ -41,6 +41,11 @@
 									<input type="text" name="nama_project" id="nama_project" class="form-control required" @if (!empty($data)) value="{{$data->nama_project}}"@endif>
 									</div>
 									<div class="form-group">
+										<label>Tumbnail</label> <br>
+									@if (!empty($data)) <?php $path = Storage::url($data->tumbnail); ?> 
+                            		<th><img width="500px" src="{{ url($path) }}" alt="" srcset=""></th> @endif
+									</div>
+									<div class="form-group">
 										<label>Konten</label>
 										<textarea name="konten" id="konten" cols="30" rows="10" class="form-control required">@if (!empty($data)){!!$data->konten!!}@endif</textarea>
 									</div>

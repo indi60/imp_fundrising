@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use DataTables;
 use Session;
+use Storage;
 class CreateProjectController extends Controller
 {
     /**
@@ -89,6 +90,16 @@ class CreateProjectController extends Controller
         $mcProject->status = 0;
         $mcProject->owner_id = $request->owner_id;
         $mcProject->gallery = $request->gallery;
+
+        //Tumbnail
+        $this->validate($request, [
+            'tumbnail' =>  'required|file|max:7000',
+        ]);
+        $mcProject->tumbnail = Storage::putFile(
+            'public/tumbnail',
+            $request->file('tumbnail')
+        );
+
         $mcProject->save();
         // dd($mcProject);
         return redirect ('powner/create_project');
@@ -147,7 +158,7 @@ class CreateProjectController extends Controller
     public function edit($id)
     {        
         
-        $data = MCProject::where('owner_id', Auth()->User()->id)->findOrFail($id);
+            $data = MCProject::where('owner_id', Auth()->User()->id)->findOrFail($id);
             $kategori = MKategoriProject::pluck('kategori_project', 'id');
             return view('powner/create_project/form', compact('data', 'kategori'));
     
@@ -172,6 +183,16 @@ class CreateProjectController extends Controller
         $mcProject->tanggal_ditutup = $request->tanggal_ditutup;
         $mcProject->gallery = $request->gallery;
         $mcProject->status = 0;
+
+        //Tumbnail
+        $this->validate($request, [
+            'tumbnail' =>  'required|file|max:7000',
+        ]);
+        $mcProject->tumbnail = Storage::putFile(
+            'public/tumbnail',
+            $request->file('tumbnail')
+        );
+        
         $mcProject->update();
         return redirect('powner/create_project');
     }

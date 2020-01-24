@@ -33,7 +33,8 @@
 										<h4 class="badge badge-danger badge-pill">Tanggal Ditutup : {{$mpjek->tanggal_ditutup}}</h4>
 										
 										<a href="{{$mpjek->id}}/show">
-											<?php echo substr($mpjek->konten, 0, 300) ?>
+											<?php $path = Storage::url($mpjek->tumbnail); ?>
+											<img width="500px" height="300px" src="{{ url($path) }}" alt="" srcset="">
 										</a>
 										<div class="real-estate-item-price">
 											Target :
@@ -50,9 +51,9 @@
 										
 										<div class="real-estate-item-features t500 font-primary clearfix">
 											<div class="row no-gutters">
-												<div class="col-lg-4 nopadding">Terkumpul <span class="color"><br> Rp. <?php echo number_format($mpjek->terkumpul,0,'.','.') ?></span></div>
-											
+												<div class="">Terkumpul <span class="color"> Rp. <?php echo number_format($mpjek->terkumpul,0,'.','.') ?></span></div>
 											</div>
+											<br>
 										</div>
 									</div>
 								</div>

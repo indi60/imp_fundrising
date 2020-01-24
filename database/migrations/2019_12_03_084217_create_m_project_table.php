@@ -16,6 +16,7 @@ class CreateMProjectTable extends Migration
         Schema::create('m_project', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_project');
+            $table->string('tumbnail');
             $table->text('konten');
             $table->double('target');
             $table->double('terkumpul');

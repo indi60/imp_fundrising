@@ -19,13 +19,13 @@ class isDonatur
             return $next($request); 
         }
         elseif (Auth::check() && Auth::user()->level == 2) {
-            return redirect()->route('admin');
+            return redirect()->route('admin')->with('alert', 'Login Atau Registrasi Sebagai Donatur Terlebih Dahulu!');
         }
         elseif (Auth::check() && Auth::user()->level == 3) {
-            return redirect()->route('powner');
+            return redirect()->route('powner')->with('alert', 'Login Atau Registrasi Sebagai Donatur Terlebih Dahulu!');
         }
         else {
-            return redirect()->route('home')->with('alert', 'Login Atau Registrasi Sebagai Donatur Terlebih Dahulu!');;
+            return redirect()->route('register')->with('alert', 'Login Atau Registrasi Sebagai Donatur Terlebih Dahulu!');
         }
         
     }

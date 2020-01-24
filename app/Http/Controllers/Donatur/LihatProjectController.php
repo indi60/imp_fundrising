@@ -23,10 +23,6 @@ class LihatProjectController extends Controller
         ->where('m_project.status', '1')
         ->where('m_project.kategori_project',$kategori_project)
         ->get();
-        // $mjekss = DB::table('m_project')
-        // ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project')
-        // ->select('m_project.kategori_project', 'm_kategori_project.id')
-        // ->get();
         $mkategori = MKategoriProject::all();
         return view('donatur/lihat_project/view', compact('mproject', 'mkategori'));
     }
