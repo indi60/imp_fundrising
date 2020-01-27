@@ -223,7 +223,7 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
                             <li class=""><a href="/powner/create_project">
                                     <div style="font-size:15px">Create Project</div>
                                 </a></li>
-                            <li><a href="#">
+                            <li><a href="/powner/laporan_project">
                                     <div style="font-size:15px">Laporan Project</div>
                                 </a></li>
 

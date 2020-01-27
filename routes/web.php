@@ -1,5 +1,7 @@
 <?php
 
+//TERAKHIR 1906
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,6 +95,10 @@ $main_powner_routes = function(){
     //DropZone
     Route::post('/item/image/upload', 'Powner\CreateProjectController@fileUpload');
     Route::get('/item/image/delete', 'Powner\CreateProjectController@removeUpload');
+
+    //Laporan Project
+    Route::resource('/laporan_project', 'Powner\LaporanProjectController');
+    Route::get('/json/lproject', 'Powner\LaporanProjectController@jsonLProject')->name('json/lproject');
 };
 Route::group(['middleware' => 'isPowner', 'prefix'=>'powner'], $main_powner_routes);
 
