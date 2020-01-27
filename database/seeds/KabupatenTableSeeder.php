@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\MKabupaten;
 class KabupatenTableSeeder extends Seeder
 {
     /**
