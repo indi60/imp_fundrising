@@ -10,12 +10,13 @@
                 </div>
             </div>
                    
-            <table style="text-transform: uppercase;" class="table table-striped" id="donasiproject_table">
+            <table class="table table-striped" id="donasiproject_table" width="100%">
                 <thead>
                     <tr>
                         <th>NO</th>
                         <th>NAMA PROJECT</th>
                         <th>NAMA DONATUR</th>
+                        <th>KODE UNIK</th>
                         <th>DONASI</th>
                         <th>NAMA BANK</th>
                         <th>BUKTI TRANSFER</th>
@@ -38,15 +39,16 @@
             "url" : "{{route('json/dproject')}}"
         },
         "columns" : [
-            { data: 'id', render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1;}},
+            { data: 'id', render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1;},  "className": "dt-center"},
             { data: 'nama_project', name: 'nama_project' , "className": "dt-center",},
             { data: 'name', name: 'name' , "className": "dt-center",},
-            { data: 'donasi', name: 'donasi' , "className": "dt-center",},
+            { data: 'kode_unik', name: 'kode_unik' , "className": "dt-center",},
+            { data: 'kode', name: 'kode' , "className": "dt-center",},
             { data: 'nama_bank', name: 'nama_bank' , "className": "dt-center",},
             { data: 'bukti_transfer', name: 'bukti_transfer' , "className": "dt-center",},
             { data: 'status', name: 'status' , "className": "dt-center", 
                 render:function(data){
-                    return data == '0' ? '<h4><span class="badge badge-danger text-light">Menunggu Konfirmasi</span></h4>' : '<h4> <span class="badge badge-success text-light">DiKonfirmasi</span></h4>';
+                    return (data == '0') ? '<h4><span class="badge badge-danger text-light">Menunggu Persetujuan Admin</span></h4>' : (data == '1') ? '<h4> <span class="badge badge-success text-light">Disetujui</span></h4>' : '<h4> <span class="badge badge-warning text-light">Ditolak</span></h4>';
                 }
             },
             { data: 'action', name: 'action' , "className": "dt-center",},

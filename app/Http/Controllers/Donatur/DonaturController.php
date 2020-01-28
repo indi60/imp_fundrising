@@ -16,9 +16,14 @@ class DonaturController extends Controller
     //     $this->middleware('auth');
     // }
 
-    public function index()
-    {
-        //
+    public function index() {
+        $mproject = DB::table('m_project')->where('status', '1')
+        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
+        ->select('m_project.*', 'm_kategori_project.kategori_project')
+        ->get();
+        // dd($mproject);
+        
+        return view('home', compact('mproject'));
     }
 
     /**

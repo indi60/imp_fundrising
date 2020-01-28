@@ -9,6 +9,7 @@ use App\RefDonasiProject;
 use App\MCProject;
 use App\RefBank;
 use Session;
+use Str;
 use Illuminate\Support\Facades\Storage;
 class DonasiProjectController extends Controller
 {
@@ -27,8 +28,12 @@ class DonasiProjectController extends Controller
         ->get();
         // dd($dproject);
         return Datatables::of($dproject)
+        ->addColumn('kode', function($dproject){
+            $kode = $dproject->donasi + $dproject->kode_unik;
+            return "Rp ".number_format($kode,0,",",".");
+        })
         ->addColumn('action', function($dproject){
-            if ($dproject->status == 0) {
+            if ($dproject->status == 0 || $dproject->status == 2) {
                 return  
                 '<form method="POST" action="'.('/donatur/donasi_project/'.$dproject->id).'"> <input type="hidden" name="_token" id="csrf-token" value="'. Session::token().'" /> 
                 <input type="hidden" name="_method" value="DELETE">
@@ -38,7 +43,7 @@ class DonasiProjectController extends Controller
             
         })
         # code...
-        ->rawColumns(['action'])
+        ->rawColumns(['action', 'kode'])
         ->make(true);
     }
     public function index()
@@ -68,9 +73,10 @@ class DonasiProjectController extends Controller
         $refdonasi->project_id = $request->project_id;
         $refdonasi->owner_id = $request->owner_id;
         $refdonasi->donasi = str_replace('.','',$request->donasi);
+        $refdonasi->kode_unik = (mt_rand(0,999));
         $refdonasi->status = 0;
         $refdonasi->bank_id = $request->bank_id;
-        $refdonasi->donatur_id = $request->donatur_id;
+        $refdonasi->donatur_id = auth()->user()->id;
 
         $refdonasi->save();
         return redirect('donatur/donasi_project');

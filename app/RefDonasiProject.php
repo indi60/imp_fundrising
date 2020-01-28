@@ -11,6 +11,7 @@ class RefDonasiProject extends Model
         'project_id', 
         'owner_id', 
         'donasi', 
+        'kode_unik', 
         'status', 
         'bank_id', 
         'bukti_transfer'

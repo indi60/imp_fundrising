@@ -31,9 +31,6 @@
 										<label>Donasi</label>
 										<input type="text" placeholder="000.000.000" name="donasi" id="donasi" class="form-control required">
                                     </div>
-                                    <div class="form-group">
-										<input type="hidden" name="donatur_id" id="donatur_id" class="form-control required" value="{{Auth()->user()->id}}">
-									</div>
 									
                                     <div class="col-12">
 										<button type="submit" class="btn btn-primary">Submit</button>

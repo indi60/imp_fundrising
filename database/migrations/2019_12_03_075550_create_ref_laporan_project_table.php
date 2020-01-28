@@ -16,6 +16,7 @@ class CreateRefLaporanProjectTable extends Migration
         Schema::create('ref_laporan_project', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('project_id');
+            $table->integer('owner_id');
             $table->string('judul_laporan');
             $table->text('konten_laporan');
             $table->date('tanggal_laporan');

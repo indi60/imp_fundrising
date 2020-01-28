@@ -34,7 +34,7 @@
             { data: 'id', 
                 render: function (data, type, row, meta) { 
                     return meta.row + meta.settings._iDisplayStart + 1;
-                }
+                },  "className": "dt-center"
             },
             { data: 'nama_project', name: 'nama_project' , "className": "text-center",},
             { data: 'status', name: 'status' , "className": "dt-center", 

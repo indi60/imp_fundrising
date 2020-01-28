@@ -26,12 +26,16 @@ class ListDonaturController extends Controller
         ->get();
         // dd($ldonatur);
         return Datatables::of($ldonatur)
+        ->addColumn('kode', function($dproject){
+            $kode = $dproject->donasi + $dproject->kode_unik;
+            return "Rp ".number_format($kode,0,",",".");
+        })
         ->addColumn('action', function($ldonatur){
                 return  
                 '<a href="'.('/admin/list_donatur/'.$ldonatur->id.'/edit').'" class="btn btn-primary btn-sm text-light"><i class="fas fa-eye"></i></a>';     
         })
         # code...
-        ->rawColumns(['action'])
+        ->rawColumns(['action', 'kode'])
         ->make(true);
     }
     public function index()

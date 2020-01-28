@@ -22,7 +22,6 @@
                         <th>NO</th>
                         <th>JUDUL LAPORAN</th>
                         <th>NAMA PROJECT</th>
-                        <th>KONTEN LAPORAN</th>
                         <th>TANGGAL LAPORAN</th>
                         <th>STATUS</th>
                         <th>ACTION</th>
@@ -50,7 +49,6 @@
             },
             { data: 'judul_laporan', name: 'judul_laporan' , "className": "text-center",},
             { data: 'nama_project', name: 'nama_project' , "className": "text-center",},
-            { data: 'konten_laporan', name: 'konten_laporan' , "className": "text-center",},
             { data: 'tanggal_laporan', name: 'tanggal_laporan' , "className": "text-center",},
             { data: 'status', name: 'status' , "className": "dt-center", 
                 render:function(data){
