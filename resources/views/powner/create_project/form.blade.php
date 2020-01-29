@@ -59,10 +59,6 @@
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                                 data-target="#myModal"> <i class="fa fa-image"></i> Upload Gallery</button>
                         </div>
-                        <div class="form-group">
-                            <input type="hidden" name="owner_id" id="owner_id" class="form-control required"
-                                value="{{Auth()->user()->id}}">
-                        </div>
                         <br>
                         <div class="">
                             <button type="submit" class="btn btn-primary">Submit</button>

@@ -99,11 +99,17 @@ $main_powner_routes = function(){
     //Laporan Project
     Route::resource('/laporan_project', 'Powner\LaporanProjectController');
     Route::get('/json/lproject', 'Powner\LaporanProjectController@jsonLProject')->name('json/lproject');
+    //Upload Image Laporan CKEditor
+    Route::post('/laporan', 'Powner\LaporanProjectController@laporan')->name('ckeditor/laporan');
 };
 Route::group(['middleware' => 'isPowner', 'prefix'=>'powner'], $main_powner_routes);
 
 $main_donatur_routes = function(){
-    Route::resource('/', 'Donatur\DonaturController');
+    Route::resource('/', 'Donatur\DonaturController', [
+        'names' => [
+            'index' => 'donatur'
+        ]
+    ]);
     
     //Lihat Project
     Route::resource('/lihat_project', 'Donatur\LihatProjectController');

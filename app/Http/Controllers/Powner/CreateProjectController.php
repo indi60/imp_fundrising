@@ -88,7 +88,7 @@ class CreateProjectController extends Controller
         $mcProject->tanggal_dibuka = now();
         $mcProject->tanggal_ditutup = $request->tanggal_ditutup;
         $mcProject->status = 0;
-        $mcProject->owner_id = $request->owner_id;
+        $mcProject->owner_id = auth()->user()->id;
         $mcProject->gallery = $request->gallery;
 
         //Tumbnail

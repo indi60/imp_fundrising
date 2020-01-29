@@ -19,6 +19,7 @@ class CreateRefDonasiProjectTable extends Migration
             $table->integer('owner_id');
             $table->integer('donatur_id');
             $table->double('donasi');
+            $table->integer('kode_unik');
             $table->integer('status');
             $table->integer('bank_id');
             $table->string('bukti_transfer')->nullable();

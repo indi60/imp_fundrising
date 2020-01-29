@@ -1089,8 +1089,7 @@ class KabupatenTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
             array( // row #153
-                'id' => 
-                ,
+                'id' =>2172,
                 'nama_kabupaten' => 'KOTA TANJUNG PINANG',
                 'provinsi_id' => 21,
                 'created_at' => NULL,
