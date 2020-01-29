@@ -95,7 +95,6 @@ class KecamatanController extends Controller
     public function update(Request $request, $id)
     {
         $data = MKecamatan::find($id);
-        
         $data->update($request->all());
         return response()->json([
             'success'=> true
