@@ -340,7 +340,10 @@
 	<script src="{{asset('asset/jss/functions.js')}}"></script>
     <!-- Footer Scripts
 	============================================= -->
-    <script src="{{asset('asset/jss/functions.js')}}"></script>
+	<script src="{{asset('asset/jss/functions.js')}}"></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
 	<script type="text/javascript">
 		$('#kabupaten_id').prop('disabled', true);
 		$('#kecamatan_id').prop('disabled', true);
@@ -426,6 +429,9 @@
 		if(exist){
 		alert(msg);
 		}
+		$(document).ready(function() {  
+        $('select').select2({ width: '100%' });
+    });
 		</script>
 		
 </body>
