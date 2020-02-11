@@ -18,7 +18,7 @@
 					<div class="video-overlay real-estate-video-overlay" style="z-index: 1;"></div>
 				</div>
 			</div>
-        </section><!-- #slider end -->
+        </section>
         <div class="container">
             <div class="text" id="list">
                 <h2  style="margin-top:20px">List Project</h2>
@@ -61,7 +61,7 @@
 							@endforeach
 						</div>
 					</div>
-        </div>
+        		</div>
 @endsection
 <script>
     var msg = '{{Session::get('alert')}}';

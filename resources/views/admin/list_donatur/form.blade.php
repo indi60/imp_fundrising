@@ -46,8 +46,8 @@
 										<th><img width="500px" src="{{ url($path) }}" alt="" srcset=""></th>
 										{{-- <input type="file" name="bukti_transfer" id="bukti_transfer" class="form-control required"> --}}
                                     </div>
-                                    <div class="row justify-content-end">
-										<div class="col-md-2">
+									<div class="row justify-content-end">
+										<div class="text-right mr-2">
 											<button type="submit" value="1" name="status" class="btn btn-primary">TERIMA</button>
 											<button type="submit" value="2" name="status" class="btn btn-warning">TOLAK</button>
 										</div>

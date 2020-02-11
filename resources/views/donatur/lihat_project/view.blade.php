@@ -8,11 +8,10 @@
                     
                     <a href="/donatur/lihat_project/{{$mpjek->id}}">
                         <?php $path = Storage::url($mpjek->tumbnail); ?>
-                        <img width="500px" height="300px" src="{{ url($path) }}" alt="" srcset="">
+                        <img width="400px" height="300px" src="{{ url($path) }}" alt="" srcset="">
                     </a>
                     <div class="real-estate-item-price">
-                        Target :
-                        Rp. <?php echo number_format($mpjek->target,0,'.','.') ?><span></span>
+                        Target : Rp. <?php echo number_format($mpjek->target,0,'.','.') ?><span></span>
                     </div>
                 </div>
                 <div class="real-estate-item-desc">
