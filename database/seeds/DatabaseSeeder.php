@@ -16,6 +16,13 @@ class DatabaseSeeder extends Seeder
             ProvinsiTableSeeder::class,
             KabupatenTableSeeder::class,
             KecamatanTableSeeder::class,
+            KelurahanTableSeeder::class,
+            KelurahanTableSeeder2::class,
+            KelurahanTableSeeder3::class,
+            KelurahanTableSeeder4::class,
+            KelurahanTableSeeder5::class,
+            KelurahanTableSeeder6::class,
+            KelurahanTableSeeder7::class,
             KategoriProjectTableSeeder::class,
             BankTableSeeder::class,
             ]);

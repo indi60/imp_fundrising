@@ -6,10 +6,8 @@ class KecamatanTableSeeder extends Seeder
 {
     /**
      * Run the database,
-                'kabupaten_id' => 1705,
-                'created_at' => NULL,
-                'updated_at' => NULL, seeds
-)    *
+     * 
+    *
      * @return void
      */
     public function run()

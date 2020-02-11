@@ -109,7 +109,6 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
                             @enderror
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <div class="col-md-6 offset-md-4">
                             <div class="form-check">
