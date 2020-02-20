@@ -10,7 +10,7 @@
                     <img src="{{asset('asset/demos/real-estate/images/idelight.png')}}"
                         style="position: relative; opacity: 0.85; left: -10px; max-height: 80px; margin-bottom: 20px;"
                         alt="Footer Logo">
-                        <p style="font-family: 'Poppins', sans-serif;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo fugiat, neque exercitationem, tempora quisquam eaque reprehenderit eveniet ipsam eum deleniti fugit obcaecati qui, saepe harum! Consequuntur quisquam sit cupiditate doloribus.</p>
+                        <p style="font-family: 'Poppins', sans-serif;">IDEBABE kepanjangan dari Infak Duit Emas Barang Baru dan Bekas. Terinspirasi dari kehidupan minimalis yang penuh akan makna yaitu dengan memberikan barang-barang layak untuk orang lain yang lebih membutuhkan.</p>
                     <div class="line" style="margin: 30px 0;"></div>
                     <p class="ls1 t300" style="opacity: 0.6; font-size: 13px;">Copyrights &copy; 2020 IDE BABE</p>
                 </div>
@@ -185,6 +185,7 @@
     });
 
 </script>
+
 {{-- DataTabel --}}
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
@@ -193,6 +194,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.js"></script>
             
 <script src="{{asset('assets/validator/validator.min.js') }}"></script>
+
+
+{{-- Currency --}}
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
 @yield('scripts')
 

@@ -24,19 +24,22 @@
 									<input type="text" class="form-control required" @foreach ($mcproject as $key=>$mcp) @if ($refdproject->project_id) value="{{$mcp}}" @endif @endforeach readonly>
 									<input type="hidden" name="project_id" id="project_id" class="form-control required" value="{{$refdproject->project_id}}">
                                     </div>
+									<input type="hidden" id="bank_id" name="bank_id" class="form-control" @foreach ($refbank as $rbnk) @if ($refdproject->bank_id==$rbnk->id) value="{{$rbnk->id}}"@endif @endforeach >
                                     <input type="hidden" name="owner_id" id="owner_id" class="form-control required" value="{{$refdproject->owner_id}}">
-                                    <div class="form-group">
-                                        <label>Nama Bank</label>
-                                        <select name="bank_id" id="bank_id" class="form-control custom-select" required>
-                                            <option value="" selected disabled>PILIH BANK</option>
-                                            @foreach ($refbank as $key =>$rbank)
-                                                <option value="{{$key}}" @if ($refdproject->bank_id == $key) selected @endif>{{$rbank}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+									<div class="form-group">
+										<label>Nomor Rekening</label>
+											<input type="text" class="form-control" @foreach ($refbank as $rbnk) @if ($refdproject->bank_id==$rbnk->id) value="{{$rbnk->no_rekening}}"@endif @endforeach readonly>
+									</div>
+									<div class="form-group">
+										<label>Nama Pemilik Rekening</label>
+											<input type="text" class="form-control" @foreach ($refbank as $rbnk) @if ($refdproject->bank_id==$rbnk->id) value="{{$rbnk->nama_rekening}}"@endif @endforeach readonly>
+									</div>
 									<div class="form-group">
 										<label>Donasi</label>
-										<input type="text" name="donasi" id="donasi" class="form-control required" value="{{$refdproject->donasi}}">
+										<?php
+										$kode = $refdproject->donasi + $refdproject->kode_unik;
+										?>
+										<input type="text" name="donasi" id="donasi" class="form-control required" value="{{$kode}}">
                                     </div>
                                     
 									<div class="form-group">

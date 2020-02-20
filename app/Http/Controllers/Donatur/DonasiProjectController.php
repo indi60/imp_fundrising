@@ -79,7 +79,7 @@ class DonasiProjectController extends Controller
         $refdonasi->donatur_id = auth()->user()->id;
 
         $refdonasi->save();
-        return redirect('donatur/donasi_project');
+        return redirect()->route('donatur_project',$refdonasi->id);
     }
 
     /**
@@ -106,8 +106,8 @@ class DonasiProjectController extends Controller
         $refdproject = RefDonasiProject::where('status', '0')
         ->where('donatur_id', Auth()->User()->id)
         ->findOrFail($id);
-        $mcproject = MCProject::pluck('nama_project', 'id');
-        $refbank = RefBank::pluck('nama_bank', 'id');
+        // $mcproject = MCProject::pluck('nama_project', 'id');
+        $refbank = RefBank::All();
         return view('donatur/donasi_project/formedit', compact('refdproject', 'mcproject', 'refbank'));
     }
 

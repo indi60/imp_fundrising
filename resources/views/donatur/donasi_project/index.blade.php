@@ -2,15 +2,14 @@
 @section('title', 'Donatur | DonasiProject')
 @section('content')
 <div class="container mt-5 mb-5">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col s4">
-                    <h4 style="margin-left:10px;">Data Donasi Project</h4>
-                </div>
-            </div>
-                   
-            <table class="table table-striped" id="donasiproject_table" width="100%">
+ <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Data Donasi Project</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="dt-responsive table-responsive">
+                            <table id="donasiproject_table" class="table table-striped table-bordered nowrap role="grid" aria-describedby="simpletable_info"">
                 <thead>
                     <tr>
                         <th>NO</th>
@@ -25,7 +24,6 @@
                     </tr>
                 </thead>
             </table>    
-    </div>
 </div>
 @stop
 

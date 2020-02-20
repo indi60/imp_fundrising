@@ -19,13 +19,6 @@
 									@foreach ($user as $ke => $us)
 									@if ($data->owner_id==$ke)<h3>Post By {{$us}}</h3>@endif
 									@endforeach
-									{{-- <div class="form-group">
-										<label>Status</label>
-										<select name="status" id="status" class="form-control custom-select" required>
-											<option value="0" @if (!empty($data) && $data->status==0) selected @endif>TOLAK</option>
-											<option value="1" @if (!empty($data) && $data->status==1) selected @endif>SETUJUI</option>
-										</select>
-									</div> --}}
 									<div class="form-group">
 										<label>Kategori Project</label>
 										<select name="kategori_project" id="kategori_project" class="form-control custom-select" required>
@@ -57,6 +50,20 @@
 										<label>Tanggal Tutup</label>
 										<input name="tanggal_ditutup" id="tanggal_ditutup" class="form-control required" placeholder="yyyy/mm/dd" readonly @if (!empty($data)) value="{{$data->tanggal_ditutup}}"@endif>
 									</div>	
+									<div class="form-group">
+										<label for="">Gallery</label>
+										<div class="row">
+										<?php $gallery = explode(',', $data->gallery) ?>
+										@foreach ($gallery as $item)
+								
+										<div class="col-lg-3 col-md-4 col-6">
+											<a href="{{ asset('/uploads/gallery/'.$item) }}" class="d-block mb-4 h-100">			
+											<img class="img-fluid img-thumbnail" src="{{ asset('/uploads/gallery/'.$item) }}" alt="">
+											</a>
+										</div>
+										@endforeach	 
+									</div>						
+							</div>		
 								<div class="row justify-content-end">
                                     <div class="text-right mr-2">
 										<button type="submit" value="1" name="status" class="btn btn-primary">TERIMA</button>

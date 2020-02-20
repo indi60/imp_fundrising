@@ -19,7 +19,7 @@ class LaporanProjectController extends Controller
     public function jsonLProject() {
         $lproject = DB::table('ref_laporan_project')
         ->join('m_project', 'ref_laporan_project.project_id', '=', 'm_project.id')
-        ->select('ref_laporan_project.*', 'm_project.nama_project')
+        ->select('ref_laporan_project.*', 'm_project.nama_project', 'm_project.terkumpul', 'm_project.target')
         ->get();
 
             return Datatables::of($lproject)
@@ -34,7 +34,11 @@ class LaporanProjectController extends Controller
                 // }
                     
             })
-            ->rawColumns(['action'])
+            ->addColumn('kontent', function($lproject){
+                $text = $lproject->konten_laporan;
+                return $text;
+            })
+            ->rawColumns(['action', 'kontent'])
             ->make(true);
     }
     public function index()

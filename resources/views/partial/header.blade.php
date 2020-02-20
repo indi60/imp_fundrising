@@ -50,8 +50,9 @@
 
     {{-- DropZone --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.css">
-    
-    
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+
     <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Document Title
 	============================================= -->

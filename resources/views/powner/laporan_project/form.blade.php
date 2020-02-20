@@ -47,7 +47,7 @@
 @section('scripts')
 <script type="text/javascript">
     //ckeditor konten_laporan
-    CKEDITOR.replace('konten_laporan', {
+    CKEDITOR.replace('konten_laporan', conf,opts {
         filebrowserUploadUrl: "{{route('ckeditor/laporan', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
     });

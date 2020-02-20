@@ -14,6 +14,8 @@
                         @if( !empty($data) )
                         <input type="hidden" name="_method" value="PUT">
                         @endif
+                        <div class="row justify-content-end">
+                        </div>
                         <div class="form-group">
                             <label>Kategori Project</label>
                             <select name="kategori_project" id="kategori_project" class="form-control custom-select" required>
@@ -62,6 +64,7 @@
                         <br>
                         <div class="">
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="/powner/create_project" class="btn btn-danger">KEMBALI</a>
                         </div>
                     </form>
                 </div>

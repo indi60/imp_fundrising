@@ -4,8 +4,8 @@
 		<section id="slider" class="slider-element force-full-screen full-screen dark clearfix">
 			<div class="force-full-screen full-screen">
 					  <div class="logo">
-						<img src="{{asset('asset/demos/real-estate/images/hero/1.jpg')}}" class="d-block w-100" alt="...">
-					  </div>
+						<img style="filter: blur(4px); -webkit-filter: blur(4px);" src="{{asset('asset/demos/real-estate/images/hero/1.jpg')}}" class="d-block w-100" alt="...">
+					  </div> 
 				<div class="vertical-middle" style="z-index: 3;">
 					<div class="container center clearfix">
 						<div class="emphasis-title nomargin">

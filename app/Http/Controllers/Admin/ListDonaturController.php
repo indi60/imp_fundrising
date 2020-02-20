@@ -86,7 +86,7 @@ class ListDonaturController extends Controller
     {
         $refdproject = RefDonasiProject::find($id);
         $mcproject = MCProject::pluck('nama_project', 'id');
-        $refbank = RefBank::pluck('nama_bank', 'id');
+        $refbank = RefBank::all();
         return view('admin/list_donatur/form', compact('refdproject', 'mcproject', 'refbank'));
     }
 

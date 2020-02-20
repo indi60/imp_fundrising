@@ -2,13 +2,13 @@
 @section('title', 'Admin | Kategori Project')
 @section('content')
 <div class="container mt-5 mb-5">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col s4">
-                    <h4 style="margin-left:10px;">Data Kategori</h4>
-                </div>
-            </div>
+    <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Data Kategori</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="dt-responsive table-responsive">
                 <a onclick="addForm()"
                    style="background: #3a7bd5;  /* fallback for old browsers */
                     background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
@@ -16,7 +16,7 @@
                     id="float" class="btn btn-primary text-light"><i class="fas fa-plus"> Tambah Data</i></a><br><br>
                    
         <div class="panel-body">
-            <table style="text-transform: uppercase;" class="table table-striped" id="kategori_table">
+                            <table id="kategori_table" class="table table-striped table-bordered nowrap role="grid" aria-describedby="simpletable_info"">
                 <thead>
                     <tr>
                         <th>NO</th>

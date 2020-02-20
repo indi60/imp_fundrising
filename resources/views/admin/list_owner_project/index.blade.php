@@ -2,12 +2,14 @@
 @section('title', 'Admin | List Fundraiser')
 @section('content')
 <div class="container mb-5">
-    <div class="text-center mt-5">
-         <h3> Data Project </h3>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <table style="text-transform: uppercase;" class="table table-striped" id="create_project">
+ <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Data List Fundraiser</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="dt-responsive table-responsive">
+                            <table id="create_project" class="table table-striped table-bordered nowrap role="grid" aria-describedby="simpletable_info"">
                 <thead>
                     <tr>
                         <th>NO</th>

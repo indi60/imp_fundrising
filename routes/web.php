@@ -119,7 +119,11 @@ $main_donatur_routes = function(){
     Route::get('/projectCat', 'Donatur\LihatProjectController@projectCat')->name('projectCat');
 
     //Donasi Project
-    Route::resource('/donasi_project', 'Donatur\DonasiProjectController');
+    Route::resource('/donasi_project', 'Donatur\DonasiProjectController', [
+        'names' => [
+            'edit' => 'donatur_project'
+            ]
+        ]);
     Route::get('/json/dproject', 'Donatur\DonasiProjectController@jsonDProject')->name('json/dproject');
     
 
