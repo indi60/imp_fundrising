@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Donatur | Update Project')
+@section('title', auth()->user()->name.' | Update Project')
 @section('content')
 <div class="container">
     <div class="content-wrap">

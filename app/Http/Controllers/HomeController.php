@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\MCproject;
 use DB;
+use Carbon\Carbon;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -18,7 +20,10 @@ class HomeController extends Controller
 
     public function index()
     {
+   
+        $now = Carbon::now();
         $mproject = DB::table('m_project')->where('status', '1')
+        ->where('tanggal_ditutup', '>', $now)
         ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
         ->select('m_project.*', 'm_kategori_project.kategori_project')
         ->get();

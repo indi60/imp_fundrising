@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Project Owner | Form Project')
+@section('title', auth()->user()->name.' | Form Project')
 @section('content')
 <div class="container">
     <div class="content-wrap">

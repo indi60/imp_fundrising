@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Project Owner | Create Project')
+@section('title', auth()->user()->name.' | Create Project')
 @section('content')
 <br>
 <div class="container">

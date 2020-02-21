@@ -1,12 +1,16 @@
 @extends('partial.main')
-@section('title', 'Gallery')
+@if (Auth::user() == null)
+@section ('title',  'Gallery Project')
+@else
+@section ('title',  Auth::user()->name.' | Gallery Project')
+@endif
 @section('content')
 <br>
 <!-- Page Content -->
 <div class="container">
 	<div class="row">
 	<div class="col-md-6">
-	<h1 class=" font-weight-light text-center text-lg-left mt-4 mb-0">Gallery</h1>
+	<h1 class=" font-weight-light text-center text-lg-left mt-4 mb-0">Gallery Project</h1>
 	</div>
 	<div class="col-md-6 mt-4">
 	<a href="/{{$mproject->id}}/show"
@@ -18,7 +22,10 @@
 	</div>
 	<hr class="mt-2 mb-5">	
   
-	<div class="row text-center text-lg-left">
+	<div class="row text-center">
+		@if ($mproject->gallery == null)
+		<h1 class="col-md-12">Project Ini Tidak Mempunyai Gallery</h1>
+		@endif
 		<?php $gallery = explode(',', $mproject->gallery) ?>
 		@foreach ($gallery as $item)
   

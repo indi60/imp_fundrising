@@ -6,7 +6,7 @@
                 <div class="real-estate-item-image">
                     <h4 class="badge badge-danger badge-pill">Tanggal Ditutup : {{$mpjek->tanggal_ditutup}}</h4>
                     
-                    <a href="/donatur/lihat_project/{{$mpjek->id}}">
+                    <a href="/{{$mpjek->id}}/show">
                         <?php $path = Storage::url($mpjek->tumbnail); ?>
                         <img width="400px" height="300px" src="{{ url($path) }}" alt="" srcset="">
                     </a>
@@ -15,12 +15,12 @@
                     </div>
                 </div>
                 <div class="real-estate-item-desc">
-                    <h3><a href="/donatur/lihat_project/{{$mpjek->id}}">{{$mpjek->nama_project}}</a></h3>
+                    <h3><a href="/{{$mpjek->id}}/show">{{$mpjek->nama_project}}</a></h3>
                     @foreach($mkategori as $cList)
 					    <span>@if ($mpjek->kategori_project==$cList->id){{$cList->kategori_project}} @endif</span>
                     @endforeach
 
-                    <a href="/donatur/lihat_project/{{$mpjek->id}}"class="btn btn-info btn-sm">Lihat</a>
+                    <a href="/{{$mpjek->id}}/show"class="btn btn-info btn-sm">Lihat</a>
 
                     <div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
                     

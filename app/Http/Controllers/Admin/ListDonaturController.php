@@ -27,7 +27,7 @@ class ListDonaturController extends Controller
         // dd($ldonatur);
         return Datatables::of($ldonatur)
         ->addColumn('kode', function($dproject){
-            $kode = $dproject->donasi + $dproject->kode_unik;
+            $kode = $dproject->donasi;
             return "Rp ".number_format($kode,0,",",".");
         })
         ->addColumn('action', function($ldonatur){

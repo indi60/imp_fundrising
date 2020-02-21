@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Donatur | Lihat Project')
+@section('title', auth()->user()->name.' | Lihat Project')
 @section('content')
 <div class="greyBg">
     <div class="container">
@@ -26,41 +26,39 @@
 						<div style="position: relative;">
 							<div class="real-estate owl-carousel image-carousel carousel-widget bottommargin-lg" data-margin="10" data-nav="true" data-loop="false" data-pagi="false" data-items-xs="1" data-items-sm="1" data-items-md="2" data-items-lg="3" data-items-xl="3">
 							
-							@foreach ($mproject as $mpjek)	
-							<div class="oc-item">
-								<div class="real-estate-item">
-									<div class="real-estate-item-image">
-										<h4 class="badge badge-danger badge-pill">Tanggal Ditutup : {{$mpjek->tanggal_ditutup}}</h4>
-										
-										<a href="/donatur/lihat_project/{{$mpjek->id}}">
-											<?php $path = Storage::url($mpjek->tumbnail); ?>
-											<img width="500px" height="300px" src="{{ url($path) }}" alt="" srcset="">
-										</a>
-										<div class="real-estate-item-price">
-											Target :
-											Rp. <?php echo number_format($mpjek->target,0,'.','.') ?><span></span>
-										</div>
-									</div>
-									<div class="real-estate-item-desc">
-										<h3><a href="/donatur/lihat_project/{{$mpjek->id}}">{{$mpjek->nama_project}}</a></h3>
-										<span>{{$mpjek->kategori_project}}</span>
-
-										<a href="/donatur/lihat_project/{{$mpjek->id}}"class="btn btn-info btn-sm">Lihat</a>
-
-										<div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-										
-										<div class="real-estate-item-features t500 font-primary clearfix">
-											<div class="row no-gutters">
-												<div class="">Terkumpul <span class="color"> Rp. <?php echo number_format($mpjek->terkumpul,0,'.','.') ?></span></div>
+								@foreach ($mproject as $mpjek)
+								<div class="oc-item">
+									<div class="real-estate-item">
+										<div class="real-estate-item-image">
+											<h4 class="badge badge-danger badge-pill">Tanggal Ditutup : {{$mpjek->tanggal_ditutup}}</h4>
+											
+											<a href="/{{$mpjek->id}}/show">
+												<?php $path = Storage::url($mpjek->tumbnail); ?>
+												<img width="500px" height="300px" src="{{ url($path) }}" alt="" srcset="">
+											</a>
+											<div class="real-estate-item-price">
+												Target :
+												Rp. <?php echo number_format($mpjek->target,0,'.','.') ?><span></span>
 											</div>
-											<br>
+										</div>
+										<div class="real-estate-item-desc">
+											<h3><a href="/{{$mpjek->id}}/show">{{$mpjek->nama_project}}</a></h3>
+											<span>{{$mpjek->kategori_project}}</span>
+	
+											<a href="/{{$mpjek->id}}/show"class="btn btn-info btn-sm">Lihat</a>
+	
+											<div class="line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+											
+											<div class="real-estate-item-features t500 font-primary clearfix">
+												<div class="row no-gutters">
+													<div class="">Terkumpul <span class="color"> Rp. <?php echo number_format($mpjek->terkumpul,0,'.','.') ?></span></div>
+												</div>
+												<br>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							
-							
-							@endforeach
+								@endforeach
 						</div>
 					</div>
                 </div>
@@ -92,9 +90,5 @@
 			});
 		});
 		
-		// $(document).ready(function() {
-		// 	$('select').niceSelect();      
-		// 	FastClick.attach(document.body);
-		// 	}); 
 </script>
 @endsection

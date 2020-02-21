@@ -176,7 +176,7 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
                             <li class=""><a href="/">
                                     <div style="font-size:15px;">Home</div>
                                 </a></li>
-                            <li class=""><a href="#">
+                            <li class=""><a href="/lihat_project">
                                     <div style="font-size:15px">List Project</div>
                                 </a></li>
                             <li><a href="/admin/list_donatur/">
@@ -233,7 +233,7 @@ background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, F
                             <li class=""><a href="/">
                                     <div style="font-size:15px">Home</div>
                                 </a></li>
-                            <li class=""><a href="/donatur/lihat_project">
+                            <li class=""><a href="/lihat_project">
                                     <div style="font-size:15px">Lihat Project</div>
                                 </a></li>
                             <li><a href="/donatur/donasi_project">

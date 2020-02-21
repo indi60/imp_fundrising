@@ -1,5 +1,11 @@
 @extends('partial.main')
-@section('title', 'Home')
+@if (Auth::user() == null)
+@section ('title',  'Home')
+@else
+@section ('title',  Auth::user()->name.' | Home')
+@endif
+
+
 @section('content')
 		<section id="slider" class="slider-element force-full-screen full-screen dark clearfix">
 			<div class="force-full-screen full-screen">

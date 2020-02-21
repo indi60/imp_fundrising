@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Admin | Home')
+@section('title', auth()->user()->name.' | Home')
 @section('content')
         <!-- Slider
 		============================================= -->

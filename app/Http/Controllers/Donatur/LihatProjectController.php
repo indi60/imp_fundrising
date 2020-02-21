@@ -8,6 +8,7 @@ use App\RefDonasiProject;
 use DB;
 use App\MCProject;
 use App\MKategoriProject;
+use Carbon\Carbon;
 class LihatProjectController extends Controller
 {
     /**
@@ -24,20 +25,22 @@ class LihatProjectController extends Controller
         ->where('m_project.kategori_project',$kategori_project)
         ->get();
         $mkategori = MKategoriProject::all();
-        return view('donatur/lihat_project/view', compact('mproject', 'mkategori'));
+        return view('lihat_project/view', compact('mproject', 'mkategori'));
     }
     public function gallery($id) {
         $mproject = MCProject::where('status', '1')->findOrFail($id);
-        return view('donatur/lihat_project/gallery', compact('mproject'));
+        return view('lihat_project/gallery', compact('mproject'));
     }
     public function index()
     {
+        $now = Carbon::now();
         $mproject = DB::table('m_project')->where('status', '1')
+        ->where('tanggal_ditutup', '>', $now)
         ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
         ->select('m_project.*', 'm_kategori_project.kategori_project')
         ->get();
         $mkategori = MKategoriProject::all();
-        return view('donatur/lihat_project/index', compact('mproject', 'mkategori'));
+        return view('lihat_project/index', compact('mproject', 'mkategori'));
     }
 
     /**
@@ -69,11 +72,11 @@ class LihatProjectController extends Controller
      */
     public function show($id)
     {
-        $mproject = MCProject::where('status', '1')
-        ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
-        ->select('m_project.*', 'm_kategori_project.kategori_project')
-        ->findOrFail($id);
-        return view('donatur/lihat_project/show', compact('mproject'));
+        // $mproject = MCProject::where('status', '1')
+        // ->join('m_kategori_project', 'm_project.kategori_project', '=', 'm_kategori_project.id')
+        // ->select('m_project.*', 'm_kategori_project.kategori_project')
+        // ->findOrFail($id);
+        // return view('lihat_project/show', compact('mproject'));
     }
 
     /**

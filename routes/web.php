@@ -110,14 +110,6 @@ $main_donatur_routes = function(){
             'index' => 'donatur'
         ]
     ]);
-    
-    //Lihat Project
-    Route::resource('/lihat_project', 'Donatur\LihatProjectController');
-    Route::get('/lihat_project/{id}/gallery', 'Donatur\LihatProjectController@gallery');
-    
-    //get
-    Route::get('/projectCat', 'Donatur\LihatProjectController@projectCat')->name('projectCat');
-
     //Donasi Project
     Route::resource('/donasi_project', 'Donatur\DonasiProjectController', [
         'names' => [
@@ -130,3 +122,12 @@ $main_donatur_routes = function(){
 
 };
 Route::group(['middleware' => 'isDonatur', 'prefix'=>'donatur'], $main_donatur_routes);
+
+
+    //Lihat Project
+    Route::resource('/lihat_project', 'Donatur\LihatProjectController');
+    Route::get('/lihat_project/{id}/gallery', 'Donatur\LihatProjectController@gallery');
+    
+    //get
+    Route::get('/projectCat', 'Donatur\LihatProjectController@projectCat')->name('projectCat');
+

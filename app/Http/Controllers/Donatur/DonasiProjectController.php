@@ -29,7 +29,7 @@ class DonasiProjectController extends Controller
         // dd($dproject);
         return Datatables::of($dproject)
         ->addColumn('kode', function($dproject){
-            $kode = $dproject->donasi + $dproject->kode_unik;
+            $kode = $dproject->donasi;
             return "Rp ".number_format($kode,0,",",".");
         })
         ->addColumn('action', function($dproject){

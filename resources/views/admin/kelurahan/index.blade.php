@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', 'Admin | Kelurahan')
+@section('title', auth()->user()->name.' | Kelurahan')
 @section('content')
 <div class="container mt-5 mb-5">
    <div class="col-sm-12">

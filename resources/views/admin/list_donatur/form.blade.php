@@ -37,7 +37,7 @@
 									<div class="form-group">
 										<label>Donasi</label>
 										<?php
-										$kode = $refdproject->donasi + $refdproject->kode_unik;
+										$kode = $refdproject->donasi;
 										?>
 										<input type="text" name="donasi" id="donasi" class="form-control required" value="{{$kode}}">
                                     </div>

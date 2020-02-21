@@ -1,5 +1,9 @@
 @extends('partial.main')
-@section('title', 'Show')
+@if (Auth::user() == null)
+@section ('title',  'Detail Project')
+@else
+@section ('title',  Auth::user()->name.' | Detail Project')
+@endif
 @section('content')
 <div class="container">
 	<div class="card mt-5 mb-5 text-center">
