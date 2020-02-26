@@ -15,6 +15,7 @@
                         <th>NO</th>
                         <th>NAMA PROJECT</th>
                         <th>STATUS</th>
+                        <th>ALASAN</th>
                         <th>ACTION</th>
                     </tr>
                 </thead>    
@@ -40,10 +41,11 @@
             },
             { data: 'nama_project', name: 'nama_project' , "className": "text-center",},
             { data: 'status', name: 'status' , "className": "dt-center", 
-                render:function(data){
-                    return (data == '0') ? '<h4><span class="badge badge-danger text-light">Menunggu Persetujuan Admin</span></h4>' : (data == '1') ? '<h4> <span class="badge badge-success text-light">Disetujui</span></h4>' : '<h4> <span class="badge badge-warning text-light">Ditolak</span></h4>';
-                }
+            render:function(data){
+                return (data == '0') ? '<h4><span class="badge badge-danger text-light">Menunggu Persetujuan Admin</span></h4>' : (data == '1') ? '<h4> <span class="badge badge-success text-light">Disetujui</span></h4>' : '<h4> <span class="badge badge-warning text-light">Ditolak</span></h4>';
+            }
             },
+            { data: 'alasan', name: 'alasan' , "className": "text-center",},
             { data: 'action', name: 'action', orderable:false, searchable: false, "width": "25%", "className": "dt-center" } 
         ]
     });

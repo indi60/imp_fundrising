@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', auth()->user()->name.' | Update Project')
+@section('title', auth()->user()->name.' | Transfer')
 @section('content')
 <div class="container">
     <div class="content-wrap">

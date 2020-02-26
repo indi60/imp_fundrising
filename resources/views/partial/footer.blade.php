@@ -192,7 +192,8 @@
 <script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script> 
 <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.js"></script>
-            
+
+{{-- <script src="{{asset('assets/js/cek.js')}}"></script> --}}
 <script src="{{asset('assets/validator/validator.min.js') }}"></script>
 
 

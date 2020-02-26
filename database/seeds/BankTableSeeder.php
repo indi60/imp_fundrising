@@ -12,24 +12,19 @@ class BankTableSeeder extends Seeder
     public function run()
     {
         $bank= [[
-            'nama_bank' =>'Mandiri',
-            'nama_rekening'=>'Aryo',
-            'no_rekening'=>'120183740123',
+            'nama_bank' =>'Bank Mandiri',
+            'nama_rekening'=>'CV Informatika Media Pratama',
+            'no_rekening'=>'054753645453',
         ],
         [
-            'nama_bank' =>'BRI',
-            'nama_rekening'=>'Bagas',
-            'no_rekening'=>'4212124709723',
+            'nama_bank' =>'Bank BRI',
+            'nama_rekening'=>'CV Informatika Media Pratama',
+            'no_rekening'=>'0510-01-00040456-2',
         ],
         [
-            'nama_bank' =>'BNI',
-            'nama_rekening'=>'Fauzan',
-            'no_rekening'=>'131735163826',
-        ],
-        [
-            'nama_bank' =>'BCA',
-            'nama_rekening'=>'Putri',
-            'no_rekening'=>'121308153715',
+            'nama_bank' =>'Bank BNI',
+            'nama_rekening'=>'CV Informatika Media Pratama',
+            'no_rekening'=>'7694660057',
         ],
         
         ];

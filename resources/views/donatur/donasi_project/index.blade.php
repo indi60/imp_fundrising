@@ -1,5 +1,5 @@
 @extends('partial.main')
-@section('title', auth()->user()->name.' | DonasiProject')
+@section('title', auth()->user()->name.' | Donasi Project')
 @section('content')
 <div class="container mt-5 mb-5">
  <div class="col-sm-12">
@@ -20,6 +20,7 @@
                         <th>NAMA BANK</th>
                         <th>BUKTI TRANSFER</th>
                         <th>STATUS</th>
+                        <th>ALASAN</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -43,12 +44,13 @@
             { data: 'kode_unik', name: 'kode_unik' , "className": "dt-center",},
             { data: 'kode', name: 'kode' , "className": "dt-center",},
             { data: 'nama_bank', name: 'nama_bank' , "className": "dt-center",},
-            { data: 'bukti_transfer', name: 'bukti_transfer' , "className": "dt-center",},
+            { data: 'bukti', name: 'bukti' , "className": "dt-center",},
             { data: 'status', name: 'status' , "className": "dt-center", 
                 render:function(data){
                     return (data == '0') ? '<h4><span class="badge badge-danger text-light">Menunggu Persetujuan Admin</span></h4>' : (data == '1') ? '<h4> <span class="badge badge-success text-light">Disetujui</span></h4>' : '<h4> <span class="badge badge-warning text-light">Ditolak</span></h4>';
                 }
             },
+            { data: 'alasan', name: 'alasan' , "className": "dt-center",},
             { data: 'action', name: 'action' , "className": "dt-center",},
         ]
     });

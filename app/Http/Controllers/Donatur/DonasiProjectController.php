@@ -42,8 +42,12 @@ class DonasiProjectController extends Controller
             }
             
         })
+        ->addColumn('bukti', function($ldonatur){
+            $path = Storage::url($ldonatur->bukti_transfer);
+            return '<th><img width="500px" src="'.$path.'" alt="" srcset=""></th>';
+        })
         # code...
-        ->rawColumns(['action', 'kode'])
+        ->rawColumns(['action', 'kode', 'bukti'])
         ->make(true);
     }
     public function index()

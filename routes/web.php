@@ -1,7 +1,5 @@
 <?php
 
-//TERAKHIR 1906
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +56,7 @@ $main_admin_routes = function(){
     
     //listdonatur OWNER PROJECT
     Route::resource('/list_owner_project', 'Admin\ListOwnerProjectController');
+    Route::get('/list_owner_project/{id}/formalasan', 'Admin\ListOwnerProjectController@alasan');
     Route::get('/json/list_owner_project', 'Admin\ListOwnerProjectController@jsonListProject')->name('json/list_owner_project');
 
     //Upload Image CKEditor
@@ -70,6 +69,7 @@ $main_admin_routes = function(){
     //List Donatur
     Route::resource('/list_donatur', 'Admin\ListDonaturController');
     Route::get('/json/listdonatur', 'Admin\ListDonaturController@jsonListDonatur')->name('json/listdonatur');
+    Route::get('/list_donatur/{id}/formalasan', 'Admin\ListDonaturController@alasan');
 };
 Route::group(['middleware' => 'isAdmin', 'prefix'=>'admin'], $main_admin_routes);
 

@@ -20,7 +20,7 @@
                                     <input type="hidden" name="owner_id" id="owner_id" class="form-control required" value="{{$mcproject->owner_id}}">
                                     <div class="form-group">
                                         <label>Nama Bank</label>
-                                        <select name="bank_id" id="bank_id" class="form-control custom-select" required>
+                                        <select name="bank_id" id="bank_id" class="form-control" required>
                                             <option value="" selected disabled>PILIH BANK</option>
                                             @foreach ($refbank as $key =>$rbank)
                                                 <option value="{{$key}}">{{$rbank}}</option>

@@ -23,6 +23,7 @@ class CreateRefDonasiProjectTable extends Migration
             $table->integer('status');
             $table->integer('bank_id');
             $table->string('bukti_transfer')->nullable();
+            $table->text('alasan')->nullable();
             $table->timestamps();
         });
     }

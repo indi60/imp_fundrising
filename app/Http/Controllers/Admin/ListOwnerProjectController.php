@@ -101,6 +101,11 @@ class ListOwnerProjectController extends Controller
         // dd($data);
         $kategori = MKategoriProject::pluck('kategori_project', 'id');
         return view('admin/list_owner_project/form', compact('data', 'kategori', 'user'));
+        }
+
+    public function alasan($id) {
+            $data = MCProject::find($id);
+            return view('admin/list_owner_project/form_alasan', compact('data'));
     }
 
     /**
@@ -121,6 +126,7 @@ class ListOwnerProjectController extends Controller
         $mcProject->tanggal_dibuka = now();
         $mcProject->tanggal_ditutup = $request->tanggal_ditutup;
         $mcProject->status = $request->status;
+        $mcProject->alasan = $request->alasan;
         $mcProject->update();
         return redirect('admin/list_owner_project');
     }

@@ -26,9 +26,9 @@ class UsersTableSeeder extends Seeder
                 'level' => 2,
             ],
             [
-                'name' => 'project_owner',
-                'email' => 'project_owner@gmail.com',
-                'password' => bcrypt('project_owner123'),
+                'name' => 'fundraiser',
+                'email' => 'fundraiser@gmail.com',
+                'password' => bcrypt('fundraiser123'),
                 'level' => 3,
             ]
         ];

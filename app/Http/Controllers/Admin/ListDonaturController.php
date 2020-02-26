@@ -10,6 +10,7 @@ use App\RefBank;
 use DB;
 use Session;
 use DataTables;
+use Storage;
 class ListDonaturController extends Controller
 {
     /**
@@ -34,8 +35,12 @@ class ListDonaturController extends Controller
                 return  
                 '<a href="'.('/admin/list_donatur/'.$ldonatur->id.'/edit').'" class="btn btn-primary btn-sm text-light"><i class="fas fa-eye"></i></a>';     
         })
+        ->addColumn('bukti', function($ldonatur){
+            $path = Storage::url($ldonatur->bukti_transfer);
+            return '<th><img width="500px" src="'.$path.'" alt="" srcset=""></th>';
+        })
         # code...
-        ->rawColumns(['action', 'kode'])
+        ->rawColumns(['action', 'kode', 'bukti'])
         ->make(true);
     }
     public function index()
@@ -90,6 +95,12 @@ class ListDonaturController extends Controller
         return view('admin/list_donatur/form', compact('refdproject', 'mcproject', 'refbank'));
     }
 
+    public function alasan($id) {
+        $data = RefDonasiProject::find($id);
+        $mcproject = MCProject::pluck('nama_project', 'id');
+        return view('admin/list_donatur/form_alasan', compact('data', 'mcproject'));
+}
+
     /**
      * Update the specified resource in storage.
      *
@@ -104,6 +115,7 @@ class ListDonaturController extends Controller
         $refdonasi->owner_id = $request->owner_id;
         $refdonasi->donasi = str_replace('.','',$request->donasi);
         $refdonasi->status = $request->status;
+        $refdonasi->alasan = $request->alasan;
         $refdonasi->bank_id = $request->bank_id;
         $refdonasi->update();
         

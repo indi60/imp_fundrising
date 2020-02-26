@@ -67,7 +67,7 @@
 								<div class="row justify-content-end">
                                     <div class="text-right mr-2">
 										<button type="submit" value="1" name="status" class="btn btn-primary">TERIMA</button>
-										<button type="submit" value="2" name="status" class="btn btn-warning">TOLAK</button>
+										<a href="/admin/list_owner_project/{{$data->id}}/formalasan"  class="btn btn-warning">TOLAK</a>
 									</div>
 								</form>
 								<form action="/admin/list_owner_project/{{ $data->id }} " method="post">

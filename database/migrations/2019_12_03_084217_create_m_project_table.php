@@ -26,6 +26,7 @@ class CreateMProjectTable extends Migration
             $table->integer('kategori_project');
             $table->integer('owner_id')->nullable();
             $table->text('gallery')->nullable();
+            $table->text('alasan')->nullable();
             $table->timestamps();
         });
     }
